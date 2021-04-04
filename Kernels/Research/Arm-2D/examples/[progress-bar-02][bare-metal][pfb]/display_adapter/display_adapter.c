@@ -119,14 +119,14 @@ arm_2d_tile_t * drawing_iteration_begin(arm_2d_region_t *ptTargetRegion)
         if (NULL != ptTargetRegion) {
             s_tPFBController.tTargetRegion = *ptTargetRegion;
             
-            assert(ptTargetRegion->tLocation.iX >= 0);
-            assert(ptTargetRegion->tSize.iWidth >= 0);
-            assert(     (ptTargetRegion->tLocation.iX + ptTargetRegion->tSize.iWidth) 
+            ASSERT(ptTargetRegion->tLocation.iX >= 0);
+            ASSERT(ptTargetRegion->tSize.iWidth >= 0);
+            ASSERT(     (ptTargetRegion->tLocation.iX + ptTargetRegion->tSize.iWidth) 
                     <=  GLCD_WIDTH);
                     
-            assert(ptTargetRegion->tLocation.iY >= 0);
-            assert(ptTargetRegion->tSize.iHeight >= 0);
-            assert(     (ptTargetRegion->tLocation.iY + ptTargetRegion->tSize.iHeight) 
+            ASSERT(ptTargetRegion->tLocation.iY >= 0);
+            ASSERT(ptTargetRegion->tSize.iHeight >= 0);
+            ASSERT(     (ptTargetRegion->tLocation.iY + ptTargetRegion->tSize.iHeight) 
                     <=  GLCD_HEIGHT);
             
         } else {
