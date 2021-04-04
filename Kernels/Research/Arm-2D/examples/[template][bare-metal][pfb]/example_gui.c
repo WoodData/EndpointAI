@@ -87,8 +87,7 @@ void example_gui_do_events(void)
 
 void example_gui_refresh(arm_2d_tile_t *ptFrameBuffer)
 {
-    arm_2d_region_t tTargetRegion = { .tSize = ptFrameBuffer->tRegion.tSize, };
-    arm_2d_rgb16_fill_colour(ptFrameBuffer, &tTargetRegion, GLCD_COLOR_BLACK);
+    arm_2d_rgb16_fill_colour(ptFrameBuffer, NULL, GLCD_COLOR_BLACK);
     
     busy_wheel_show(ptFrameBuffer);
 }
