@@ -339,7 +339,7 @@
               <MiscControls>-Omax</MiscControls>
               <Define>GLCD_MIRROR_X=1,GLCD_MIRROR_Y=0,EXTERANL_DELAY_MS_DECLARE="extern void delay_ms(uint32_t);"</Define>
               <Undefine></Undefine>
-              <IncludePath>.\platform;.\platform\mps3\v2m_mps3;..\..\Library\Include;.\platform\mps3;..\alpha_blending</IncludePath>
+              <IncludePath>.\platform;.\platform\mps3\v2m_mps3;..\..\Library\Include;.\platform\mps3;.</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -1226,7 +1226,7 @@
               <MiscControls>-Omax</MiscControls>
               <Define>GLCD_MIRROR_X=1,GLCD_MIRROR_Y=0,ITERATION_CNT=1000</Define>
               <Undefine></Undefine>
-              <IncludePath>.\platform;..\..\Library\Include;..\alpha_blending</IncludePath>
+              <IncludePath>.\platform;..\..\Library\Include;.</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -2182,7 +2182,7 @@
               <MiscControls>-Omax</MiscControls>
               <Define>GLCD_MIRROR_X=1,GLCD_MIRROR_Y=0,ITERATION_CNT=10</Define>
               <Undefine></Undefine>
-              <IncludePath>.\platform;..\alpha_blending;..\..\Library\Include</IncludePath>
+              <IncludePath>.\platform;.;..\..\Library\Include</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -3137,7 +3137,7 @@
               <MiscControls>-Omax</MiscControls>
               <Define>ITERATION_CNT=1000,GLCD_MIRROR_X=1,GLCD_MIRROR_Y=0,EXTERANL_DELAY_MS_DECLARE="extern void delay_ms(uint32_t);"</Define>
               <Undefine></Undefine>
-              <IncludePath>.\platform;.\platform\v2m_mps3;..\..\Library\Include;..\alpha_blending</IncludePath>
+              <IncludePath>.\platform;.\platform\v2m_mps3;..\..\Library\Include;.</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -4024,7 +4024,7 @@
               <MiscControls>-Omax</MiscControls>
               <Define>ITERATION_CNT=1000,LCD_MIRROR_X=1,GLCD_MIRROR_Y=0,EXTERANL_DELAY_MS_DECLARE="extern void delay_ms(uint32_t);",ARM_MATH_HELIUM</Define>
               <Undefine></Undefine>
-              <IncludePath>.\platform;.\platform\mps3\v2m_mps3;..\..\Library\Include;.\platform\mps3;..\alpha_blending</IncludePath>
+              <IncludePath>.\platform;.\platform\mps3\v2m_mps3;..\..\Library\Include;.\platform\mps3;.</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -4980,7 +4980,7 @@
               <MiscControls>-Omax</MiscControls>
               <Define>GLCD_MIRROR_X=1,GLCD_MIRROR_Y=0, ITERATION_CNT=1000</Define>
               <Undefine></Undefine>
-              <IncludePath>.\platform;..\..\Library\Include;..\alpha_blending</IncludePath>
+              <IncludePath>.\platform;..\..\Library\Include;.</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -5936,7 +5936,7 @@
               <MiscControls>-Omax -Wno-nonportable-include-path</MiscControls>
               <Define>GLCD_MIRROR_X=1,GLCD_MIRROR_Y=0,ITERATION_CNT=1000</Define>
               <Undefine></Undefine>
-              <IncludePath>.\platform;..\..\Library\Include;..\alpha_blending</IncludePath>
+              <IncludePath>.\platform;..\..\Library\Include;.</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -6892,7 +6892,7 @@
               <MiscControls>-Wno-nonportable-include-path</MiscControls>
               <Define>ITERATION_CNT=1000</Define>
               <Undefine></Undefine>
-              <IncludePath>.\platform;..\..\Library\Include;..\alpha_blending;.\platform\stm32f746g-discovery</IncludePath>
+              <IncludePath>.\platform;..\..\Library\Include;.;.\platform\stm32f746g-discovery</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -7848,7 +7848,7 @@
               <MiscControls>-Omax -Wno-padded</MiscControls>
               <Define>ITERATION_CNT=1000,LCD_MIRROR_X=1,GLCD_MIRROR_Y=0,EXTERANL_DELAY_MS_DECLARE="extern void delay_ms(uint32_t);",ARM_MATH_HELIUM,__USE_AN547__</Define>
               <Undefine></Undefine>
-              <IncludePath>.\platform;.\platform\mps3\v2m_mps3;..\..\Library\Include;.\platform\mps3;..\alpha_blending</IncludePath>
+              <IncludePath>.\platform;.\platform\mps3\v2m_mps3;..\..\Library\Include;.\platform\mps3;.</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
