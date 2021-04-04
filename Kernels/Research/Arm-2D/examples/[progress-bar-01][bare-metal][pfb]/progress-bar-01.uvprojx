@@ -479,21 +479,6 @@
           <GroupName>asset</GroupName>
           <Files>
             <File>
-              <FileName>helium.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\asset\helium.c</FilePath>
-            </File>
-            <File>
-              <FileName>cmsis_logo.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\asset\cmsis_logo.c</FilePath>
-            </File>
-            <File>
-              <FileName>small_icon_sun.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\asset\small_icon_sun.c</FilePath>
-            </File>
-            <File>
               <FileName>whilte_dot.c.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\asset\whilte_dot.c.c</FilePath>
@@ -1365,21 +1350,6 @@
         <Group>
           <GroupName>asset</GroupName>
           <Files>
-            <File>
-              <FileName>helium.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\asset\helium.c</FilePath>
-            </File>
-            <File>
-              <FileName>cmsis_logo.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\asset\cmsis_logo.c</FilePath>
-            </File>
-            <File>
-              <FileName>small_icon_sun.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\asset\small_icon_sun.c</FilePath>
-            </File>
             <File>
               <FileName>whilte_dot.c.c</FileName>
               <FileType>1</FileType>
@@ -2320,21 +2290,6 @@
         <Group>
           <GroupName>asset</GroupName>
           <Files>
-            <File>
-              <FileName>helium.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\asset\helium.c</FilePath>
-            </File>
-            <File>
-              <FileName>cmsis_logo.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\asset\cmsis_logo.c</FilePath>
-            </File>
-            <File>
-              <FileName>small_icon_sun.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\asset\small_icon_sun.c</FilePath>
-            </File>
             <File>
               <FileName>whilte_dot.c.c</FileName>
               <FileType>1</FileType>
@@ -3277,21 +3232,6 @@
           <GroupName>asset</GroupName>
           <Files>
             <File>
-              <FileName>helium.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\asset\helium.c</FilePath>
-            </File>
-            <File>
-              <FileName>cmsis_logo.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\asset\cmsis_logo.c</FilePath>
-            </File>
-            <File>
-              <FileName>small_icon_sun.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\asset\small_icon_sun.c</FilePath>
-            </File>
-            <File>
               <FileName>whilte_dot.c.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\asset\whilte_dot.c.c</FilePath>
@@ -4163,21 +4103,6 @@
         <Group>
           <GroupName>asset</GroupName>
           <Files>
-            <File>
-              <FileName>helium.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\asset\helium.c</FilePath>
-            </File>
-            <File>
-              <FileName>cmsis_logo.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\asset\cmsis_logo.c</FilePath>
-            </File>
-            <File>
-              <FileName>small_icon_sun.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\asset\small_icon_sun.c</FilePath>
-            </File>
             <File>
               <FileName>whilte_dot.c.c</FileName>
               <FileType>1</FileType>
@@ -5120,21 +5045,6 @@
           <GroupName>asset</GroupName>
           <Files>
             <File>
-              <FileName>helium.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\asset\helium.c</FilePath>
-            </File>
-            <File>
-              <FileName>cmsis_logo.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\asset\cmsis_logo.c</FilePath>
-            </File>
-            <File>
-              <FileName>small_icon_sun.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\asset\small_icon_sun.c</FilePath>
-            </File>
-            <File>
               <FileName>whilte_dot.c.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\asset\whilte_dot.c.c</FilePath>
@@ -6076,21 +5986,6 @@
           <GroupName>asset</GroupName>
           <Files>
             <File>
-              <FileName>helium.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\asset\helium.c</FilePath>
-            </File>
-            <File>
-              <FileName>cmsis_logo.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\asset\cmsis_logo.c</FilePath>
-            </File>
-            <File>
-              <FileName>small_icon_sun.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\asset\small_icon_sun.c</FilePath>
-            </File>
-            <File>
               <FileName>whilte_dot.c.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\asset\whilte_dot.c.c</FilePath>
@@ -6866,7 +6761,7 @@
           </ArmAdsMisc>
           <Cads>
             <interw>1</interw>
-            <Optim>1</Optim>
+            <Optim>5</Optim>
             <oTime>1</oTime>
             <SplitLS>0</SplitLS>
             <OneElfS>1</OneElfS>
@@ -7031,21 +6926,6 @@
         <Group>
           <GroupName>asset</GroupName>
           <Files>
-            <File>
-              <FileName>helium.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\asset\helium.c</FilePath>
-            </File>
-            <File>
-              <FileName>cmsis_logo.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\asset\cmsis_logo.c</FilePath>
-            </File>
-            <File>
-              <FileName>small_icon_sun.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\asset\small_icon_sun.c</FilePath>
-            </File>
             <File>
               <FileName>whilte_dot.c.c</FileName>
               <FileType>1</FileType>
@@ -7987,21 +7867,6 @@
         <Group>
           <GroupName>asset</GroupName>
           <Files>
-            <File>
-              <FileName>helium.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\asset\helium.c</FilePath>
-            </File>
-            <File>
-              <FileName>cmsis_logo.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\asset\cmsis_logo.c</FilePath>
-            </File>
-            <File>
-              <FileName>small_icon_sun.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\asset\small_icon_sun.c</FilePath>
-            </File>
             <File>
               <FileName>whilte_dot.c.c</FileName>
               <FileType>1</FileType>
