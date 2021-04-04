@@ -18,7 +18,7 @@
 
 /*============================ INCLUDES ======================================*/
 #include "./app_cfg.h"
-#include "./progress_bar_simple.h"
+#include "./progress_bar_drill.h"
 #include "arm_2d.h"
 #include "platform.h"
 #include <math.h>
@@ -39,6 +39,9 @@
 
 /*============================ MACROS ========================================*/
 
+#ifndef PROGRESS_BAR_DRILL_SPEED
+#   define PROGRESS_BAR_DRILL_SPEED     15
+#endif
 
 /*============================ MACROFIED FUNCTIONS ===========================*/
 /*============================ TYPES =========================================*/
@@ -50,43 +53,31 @@ __attribute__((nothrow))
 extern int64_t clock(void);
 
 /*============================ LOCAL VARIABLES ===============================*/
-
-extern const uint8_t c_bmpSmallWhiteDot[];
-const arm_2d_tile_t c_tileSmallWhiteDot = {
+extern const uint8_t c_bmpBlueSlashes[];
+const arm_2d_tile_t c_tileBlueSlashes = {
     .tRegion = {
         .tSize = {
-            .iWidth = 7,
-            .iHeight = 7
+            .iWidth = 17,
+            .iHeight = 17
         },
     },
     .tInfo.bIsRoot = true,
-    .phwBuffer = (uint16_t *)c_bmpSmallWhiteDot,
+    .phwBuffer = (uint16_t *)c_bmpBlueSlashes,
 };
 
+ARM_NOINIT static int64_t s_lLastTime;
+ARM_NOINIT static uint32_t s_wUnit;
 
-const arm_2d_tile_t c_tileSemisphere = {
-    .tRegion = {
-        .tLocation = {
-            .iX = 0,
-            .iY = 0,
-        },
-        .tSize = {
-            .iWidth = 4,
-            .iHeight = 7
-        },
-    },
-    .tInfo.bIsRoot = false,
-    .ptParent = (arm_2d_tile_t *)&c_tileSmallWhiteDot,
-};
 /*============================ IMPLEMENTATION ================================*/
 
 
-void progress_bar_simple_init(void)
+void progress_bar_drill_init(void)
 {
-
+    s_lLastTime = clock();
+    s_wUnit = (SystemCoreClock  / 1000) * PROGRESS_BAR_DRILL_SPEED;
 }
 
-void progress_bar_simple_show(arm_2d_tile_t *ptTarget, int_fast16_t iProgress)
+void progress_bar_drill_show(arm_2d_tile_t *ptTarget, int_fast16_t iProgress)
 {
     int_fast16_t iWidth = ptTarget->tRegion.tSize.iWidth * 3 >> 3;         //!< 3/8 Width
  
@@ -96,53 +87,77 @@ void progress_bar_simple_show(arm_2d_tile_t *ptTarget, int_fast16_t iProgress)
     arm_2d_region_t tBarRegion = {
         .tLocation = {
            .iX = (ptTarget->tRegion.tSize.iWidth - (int16_t)iWidth) / 2,
-           .iY = (ptTarget->tRegion.tSize.iHeight - c_tileSmallWhiteDot.tRegion.tSize.iHeight) / 2,
+           .iY = (ptTarget->tRegion.tSize.iHeight - c_tileBlueSlashes.tRegion.tSize.iHeight) / (int16_t)2,
         },
         .tSize = {
             .iWidth = (int16_t)iWidth,
-            .iHeight = c_tileSmallWhiteDot.tRegion.tSize.iHeight,
+            .iHeight = c_tileBlueSlashes.tRegion.tSize.iHeight,
         },
     };
     
     //! draw a white box
-    arm_2d_rgb16_fill_colour(ptTarget, &tBarRegion, GLCD_COLOR_WHITE);
+    arm_2d_rgb16_fill_colour(ptTarget, &tBarRegion, 0xA63D);
     
-    
-    //! draw semispheres
-    do {
-        arm_2d_region_t tSemisphere = {
-            .tSize = c_tileSemisphere.tRegion.tSize,
-            .tLocation = {
-                .iX = tBarRegion.tLocation.iX - c_tileSemisphere.tRegion.tSize.iWidth,
-                .iY = tBarRegion.tLocation.iY,
-            },
-        };
-        arm_2d_rgb16_tile_copy( &c_tileSemisphere,          //!< source tile
-                                ptTarget,                   //!< display buffer
-                                &tSemisphere,               //!< region to draw
-                                ARM_2D_CP_MODE_COPY);       //!< copy only
-                               
-        tSemisphere.tLocation.iX = tBarRegion.tLocation.iX + tBarRegion.tSize.iWidth;
-        arm_2d_rgb16_tile_copy( &c_tileSemisphere,          //!< source tile
-                                ptTarget,                   //!< display buffer
-                                &tSemisphere,               //!< region to draw
-                                ARM_2D_CP_MODE_COPY |       //!< copy with x-mirroring
-                                ARM_2D_CP_MODE_X_MIRROR );   
-    } while(0);
-    
-    //! draw inner bar
+    //! pave inter texture
     tBarRegion.tSize.iHeight-=2;
     tBarRegion.tSize.iWidth-=2;
     tBarRegion.tLocation.iX += 1;
     tBarRegion.tLocation.iY += 1;
-    arm_2d_rgb16_fill_colour(ptTarget, &tBarRegion, GLCD_COLOR_BLACK);
     
+#if defined(__PROGRESS_BAR_DRILLING__) && __PROGRESS_BAR_DRILLING__
+
+    do {
+        static uint8_t s_chOffset = 0;
+        arm_2d_region_t tInnerRegion = {
+            .tSize = {
+                .iWidth = tBarRegion.tSize.iWidth + c_tileBlueSlashes.tRegion.tSize.iWidth,
+                .iHeight = tBarRegion.tSize.iHeight,
+            },
+            .tLocation = {
+                .iX = -c_tileBlueSlashes.tRegion.tSize.iWidth + s_chOffset,
+            },
+        };
+        arm_2d_tile_t tileInnerSlot;
     
-    //! calculate the width of the inner stripe 
-    tBarRegion.tSize.iWidth = tBarRegion.tSize.iWidth * (int16_t)iProgress / 1000;
+        //! generate a child tile for texture paving
+        arm_2d_tile_generate_child(ptTarget, &tBarRegion, &tileInnerSlot, false);
     
-    //! draw the inner stripe
-    arm_2d_rgb16_fill_colour(ptTarget, &tBarRegion, GLCD_COLOR_WHITE);
+        
+        arm_2d_rgb16_tile_copy( &c_tileBlueSlashes, 
+                            &tileInnerSlot, 
+                            &tInnerRegion, 
+                            ARM_2D_CP_MODE_FILL);
+        //! update offset
+        do {
+            int64_t lClocks = clock();
+            int32_t nElapsed = (int32_t)((lClocks - s_lLastTime));
+            
+            if (nElapsed >= (int32_t)s_wUnit) {
+                s_lLastTime = lClocks;
+                s_chOffset++;
+                if (s_chOffset >= c_tileBlueSlashes.tRegion.tSize.iWidth) {
+                    s_chOffset = 0;
+                }
+            }
+        } while(0);
+
+    } while(0);
+
+#else
+    arm_2d_rgb16_tile_copy( &c_tileBlueSlashes, 
+                            ptTarget, 
+                            &tBarRegion, 
+                            ARM_2D_CP_MODE_FILL);
+
+#endif
+    
+    if (iProgress > 0) {
+        //! calculate the width of the inner stripe 
+        tBarRegion.tSize.iWidth = tBarRegion.tSize.iWidth * (int16_t)iProgress / 1000;
+        
+        //! draw the inner stripe
+        arm_2d_rgb16_fill_colour(ptTarget, &tBarRegion, GLCD_COLOR_YELLOW);
+    }
     
 }
 

@@ -51,6 +51,8 @@
 
 void display_task(void) 
 {   
+
+    /*! \note We reduce the refresh area to improve the FPS */
     static const arm_2d_region_t c_tRefreshRegion = {
         .tLocation = {50,110},
         .tSize = {
@@ -102,8 +104,6 @@ void display_task(void)
                 SystemCoreClock / 1000000ul);
     
 }        
-
-
 
 /*----------------------------------------------------------------------------
   Main function
