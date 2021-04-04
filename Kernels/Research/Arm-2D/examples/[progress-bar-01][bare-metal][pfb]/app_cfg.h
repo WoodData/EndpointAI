@@ -49,7 +49,7 @@
  *!       480 * 2    1920B
  *!       480 * 1     960B  
  */
-#define PBF_BLOCK_SIZE_X         GLCD_WIDTH
+#define PBF_BLOCK_SIZE_X         (GLCD_WIDTH >> 1)
 #define PBF_BLOCK_SIZE_Y         1
 
 #define BUSY_WHEEL_SPIN_SPEED   100

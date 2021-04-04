@@ -75,7 +75,7 @@ static void app_platform_init(void)
         //GLCD_SetBackgroundColor(GLCD_COLOR_BLUE);
         GLCD_SetForegroundColor(GLCD_COLOR_GREEN);
         
-        GLCD_DrawString(GLCD_WIDTH / 2 - 60, GLCD_HEIGHT / 2 - 4, "    Arm-2D Benchmark     ");
+        GLCD_DrawString(GLCD_WIDTH / 2 - 60, GLCD_HEIGHT / 2 - 4, "    Arm-2D Examples     ");
     //}
 }
 
