@@ -513,6 +513,16 @@
               <FileType>1</FileType>
               <FilePath>.\controls\controls.c</FilePath>
             </File>
+            <File>
+              <FileName>progress_bar_simple.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\controls\progress_bar_simple.c</FilePath>
+            </File>
+            <File>
+              <FileName>progress_bar_simple.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\controls\progress_bar_simple.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -1389,6 +1399,16 @@
               <FileName>controls.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\controls\controls.c</FilePath>
+            </File>
+            <File>
+              <FileName>progress_bar_simple.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\controls\progress_bar_simple.c</FilePath>
+            </File>
+            <File>
+              <FileName>progress_bar_simple.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\controls\progress_bar_simple.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -2334,6 +2354,16 @@
               <FileName>controls.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\controls\controls.c</FilePath>
+            </File>
+            <File>
+              <FileName>progress_bar_simple.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\controls\progress_bar_simple.c</FilePath>
+            </File>
+            <File>
+              <FileName>progress_bar_simple.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\controls\progress_bar_simple.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -3281,6 +3311,16 @@
               <FileType>1</FileType>
               <FilePath>.\controls\controls.c</FilePath>
             </File>
+            <File>
+              <FileName>progress_bar_simple.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\controls\progress_bar_simple.c</FilePath>
+            </File>
+            <File>
+              <FileName>progress_bar_simple.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\controls\progress_bar_simple.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -4157,6 +4197,16 @@
               <FileName>controls.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\controls\controls.c</FilePath>
+            </File>
+            <File>
+              <FileName>progress_bar_simple.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\controls\progress_bar_simple.c</FilePath>
+            </File>
+            <File>
+              <FileName>progress_bar_simple.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\controls\progress_bar_simple.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -5104,6 +5154,16 @@
               <FileType>1</FileType>
               <FilePath>.\controls\controls.c</FilePath>
             </File>
+            <File>
+              <FileName>progress_bar_simple.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\controls\progress_bar_simple.c</FilePath>
+            </File>
+            <File>
+              <FileName>progress_bar_simple.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\controls\progress_bar_simple.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -6049,6 +6109,16 @@
               <FileName>controls.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\controls\controls.c</FilePath>
+            </File>
+            <File>
+              <FileName>progress_bar_simple.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\controls\progress_bar_simple.c</FilePath>
+            </File>
+            <File>
+              <FileName>progress_bar_simple.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\controls\progress_bar_simple.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -6996,6 +7066,16 @@
               <FileType>1</FileType>
               <FilePath>.\controls\controls.c</FilePath>
             </File>
+            <File>
+              <FileName>progress_bar_simple.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\controls\progress_bar_simple.c</FilePath>
+            </File>
+            <File>
+              <FileName>progress_bar_simple.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\controls\progress_bar_simple.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -7941,6 +8021,16 @@
               <FileName>controls.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\controls\controls.c</FilePath>
+            </File>
+            <File>
+              <FileName>progress_bar_simple.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\controls\progress_bar_simple.c</FilePath>
+            </File>
+            <File>
+              <FileName>progress_bar_simple.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\controls\progress_bar_simple.h</FilePath>
             </File>
           </Files>
         </Group>

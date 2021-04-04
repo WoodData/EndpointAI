@@ -16,41 +16,22 @@
  * limitations under the License.
  */
 
+#ifndef __PROGRESS_BAR_SIMPLE_H__
+#define __PROGRESS_BAR_SIMPLE_H__
+
 /*============================ INCLUDES ======================================*/
 #include "./app_cfg.h"
-#include "./controls.h"
-
-#if defined(__clang__)
-#   pragma clang diagnostic push
-#   pragma clang diagnostic ignored "-Wsign-conversion"
-#   pragma clang diagnostic ignored "-Wpadded"
-#   pragma clang diagnostic ignored "-Wcast-qual"
-#   pragma clang diagnostic ignored "-Wcast-align"
-#   pragma clang diagnostic ignored "-Wmissing-field-initializers"
-#   pragma clang diagnostic ignored "-Wgnu-zero-variadic-macro-arguments"
-#   pragma clang diagnostic ignored "-Wmissing-braces"
-#   pragma clang diagnostic ignored "-Wunused-const-variable"
-#endif
-
+#include "arm_2d.h"
 /*============================ MACROS ========================================*/
 /*============================ MACROFIED FUNCTIONS ===========================*/
 /*============================ TYPES =========================================*/
 /*============================ GLOBAL VARIABLES ==============================*/
 /*============================ PROTOTYPES ====================================*/
-/*============================ LOCAL VARIABLES ===============================*/
 
+extern
+void progress_bar_simple_init(void);
 
+extern
+void progress_bar_simple_show(arm_2d_tile_t *ptTarget, int_fast16_t iProgress);
 
-/*============================ IMPLEMENTATION ================================*/
-
-void controls_init(void)
-{
-    busy_wheel_init();
-    progress_bar_simple_init();
-}
-
-
-
-#if defined(__clang__)
-#   pragma clang diagnostic pop
 #endif

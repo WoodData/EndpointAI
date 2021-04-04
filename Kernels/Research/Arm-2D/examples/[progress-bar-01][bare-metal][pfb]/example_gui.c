@@ -52,47 +52,13 @@
 /*============================ GLOBAL VARIABLES ==============================*/
 /*============================ PROTOTYPES ====================================*/
 /*============================ LOCAL VARIABLES ===============================*/
-
-
-extern const uint8_t c_bmpWhiteDot[19*20*sizeof(uint16_t)];
-extern const arm_2d_tile_t c_tPictureWhiteDot;
-
-
-extern const uint8_t c_bmpSmallWhiteDot[];
-const arm_2d_tile_t c_tileSmallWhiteDot = {
-    .tRegion = {
-        .tSize = {
-            .iWidth = 7,
-            .iHeight = 7
-        },
-    },
-    .tInfo.bIsRoot = true,
-    .phwBuffer = (uint16_t *)c_bmpSmallWhiteDot,
-};
-
-
-const arm_2d_tile_t c_tileSemisphere = {
-    .tRegion = {
-        .tLocation = {
-            .iX = 0,
-            .iY = 0,
-        },
-        .tSize = {
-            .iWidth = 4,
-            .iHeight = 7
-        },
-    },
-    .tInfo.bIsRoot = false,
-    .ptParent = (arm_2d_tile_t *)&c_tileSmallWhiteDot,
-};
-
 /*============================ IMPLEMENTATION ================================*/
 
 static volatile uint32_t s_wSystemTimeInMs = 0;
 //static volatile bool s_bTimeout = false;
 extern void platform_1ms_event_handler(void);
 
-static volatile uint_fast8_t s_chDemoProgress = 0;
+static volatile uint_fast16_t s_hwDemoProgress = 0;
 
 void platform_1ms_event_handler(void)
 {
@@ -102,10 +68,10 @@ void platform_1ms_event_handler(void)
         
         srand(clock()); //!< update rand seed
         
-        s_chDemoProgress += ((uint64_t)rand() * 5ll) / (uint64_t)RAND_MAX;
+        s_hwDemoProgress += ((uint64_t)rand() * 5ll) / (uint64_t)RAND_MAX;
         //s_chDemoProgress++;
-        if (s_chDemoProgress >= 1000) {
-            s_chDemoProgress = 1000;
+        if (s_hwDemoProgress >= 1000) {
+            s_hwDemoProgress = 1000;
         }
         
     }
@@ -124,70 +90,13 @@ void example_gui_do_events(void)
 }
 
 
-void show_progress_bar(arm_2d_tile_t *ptFrameBuffer, int_fast16_t iProgress)
-{
-    int_fast16_t iWidth = ptFrameBuffer->tRegion.tSize.iWidth * 3 >> 3;         //!< 40% Width
-    
-    arm_2d_region_t tBarRegion = {
-        .tLocation = {
-           .iX = (ptFrameBuffer->tRegion.tSize.iWidth - iWidth) / 2,
-           .iY = (ptFrameBuffer->tRegion.tSize.iHeight - c_tileSmallWhiteDot.tRegion.tSize.iHeight) / 2,
-        },
-        .tSize = {
-            .iWidth = iWidth,
-            .iHeight = c_tileSmallWhiteDot.tRegion.tSize.iHeight,
-        },
-    };
-    
-    //! draw a white box
-    arm_2d_rgb16_fill_colour(ptFrameBuffer, &tBarRegion, GLCD_COLOR_WHITE);
-    
-    
-    //! draw semispheres
-    do {
-        arm_2d_region_t tSemisphere = {
-            .tSize = c_tileSemisphere.tRegion.tSize,
-            .tLocation = {
-                .iX = tBarRegion.tLocation.iX - c_tileSemisphere.tRegion.tSize.iWidth,
-                .iY = tBarRegion.tLocation.iY,
-            },
-        };
-        arm_2d_rgb16_tile_copy( &c_tileSemisphere,          //!< source tile
-                                ptFrameBuffer,              //!< display buffer
-                                &tSemisphere,               //!< region to draw
-                                ARM_2D_CP_MODE_COPY);       //!< copy only
-                               
-        tSemisphere.tLocation.iX = tBarRegion.tLocation.iX + tBarRegion.tSize.iWidth;
-        arm_2d_rgb16_tile_copy( &c_tileSemisphere,          //!< source tile
-                                ptFrameBuffer,              //!< display buffer
-                                &tSemisphere,               //!< region to draw
-                                ARM_2D_CP_MODE_COPY |       //!< copy with x-mirroring
-                                ARM_2D_CP_MODE_X_MIRROR );   
-    } while(0);
-    
-    //! draw inner bar
-    tBarRegion.tSize.iHeight-=2;
-    tBarRegion.tSize.iWidth-=2;
-    tBarRegion.tLocation.iX += 1;
-    tBarRegion.tLocation.iY += 1;
-    arm_2d_rgb16_fill_colour(ptFrameBuffer, &tBarRegion, GLCD_COLOR_BLACK);
-    
-    
-    //! calculate the width of the inner stripe 
-    tBarRegion.tSize.iWidth = tBarRegion.tSize.iWidth * iProgress / 1000;
-    
-    //! draw the inner stripe
-    arm_2d_rgb16_fill_colour(ptFrameBuffer, &tBarRegion, GLCD_COLOR_WHITE);
-    
-}
-
 
 void example_gui_refresh(arm_2d_tile_t *ptFrameBuffer)
 {
     arm_2d_rgb16_fill_colour(ptFrameBuffer, NULL, GLCD_COLOR_BLACK);
     
     
-    show_progress_bar(ptFrameBuffer, s_chDemoProgress);
+    progress_bar_simple_show(ptFrameBuffer, s_hwDemoProgress);
     //busy_wheel_show(ptFrameBuffer);
 }
 
