@@ -8,6 +8,8 @@
 
 ### 1.1 Alpha-blending
 
+**PROJECT:    alpha-blending**
+
 It is an **ALL-IN-ONE** example that demonstrates almost all the features provided by the library. It is also used as a benchmark of Arm-2D. Since there is no public benchmark available for micro-controllers, we decide to overcome this problem with the following methods and considerations:
 
 - **Choose the widely used algorithms in embedded GUI as the body of the benchmark**
@@ -46,6 +48,8 @@ It is an **ALL-IN-ONE** example that demonstrates almost all the features provid
 
 ### 1.2 Partial-Frame-Buffer
 
+**PROJECT:    partial_frame_buffer**
+
 The visual effects is the same as Alpha-blending but using Partial-Frame-buffer scheme.
 
 
@@ -56,7 +60,9 @@ The visual effects is the same as Alpha-blending but using Partial-Frame-buffer 
 
 ### 2.1 Simple Progress Bar
 
-A bare-metal example using Partial-Frame-Buffer scheme shows how to build a simple progress bar using Arm-2D APIs. 
+**PROJECT:    \[progress-bar-01\]\[bare-metal\]\[pfb\]**
+
+A bare-metal example using Partial-Frame-Buffer scheme shows how to build a simple progress bar using only Arm-2D APIs. 
 
 
 
@@ -68,9 +74,19 @@ A bare-metal example using Partial-Frame-Buffer scheme shows how to build a simp
 
 ### 2.2 A Progress Bar with A Shitting Effect
 
-A bare-metal example using Partial-Frame-Buffer scheme shows how to build a progress bar with a shifting effect using Arm-2D APIs. 
+**PROJECT:    \[progress-bar-02\]\[bare-metal\]\[pfb\]**
+
+A bare-metal example using Partial-Frame-Buffer scheme shows how to build a progress bar with a shifting effect using only Arm-2D APIs. 
 
 **Figure 2-2 A Progress Bar with A Shifting Effect**
 
 ![progress-bar-drill](../documents/pictures/progress-bar-shifting.gif) 
+
+
+
+### 2.3 A Progress Bar with A Waving Pulse Effect
+
+**PROJECT:    \[progress-bar-03\]\[bare-metal\]\[pfb\]**
+
+A bare-metal example using Partial-Frame-Buffer scheme shows how to build a progress bar with a waving pulse effect using only  Arm-2D APIs.
 
