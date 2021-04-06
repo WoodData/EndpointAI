@@ -55,7 +55,7 @@ void display_task(void)
         .tLocation = {50,110},
         .tSize = {
             .iWidth = APP_SCREEN_WIDTH - 100,
-            .iHeight = APP_SCREEN_HEIGHT - 220,  //!< reserve two lines for benchmark info
+            .iHeight = APP_SCREEN_HEIGHT - 220,  //!< only refresh dirty area
         },
     };
 
