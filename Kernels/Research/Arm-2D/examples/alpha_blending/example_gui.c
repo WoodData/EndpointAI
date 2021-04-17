@@ -55,9 +55,6 @@
 declare_tile(c_tLogoCMSIS)
 implement_tile(c_tLogoCMSIS, 163, 65, arm_2d_color_rgb565_t);
 
-declare_tile(c_tLayerA)
-implement_tile(c_tLayerA, 100, 100, arm_2d_color_rgb565_t);
-
 
 declare_tile(c_tLayerB)
 implement_tile(c_tLayerB, 200, 50, arm_2d_color_rgb565_t);
@@ -113,7 +110,10 @@ extern const arm_2d_tile_t c_tPictureWhiteDot;
 
 static arm_2d_layer_t s_ptRefreshLayers[] = {
     arm_2d_layer(&c_tPictureHeliun, 0, -50, -100),
-    arm_2d_layer(&c_tLayerA, 128, 10, 80),
+    arm_2d_layer(NULL, 128, 10, 80, 
+                .tRegion.tSize.iWidth = 100, 
+                .tRegion.tSize.iHeight = 100
+                ),
     arm_2d_layer(&c_tLayerB, 144, 50, 150),
     arm_2d_layer(&c_tPictureSun, 0, 0, 0, 
                     .bIsIrregular = true, 
@@ -161,11 +161,14 @@ void example_gui_init(void)
 {
     controls_init();
     
+    arm_2d_tile_t *ptDispBufferTile = platform_disp_buffer_get();
+    assert(NULL != ptDispBufferTile);
     
+    arm_2d_set_default_frame_buffer(ptDispBufferTile);
 
     s_ptRefreshLayers[0].wMode = ARM_2D_CP_MODE_FILL;
 
-    arm_2d_rgb16_fill_colour(s_ptRefreshLayers[1].ptTile, NULL, GLCD_COLOR_RED);
+    //arm_2d_rgb16_fill_colour(s_ptRefreshLayers[1].ptTile, NULL, GLCD_COLOR_RED);
     arm_2d_rgb16_fill_colour(s_ptRefreshLayers[2].ptTile, NULL, GLCD_COLOR_GREEN);
     arm_2d_convert_colour_to_rgb565(&c_tPictureCMSISLogo, &c_tLogoCMSIS);
 
@@ -244,8 +247,6 @@ void example_gui_do_events(void)
     }
 }
 
-
-
 static void __draw_layers(   arm_2d_tile_t *ptFrameBuffer,
                             arm_2d_layer_t *ptLayers, 
                             uint_fast16_t hwCount)
@@ -270,10 +271,13 @@ static void __draw_layers(   arm_2d_tile_t *ptFrameBuffer,
                                                     GLCD_COLOR_WHITE,
                                                     ARM_2D_CP_MODE_FILL);
         
-        
         arm_foreach(arm_2d_layer_t, ptLayers, hwCount, ptLayer) {
             arm_2d_region_t tRegion = ptLayer->tRegion;
 
+            if (NULL == ptLayer->ptTile) { 
+                continue;
+            }
+            
             if (ptLayer->bIsIrregular) {
                 arm_2d_rgb16_tile_copy_with_colour_masking( ptLayer->ptTile,
                                             ptFrameBuffer,
@@ -294,6 +298,11 @@ static void __draw_layers(   arm_2d_tile_t *ptFrameBuffer,
                 }
             }
         }
+        
+        arm_2d_rgb565_fill_colour_with_alpha(   ptFrameBuffer, 
+                                                &s_ptRefreshLayers[1].tRegion,
+                                                (arm_2d_color_rgb565_t){.tValue =  GLCD_COLOR_RED},
+                                                255 - s_ptRefreshLayers[1].chTransparency);
         
         //! show progress wheel
         busy_wheel_show(ptFrameBuffer);

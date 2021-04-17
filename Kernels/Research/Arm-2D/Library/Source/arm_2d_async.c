@@ -60,6 +60,7 @@ extern "C" {
 #   pragma clang diagnostic ignored "-Wgnu-zero-variadic-macro-arguments"
 #   pragma clang diagnostic ignored "-Wswitch-enum"
 #   pragma clang diagnostic ignored "-Wswitch"
+#   pragma clang diagnostic ignored "-Wimplicit-fallthrough"
 #endif
 
 /*============================ MACROS ========================================*/
@@ -231,19 +232,28 @@ arm_fsm_rt_t __arm_2d_call_default_io(  __arm_2d_sub_task_t *ptTask,
             ARM_2D_TRY_ACCELERATION( chInterfaceIndex, __arm_2d_io_func_t ); 
                             
             assert(tResult != arm_fsm_rt_on_going);
-            assert(tResult != arm_fsm_rt_wait_for_obj);
             
             switch (tResult) {
                 case arm_fsm_rt_wait_for_obj:
+                    /*! \note the HW accelerator wants to sync-up with user 
+                     *!       application
+                     */
+                    if (chAccPreference == ARM_2D_PREF_ACC_DONT_CARE) {
+                        /* since people choose don't care, then use SW */
+                        break;
+                    }
+                    return tResult;
+                    
                 case arm_fsm_rt_on_going:
-                    /*! \note HW accelerator should NOT return on_going or 
-                     *!       wait_for_obj 
+                    /*! \note HW accelerator should NOT return on_going otherwise
+                     *!       it will be treated as ARM_2D_ERR_IO_BUSY
                      */
                     if (chAccPreference == ARM_2D_PREF_ACC_DONT_CARE) {
                         /* since people choose don't care, then use SW */
                         break;
                     }
                     return (arm_fsm_rt_t)ARM_2D_ERR_IO_BUSY;
+                    
                 case ARM_2D_ERR_NOT_SUPPORT:
                     break;
                 
@@ -264,18 +274,16 @@ arm_fsm_rt_t __arm_2d_call_default_io(  __arm_2d_sub_task_t *ptTask,
         /* call default software implementation */
         /*! \note the default software implemenation will only return following
          *!       values:
-         *!       - arm_fsm_rt_cpl   the service is complete.
+         *!       - arm_fsm_rt_cpl          the service is complete.
+         *!       - arm_fsm_rt_on_going     the software algorithm wants to yield
+         *!       - arm_fsm_rt_wait_for_obj the software algorithm wants to sync
+         *!                                 with user application
+         *!       - arm_fsm_rt_async        the software algorithm is implemented
+         *!                                 in asynchronous mode
          *!       - negative error code
-         *!       
-         *! \note the following value will not be returned:
-         *!       - arm_fsm_rt_on_going
-         *!       - arm_fsm_rt_wait_for_obj
          */
          
         ARM_2D_RUN_DEFAULT(  chInterfaceIndex, __arm_2d_io_func_t  );
-                            
-        assert(tResult != arm_fsm_rt_on_going);
-        assert(tResult != arm_fsm_rt_wait_for_obj);
     } while(0);
     return tResult;
 }
@@ -318,19 +326,28 @@ arm_fsm_rt_t __arm_2d_call_default_tile_process_io(__arm_2d_sub_task_t *ptTask)
                             &(ptTask->Param.TileProcess.tSize));
                             
             assert(tResult != arm_fsm_rt_on_going);
-            assert(tResult != arm_fsm_rt_wait_for_obj);
             
             switch (tResult) {
                 case arm_fsm_rt_wait_for_obj:
+                    /*! \note the HW accelerator wants to sync-up with user 
+                     *!       application
+                     */
+                    if (chAccPreference == ARM_2D_PREF_ACC_DONT_CARE) {
+                        /* since people choose don't care, then use SW */
+                        break;
+                    }
+                    return tResult;
+                    
                 case arm_fsm_rt_on_going:
-                    /*! \note HW accelerator should NOT return on_going or 
-                     *!       wait_for_obj 
+                    /*! \note HW accelerator should NOT return on_going otherwise
+                     *!       it will be treated as ARM_2D_ERR_IO_BUSY
                      */
                     if (chAccPreference == ARM_2D_PREF_ACC_DONT_CARE) {
                         /* since people choose don't care, then use SW */
                         break;
                     }
                     return (arm_fsm_rt_t)ARM_2D_ERR_IO_BUSY;
+                    
                 case ARM_2D_ERR_NOT_SUPPORT:
                     break;
                 
@@ -351,12 +368,13 @@ arm_fsm_rt_t __arm_2d_call_default_tile_process_io(__arm_2d_sub_task_t *ptTask)
         /* call default software implementation */
         /*! \note the default software implemenation will only return following
          *!       values:
-         *!       - arm_fsm_rt_cpl   the service is complete.
+         *!       - arm_fsm_rt_cpl          the service is complete.
+         *!       - arm_fsm_rt_on_going     the software algorithm wants to yield
+         *!       - arm_fsm_rt_wait_for_obj the software algorithm wants to sync
+         *!                                 with user application
+         *!       - arm_fsm_rt_async        the software algorithm is implemented
+         *!                                 in asynchronous mode
          *!       - negative error code
-         *!       
-         *! \note the following value will not be returned:
-         *!       - arm_fsm_rt_on_going
-         *!       - arm_fsm_rt_wait_for_obj
          */
         ARM_2D_RUN_DEFAULT(       
                             OP_CORE.ptOp->Info.LowLevelInterfaceIndex.TileProcessLike, 
@@ -364,9 +382,6 @@ arm_fsm_rt_t __arm_2d_call_default_tile_process_io(__arm_2d_sub_task_t *ptTask)
                             ptTask->Param.TileProcess.pTarget,
                             ptTask->Param.TileProcess.iStride,
                             &(ptTask->Param.TileProcess.tSize));
-                            
-        assert(tResult != arm_fsm_rt_on_going);
-        assert(tResult != arm_fsm_rt_wait_for_obj);
     } while(0);
     return tResult;
 }
@@ -387,6 +402,10 @@ void __arm_2d_notify_sub_task_cpl(__arm_2d_sub_task_t *ptTask,
     assert(NULL != ptTask);
     assert(ptTask->ptOP->Status.u4SubTaskCount > 0);
     
+    assert(tResult != arm_fsm_rt_async);
+    assert(tResult != arm_fsm_rt_on_going);
+    assert(tResult != arm_fsm_rt_wait_for_obj);
+    
     //! error detected
     if (tResult < 0) {
         //! update error info
@@ -394,36 +413,37 @@ void __arm_2d_notify_sub_task_cpl(__arm_2d_sub_task_t *ptTask,
         ptTask->ptOP->Status.bIOError = true;
     }
     
-    if (arm_fsm_rt_async == tResult){
-        if (ptTask->ptOP->tResult >= 0) {
-            ptTask->ptOP->tResult = arm_fsm_rt_async;
-        }
-    }
-    
     //! handle target OP
-    if (arm_fsm_rt_async != tResult) {
-        ptTask->ptOP->Status.u4SubTaskCount--;
-        if (0 == ptTask->ptOP->Status.u4SubTaskCount) {
-            //! this is the last sub task 
-            
-            
-            //! call Operation Complete event handler
-            if (NULL != ptTask->ptOP->evt2DOpCpl.fnHandler) {
-                ptTask->ptOP->Status.bOpCpl = 
-                    (ptTask->ptOP->evt2DOpCpl.fnHandler) (
-                                            ptTask->ptOP, 
-                                            ptTask->ptOP->tResult,
-                                            ptTask->ptOP->evt2DOpCpl.pTarget);
-            } else {
-                /*! \note complete doesn't mean no err */
-                ptTask->ptOP->Status.bOpCpl = true;
-            }
-            
-            //! only clear busy flag after bOpCpl is set properly.
-            ptTask->ptOP->Status.bIsBusy = false;
+
+    ptTask->ptOP->Status.u4SubTaskCount--;
+    if (0 == ptTask->ptOP->Status.u4SubTaskCount) {
+        //! this is the last sub task 
+        
+        //! no error has ever happened
+        if (ptTask->ptOP->tResult >= 0) {
+            ptTask->ptOP->tResult = tResult;
         }
+        
+        //! call Operation Complete event handler
+        if (NULL != ptTask->ptOP->evt2DOpCpl.fnHandler) {
+            ptTask->ptOP->Status.bIsRequestAsync = 
+                (ptTask->ptOP->evt2DOpCpl.fnHandler) (
+                                        ptTask->ptOP, 
+                                        ptTask->ptOP->tResult,
+                                        ptTask->ptOP->evt2DOpCpl.pTarget) ? 1 : 0;
+            ptTask->ptOP->evt2DOpCpl.fnHandler = NULL;
+        } 
+        
+        /*! \note complete doesn't mean no err */
+        ptTask->ptOP->Status.bOpCpl = true;
+        
+        //! reset preference
+        ptTask->ptOP->Preference.u2ACCMethods = 0;
+        
+        //! only clear busy flag after bOpCpl is set properly.
+        ptTask->ptOP->Status.bIsBusy = false;
     }
-    
+
     //! free sub task
     __arm_2d_sub_task_free(ptTask);
     
@@ -464,55 +484,81 @@ arm_fsm_rt_t __arm_2d_sub_task_dispatch(__arm_2d_sub_task_t *ptTask)
 }
 
 
+#define __ARM_2D_TASK_RESET_FSM()     do {this.chState = START;} while(0);
+
  /*! \brief arm-2d pixel pipeline task entery
   *! \note  This function is *TRHEAD-SAFE*
   *! \param none
   *! \retval arm_fsm_rt_cpl The sub-task FIFO is empty, the caller, i.e. the host
   *!            RTOS thread can block itself by waiting for a semaphore which is
   *!            set by arm_2d_notif_sub_task_fifo_task_arrive()
-  *! \retval arm_fsm_rt_async The arm-2d pixel pipleline is waiting hw 
-  *!            accelerator to finish a sub task. RTOS thread can block itself by
-  *!            waiting for a semaphore which is set by 
-  *!            arm_2d_notif_aync_sub_task_cpl()
-  *! \retval (<0) Errors are detected.
+  *! \retval arm_fsm_rt_on_going The arm_2d_task issued one sub-task without 
+  *!            problem and it yields. 
+  *! \retval arm_fsm_rt_async You shouldn't see this value
+  *! \retval arm_fsm_rt_wait_for_obj some algorithm or hardware accelerator wants
+  *!            to sync-up with applications.
+  *! \retval (<0) Serious error is detected.
   */
-arm_fsm_rt_t arm_2d_task(void)
+arm_fsm_rt_t arm_2d_task(arm_2d_task_t *ptThis)
 {
-
-    arm_fsm_rt_t tResult = (arm_fsm_rt_t)ARM_2D_ERR_INVALID_OP;
+    
+    enum {
+        START = 0,
+        FETCH,
+        DISPATCH,
+    };
+    
+    switch(this.chState) {
+        case START:
+            this.tResult = (arm_fsm_rt_t)ARM_2D_ERR_INVALID_OP;
+            this.chState++;
+            //break;
         
-    do {
-        //! fetch a sub task from FIFO
-        __arm_2d_sub_task_t *ptTask = __arm_2d_sub_task_fetch();
-        if (NULL == ptTask) {
-            return arm_fsm_rt_cpl;
-        }
+        case FETCH:
         
-        //! try-loop for dispatching sub task
-        do {
-            //! dispatch sub tasks
-            tResult = __arm_2d_sub_task_dispatch(ptTask);
-            
-            assert(tResult != arm_fsm_rt_on_going);
-            assert(tResult != arm_fsm_rt_wait_for_obj);
-            
-            if (tResult != arm_fsm_rt_async) {
-                //! get result immediately
-                __arm_2d_notify_sub_task_cpl(ptTask, tResult, false);
-                break;                                                          //!< move to next task
+            //! fetch a sub task from FIFO
+            this.ptTask = __arm_2d_sub_task_fetch();
+            if (NULL == this.ptTask) {
+                __ARM_2D_TASK_RESET_FSM();
+                return arm_fsm_rt_cpl;
             }
-       
-        } while(true);
-        
-        //! unsupported operation
-        if (ARM_2D_ERR_INVALID_OP == tResult){
-            break;
-        }
+            this.chState++;
+            //break;
+            
+        case DISPATCH:
 
-    } while(true);
+            //! dispatch sub tasks
+            this.tResult = 
+                __arm_2d_sub_task_dispatch((__arm_2d_sub_task_t *)this.ptTask);
+
+            if (    (arm_fsm_rt_on_going == this.tResult)                       //!< sub task wants to yield
+                ||  (arm_fsm_rt_wait_for_obj == this.tResult)) {                //!< sub task wants to sync-up with applications
+                return this.tResult;
+            }
+            
+            if (this.tResult != arm_fsm_rt_async) {
+                //! get result immediately
+                __arm_2d_notify_sub_task_cpl(   
+                                            (__arm_2d_sub_task_t *)this.ptTask, 
+                                            this.tResult, 
+                                            false); 
+            } 
+            /*! \note (arm_fsm_rt_async == tResult) means the sub task hasn't 
+             *!       been handled yet 
+             */
+            
+            __ARM_2D_TASK_RESET_FSM();
+            
+            //! unsupported operation
+            if (ARM_2D_ERR_INVALID_OP == this.tResult){
+                return this.tResult;
+            }
+            
+            break;
+    }
     
     
-    return tResult;
+    return arm_fsm_rt_on_going;
 }
 
 
@@ -554,7 +600,20 @@ arm_fsm_rt_t __arm_2d_op_frontend_on_leave( arm_2d_op_core_t *ptThis,
     } 
   
     if (!ARM_2D_RUNTIME_FEATURE.HAS_DEDICATED_THREAD_FOR_2D_TASK) {
-        arm_2d_task();
+        arm_fsm_rt_t tTaskResult;
+        arm_2d_task_t tTaskCB = {0};
+        do {
+            tTaskResult = arm_2d_task(&tTaskCB);
+        } while(arm_fsm_rt_on_going == tTaskResult);
+        
+        if (tTaskResult < 0) {
+            //! a serious error is detected
+            tResult = tTaskResult;
+        } else if (arm_fsm_rt_wait_for_obj == tTaskResult) {
+            tResult = tTaskResult;
+        } else {
+            tResult = this.tResult;
+        }
     }
     
     /* release resources here */
@@ -567,6 +626,7 @@ __OVERRIDE_WEAK
 arm_fsm_rt_t __arm_2d_issue_sub_task_tile_process(  
                                         arm_2d_op_t *ptThis,
                                         void *__RESTRICT pTargetBase,
+                                        int32_t nOffset,
                                         int16_t iTargetStride,
                                         arm_2d_size_t *__RESTRICT ptTargetSize)
 {    
@@ -577,7 +637,8 @@ arm_fsm_rt_t __arm_2d_issue_sub_task_tile_process(
                     .ptOP = &(ptThis->use_as__arm_2d_op_core_t),
                     .chIOType = __ARM_2D_IO_TYPE_DEFAULT_TILE_PROCESS,
                     .Param.TileProcess = {           
-                        .pTarget = pTargetBase,                               
+                        .pTarget = pTargetBase, 
+                        .nOffset = nOffset,                        
                         .iStride = iTargetStride,         
                         .tSize = *ptTargetSize,
                     },
@@ -591,11 +652,14 @@ arm_fsm_rt_t __arm_2d_issue_sub_task_tile_process(
 }
 
 __OVERRIDE_WEAK
-arm_fsm_rt_t __arm_2d_issue_sub_task_fill(arm_2d_op_cp_t *ptThis,
+arm_fsm_rt_t __arm_2d_issue_sub_task_fill(
+                                    arm_2d_op_cp_t *ptThis,
                                     void *__RESTRICT pSourceBase,
+                                    int32_t nSrcOffset,
                                     int16_t iSourceStride,
                                     arm_2d_region_t *__RESTRICT ptSourceRegion,
                                     void *__RESTRICT pTargetBase,
+                                    int32_t nTargetOffset,
                                     int16_t iTargetStride,
                                     arm_2d_region_t *__RESTRICT ptTargetRegion)
 {
@@ -606,12 +670,14 @@ arm_fsm_rt_t __arm_2d_issue_sub_task_fill(arm_2d_op_cp_t *ptThis,
                     .ptOP = &(ptThis->use_as__arm_2d_op_core_t),
                     .chIOType = __ARM_2D_IO_TYPE_DEFAULT_FILL,
                     .Param.tFill = {
-                        .pSource = pSourceBase,                               
-                        .iSourceStride = iSourceStride,         
-                        .tSourceRegion = *ptSourceRegion,                 
-                        .pTarget = pTargetBase,                               
-                        .iTargetStride = iTargetStride,         
-                        .tTargetRegion = *ptTargetRegion,
+                        .pSource            = pSourceBase, 
+                        .nSrcOffset         = nSrcOffset,                        
+                        .iSourceStride      = iSourceStride,         
+                        .tSourceRegion      = *ptSourceRegion,                 
+                        .pTarget            = pTargetBase,   
+                        .nTargetOffset      = nTargetOffset,                        
+                        .iTargetStride      = iTargetStride,         
+                        .tTargetRegion      = *ptTargetRegion,
                     },
                 };
     
@@ -623,11 +689,14 @@ arm_fsm_rt_t __arm_2d_issue_sub_task_fill(arm_2d_op_cp_t *ptThis,
 }
 
 __OVERRIDE_WEAK
-arm_fsm_rt_t __arm_2d_issue_sub_task_copy(arm_2d_op_cp_t *ptThis,
+arm_fsm_rt_t __arm_2d_issue_sub_task_copy(
+                                    arm_2d_op_cp_t *ptThis,
                                     void *__RESTRICT pSource,
+                                    int32_t nSrcOffset,
                                     int16_t iSourceStride,
                                     arm_2d_region_t *__RESTRICT ptSourceRegion,
                                     void *__RESTRICT pTarget,
+                                    int32_t nTargetOffset,
                                     int16_t iTargetStride,
                                     arm_2d_region_t *__RESTRICT ptTargetRegion,
                                     arm_2d_size_t * __RESTRICT ptCopySize)
@@ -639,13 +708,15 @@ arm_fsm_rt_t __arm_2d_issue_sub_task_copy(arm_2d_op_cp_t *ptThis,
                     .ptOP = &(ptThis->use_as__arm_2d_op_core_t),
                     .chIOType = __ARM_2D_IO_TYPE_DEFAULT_COPY,
                     .Param.tCopy = {
-                        .pSource = pSource,                               
-                        .iSourceStride = iSourceStride,         
-                        .tSourceRegion = *ptSourceRegion,                 
-                        .pTarget = pTarget,                               
-                        .iTargetStride = iTargetStride,         
-                        .tTargetRegion = *ptTargetRegion,
-                        .tCopySize = *ptCopySize,
+                        .pSource            = pSource,   
+                        .nSrcOffset         = nSrcOffset,
+                        .iSourceStride      = iSourceStride,         
+                        .tSourceRegion      = *ptSourceRegion,                 
+                        .pTarget            = pTarget,  
+                        .nTargetOffset      = nTargetOffset,                        
+                        .iTargetStride      = iTargetStride,         
+                        .tTargetRegion      = *ptTargetRegion,
+                        .tCopySize          = *ptCopySize,
                     },
                 };
     OP_CORE.Status.u4SubTaskCount++;

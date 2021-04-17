@@ -33,6 +33,7 @@
 #   pragma clang diagnostic ignored "-Wgnu-zero-variadic-macro-arguments"
 #   pragma clang diagnostic ignored "-Wmissing-braces"
 #   pragma clang diagnostic ignored "-Wunused-const-variable"
+#   pragma clang diagnostic ignored "-Wmissing-prototypes"
 #endif
 
 /*============================ MACROS ========================================*/
@@ -51,10 +52,6 @@
 /*============================ GLOBAL VARIABLES ==============================*/
 /*============================ PROTOTYPES ====================================*/
 /*============================ LOCAL VARIABLES ===============================*/
-
-declare_tile(c_tLayerA)
-implement_tile(c_tLayerA, 100, 100, arm_2d_color_rgb565_t);
-
 
 declare_tile(c_tLayerB)
 implement_tile(c_tLayerB, 200, 50, arm_2d_color_rgb565_t);
@@ -110,7 +107,11 @@ extern const arm_2d_tile_t c_tPictureWhiteDot;
 
 static arm_2d_layer_t s_ptRefreshLayers[] = {
     arm_2d_layer(&c_tPictureHeliun, 0, -50, -100),
-    arm_2d_layer(&c_tLayerA, 128, 10, 80),
+
+    arm_2d_layer(NULL, 128, 10, 80, 
+                .tRegion.tSize.iWidth = 100, 
+                .tRegion.tSize.iHeight = 100
+                ),
     arm_2d_layer(&c_tLayerB, 144, 50, 150),
     arm_2d_layer(&c_tPictureSun, 0, 0, 0, 
                     .bIsIrregular = true, 
@@ -160,7 +161,7 @@ void example_gui_init(void)
     
     s_ptRefreshLayers[0].wMode = ARM_2D_CP_MODE_FILL;
 
-    arm_2d_rgb16_fill_colour(s_ptRefreshLayers[1].ptTile, NULL, GLCD_COLOR_RED);
+    //arm_2d_rgb16_fill_colour(s_ptRefreshLayers[1].ptTile, NULL, GLCD_COLOR_RED);
     arm_2d_rgb16_fill_colour(s_ptRefreshLayers[2].ptTile, NULL, GLCD_COLOR_GREEN);
 
     arm_foreach(arm_2d_layer_t, s_ptRefreshLayers) {
@@ -175,6 +176,13 @@ void example_gui_init(void)
         _->tRegion = tRegion;
     }
 }
+
+__WEAK 
+void example_gui_on_refresh_evt_handler(const arm_2d_tile_t *ptFrameBuffer)
+{
+     ARM_2D_UNUSED(ptFrameBuffer);
+}
+
 
 static void example_update_boxes(floating_range_t *ptBoxes, uint_fast16_t hwCount)
 {
@@ -240,18 +248,21 @@ void example_gui_do_events(void)
 
 
 
-static void __draw_layers(   arm_2d_tile_t *ptFrameBuffer,
+static void __draw_layers(  const arm_2d_tile_t *ptFrameBuffer,
                             arm_2d_layer_t *ptLayers, 
                             uint_fast16_t hwCount)
 {
     ASSERT(NULL != ptLayers);
     ASSERT(hwCount > 0);
 
-    static const arm_2d_region_t tFillRegion = {-200, -100, APP_SCREEN_WIDTH + 200, APP_SCREEN_HEIGHT + 100 };
+    static const arm_2d_region_t tFillRegion = {-200, 
+                                                -100, 
+                                                APP_SCREEN_WIDTH + 200, 
+                                                APP_SCREEN_HEIGHT + 100 };
     
 
     do {
-        
+
         arm_2d_rgb16_tile_copy( &c_tLogoCMSIS,
                                 ptFrameBuffer,
                                 &tFillRegion,
@@ -264,10 +275,13 @@ static void __draw_layers(   arm_2d_tile_t *ptFrameBuffer,
                                                     GLCD_COLOR_WHITE,
                                                     ARM_2D_CP_MODE_FILL);
         
-        
         arm_foreach(arm_2d_layer_t, ptLayers, hwCount, ptLayer) {
             arm_2d_region_t tRegion = ptLayer->tRegion;
 
+            if (NULL == ptLayer->ptTile) { 
+                continue;
+            }
+            
             if (ptLayer->bIsIrregular) {
                 arm_2d_rgb16_tile_copy_with_colour_masking( ptLayer->ptTile,
                                             ptFrameBuffer,
@@ -289,13 +303,20 @@ static void __draw_layers(   arm_2d_tile_t *ptFrameBuffer,
             }
         }
         
+        arm_2d_rgb565_fill_colour_with_alpha(   ptFrameBuffer, 
+                                                &s_ptRefreshLayers[1].tRegion,
+                                                (arm_2d_color_rgb565_t){.tValue =  GLCD_COLOR_RED},
+                                                255 - s_ptRefreshLayers[1].chTransparency);
+        
         //! show progress wheel
         busy_wheel_show(ptFrameBuffer);
+
+        example_gui_on_refresh_evt_handler(ptFrameBuffer);
         
     } while (0);
 }
 
-void example_gui_refresh(arm_2d_tile_t *ptFrameBuffer)
+void example_gui_refresh(const arm_2d_tile_t *ptFrameBuffer)
 {
     __draw_layers(ptFrameBuffer, s_ptRefreshLayers, dimof(s_ptRefreshLayers));
 }
