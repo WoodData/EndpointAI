@@ -339,7 +339,7 @@
               <MiscControls>-Omax</MiscControls>
               <Define>GLCD_MIRROR_X=1,GLCD_MIRROR_Y=0,EXTERANL_DELAY_MS_DECLARE="extern void delay_ms(uint32_t);"</Define>
               <Undefine></Undefine>
-              <IncludePath>.\platform;.\platform\mps3\v2m_mps3;..\..\Library\Include;.\platform\mps3;.</IncludePath>
+              <IncludePath>.\platform;.\platform\mps3\v2m_mps3;..\..\Library\Include;.\platform\mps3;.;..\..\Helper\Include</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -452,26 +452,6 @@
               <FileName>GLCD_Fonts.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\platform\GLCD_Fonts.c</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
-          <GroupName>display_adapter</GroupName>
-          <Files>
-            <File>
-              <FileName>app_cfg.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\display_adapter\app_cfg.h</FilePath>
-            </File>
-            <File>
-              <FileName>display_adapter.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\display_adapter\display_adapter.h</FilePath>
-            </File>
-            <File>
-              <FileName>display_adapter.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\display_adapter\display_adapter.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -795,6 +775,26 @@
               <FileName>platform_stm32f746g_discovery.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\platform\stm32f746g-discovery\platform_stm32f746g_discovery.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>arm-2d-helper</GroupName>
+          <Files>
+            <File>
+              <FileName>arm_2d_helper.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\Helper\Include\arm_2d_helper.h</FilePath>
+            </File>
+            <File>
+              <FileName>arm_2d_helper_pfb.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\Helper\Include\arm_2d_helper_pfb.h</FilePath>
+            </File>
+            <File>
+              <FileName>arm_2d_helper_pfb.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Helper\Source\arm_2d_helper_pfb.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -1211,7 +1211,7 @@
               <MiscControls>-Omax</MiscControls>
               <Define>GLCD_MIRROR_X=1,GLCD_MIRROR_Y=0</Define>
               <Undefine></Undefine>
-              <IncludePath>.\platform;..\..\Library\Include;.</IncludePath>
+              <IncludePath>.\platform;..\..\Library\Include;.;..\..\Helper\Include</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -1324,26 +1324,6 @@
               <FileName>GLCD_Fonts.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\platform\GLCD_Fonts.c</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
-          <GroupName>display_adapter</GroupName>
-          <Files>
-            <File>
-              <FileName>app_cfg.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\display_adapter\app_cfg.h</FilePath>
-            </File>
-            <File>
-              <FileName>display_adapter.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\display_adapter\display_adapter.h</FilePath>
-            </File>
-            <File>
-              <FileName>display_adapter.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\display_adapter\display_adapter.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -1667,6 +1647,26 @@
               <FileName>platform_stm32f746g_discovery.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\platform\stm32f746g-discovery\platform_stm32f746g_discovery.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>arm-2d-helper</GroupName>
+          <Files>
+            <File>
+              <FileName>arm_2d_helper.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\Helper\Include\arm_2d_helper.h</FilePath>
+            </File>
+            <File>
+              <FileName>arm_2d_helper_pfb.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\Helper\Include\arm_2d_helper_pfb.h</FilePath>
+            </File>
+            <File>
+              <FileName>arm_2d_helper_pfb.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Helper\Source\arm_2d_helper_pfb.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -2152,7 +2152,7 @@
               <MiscControls>-Omax</MiscControls>
               <Define>GLCD_MIRROR_X=1,GLCD_MIRROR_Y=0,ITERATION_CNT=10</Define>
               <Undefine></Undefine>
-              <IncludePath>.\platform;.;..\..\Library\Include</IncludePath>
+              <IncludePath>.\platform;.;..\..\Library\Include;..\..\Helper\Include</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -2264,26 +2264,6 @@
               <FileName>GLCD_Fonts.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\platform\GLCD_Fonts.c</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
-          <GroupName>display_adapter</GroupName>
-          <Files>
-            <File>
-              <FileName>app_cfg.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\display_adapter\app_cfg.h</FilePath>
-            </File>
-            <File>
-              <FileName>display_adapter.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\display_adapter\display_adapter.h</FilePath>
-            </File>
-            <File>
-              <FileName>display_adapter.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\display_adapter\display_adapter.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -2607,6 +2587,26 @@
               <FileName>platform_stm32f746g_discovery.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\platform\stm32f746g-discovery\platform_stm32f746g_discovery.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>arm-2d-helper</GroupName>
+          <Files>
+            <File>
+              <FileName>arm_2d_helper.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\Helper\Include\arm_2d_helper.h</FilePath>
+            </File>
+            <File>
+              <FileName>arm_2d_helper_pfb.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\Helper\Include\arm_2d_helper_pfb.h</FilePath>
+            </File>
+            <File>
+              <FileName>arm_2d_helper_pfb.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Helper\Source\arm_2d_helper_pfb.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -3092,7 +3092,7 @@
               <MiscControls>-Omax</MiscControls>
               <Define>GLCD_MIRROR_X=1,GLCD_MIRROR_Y=0,EXTERANL_DELAY_MS_DECLARE="extern void delay_ms(uint32_t);"</Define>
               <Undefine></Undefine>
-              <IncludePath>.\platform;.\platform\v2m_mps3;..\..\Library\Include;.</IncludePath>
+              <IncludePath>.\platform;.\platform\v2m_mps3;..\..\Library\Include;.;..\..\Helper\Include</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -3205,26 +3205,6 @@
               <FileName>GLCD_Fonts.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\platform\GLCD_Fonts.c</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
-          <GroupName>display_adapter</GroupName>
-          <Files>
-            <File>
-              <FileName>app_cfg.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\display_adapter\app_cfg.h</FilePath>
-            </File>
-            <File>
-              <FileName>display_adapter.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\display_adapter\display_adapter.h</FilePath>
-            </File>
-            <File>
-              <FileName>display_adapter.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\display_adapter\display_adapter.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -3548,6 +3528,26 @@
               <FileName>platform_stm32f746g_discovery.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\platform\stm32f746g-discovery\platform_stm32f746g_discovery.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>arm-2d-helper</GroupName>
+          <Files>
+            <File>
+              <FileName>arm_2d_helper.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\Helper\Include\arm_2d_helper.h</FilePath>
+            </File>
+            <File>
+              <FileName>arm_2d_helper_pfb.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\Helper\Include\arm_2d_helper_pfb.h</FilePath>
+            </File>
+            <File>
+              <FileName>arm_2d_helper_pfb.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Helper\Source\arm_2d_helper_pfb.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -3964,7 +3964,7 @@
               <MiscControls>-Omax</MiscControls>
               <Define>LCD_MIRROR_X=1,GLCD_MIRROR_Y=0,EXTERANL_DELAY_MS_DECLARE="extern void delay_ms(uint32_t);",ARM_MATH_HELIUM</Define>
               <Undefine></Undefine>
-              <IncludePath>.\platform;.\platform\mps3\v2m_mps3;..\..\Library\Include;.\platform\mps3;.</IncludePath>
+              <IncludePath>.\platform;.\platform\mps3\v2m_mps3;..\..\Library\Include;.\platform\mps3;.;..\..\Helper\Include</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -4077,26 +4077,6 @@
               <FileName>GLCD_Fonts.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\platform\GLCD_Fonts.c</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
-          <GroupName>display_adapter</GroupName>
-          <Files>
-            <File>
-              <FileName>app_cfg.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\display_adapter\app_cfg.h</FilePath>
-            </File>
-            <File>
-              <FileName>display_adapter.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\display_adapter\display_adapter.h</FilePath>
-            </File>
-            <File>
-              <FileName>display_adapter.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\display_adapter\display_adapter.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -4420,6 +4400,26 @@
               <FileName>platform_stm32f746g_discovery.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\platform\stm32f746g-discovery\platform_stm32f746g_discovery.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>arm-2d-helper</GroupName>
+          <Files>
+            <File>
+              <FileName>arm_2d_helper.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\Helper\Include\arm_2d_helper.h</FilePath>
+            </File>
+            <File>
+              <FileName>arm_2d_helper_pfb.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\Helper\Include\arm_2d_helper_pfb.h</FilePath>
+            </File>
+            <File>
+              <FileName>arm_2d_helper_pfb.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Helper\Source\arm_2d_helper_pfb.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -4905,7 +4905,7 @@
               <MiscControls>-Omax</MiscControls>
               <Define>GLCD_MIRROR_X=1,GLCD_MIRROR_Y=0</Define>
               <Undefine></Undefine>
-              <IncludePath>.\platform;..\..\Library\Include;.</IncludePath>
+              <IncludePath>.\platform;..\..\Library\Include;.;..\..\Helper\Include</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -5018,26 +5018,6 @@
               <FileName>GLCD_Fonts.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\platform\GLCD_Fonts.c</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
-          <GroupName>display_adapter</GroupName>
-          <Files>
-            <File>
-              <FileName>app_cfg.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\display_adapter\app_cfg.h</FilePath>
-            </File>
-            <File>
-              <FileName>display_adapter.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\display_adapter\display_adapter.h</FilePath>
-            </File>
-            <File>
-              <FileName>display_adapter.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\display_adapter\display_adapter.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -5361,6 +5341,26 @@
               <FileName>platform_stm32f746g_discovery.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\platform\stm32f746g-discovery\platform_stm32f746g_discovery.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>arm-2d-helper</GroupName>
+          <Files>
+            <File>
+              <FileName>arm_2d_helper.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\Helper\Include\arm_2d_helper.h</FilePath>
+            </File>
+            <File>
+              <FileName>arm_2d_helper_pfb.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\Helper\Include\arm_2d_helper_pfb.h</FilePath>
+            </File>
+            <File>
+              <FileName>arm_2d_helper_pfb.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Helper\Source\arm_2d_helper_pfb.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -5846,7 +5846,7 @@
               <MiscControls>-Omax -Wno-nonportable-include-path</MiscControls>
               <Define>GLCD_MIRROR_X=1,GLCD_MIRROR_Y=0</Define>
               <Undefine></Undefine>
-              <IncludePath>.\platform;..\..\Library\Include;.</IncludePath>
+              <IncludePath>.\platform;..\..\Library\Include;.;..\..\Helper\Include</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -5959,26 +5959,6 @@
               <FileName>GLCD_Fonts.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\platform\GLCD_Fonts.c</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
-          <GroupName>display_adapter</GroupName>
-          <Files>
-            <File>
-              <FileName>app_cfg.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\display_adapter\app_cfg.h</FilePath>
-            </File>
-            <File>
-              <FileName>display_adapter.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\display_adapter\display_adapter.h</FilePath>
-            </File>
-            <File>
-              <FileName>display_adapter.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\display_adapter\display_adapter.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -6302,6 +6282,26 @@
               <FileName>platform_stm32f746g_discovery.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\platform\stm32f746g-discovery\platform_stm32f746g_discovery.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>arm-2d-helper</GroupName>
+          <Files>
+            <File>
+              <FileName>arm_2d_helper.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\Helper\Include\arm_2d_helper.h</FilePath>
+            </File>
+            <File>
+              <FileName>arm_2d_helper_pfb.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\Helper\Include\arm_2d_helper_pfb.h</FilePath>
+            </File>
+            <File>
+              <FileName>arm_2d_helper_pfb.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Helper\Source\arm_2d_helper_pfb.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -6787,7 +6787,7 @@
               <MiscControls>-Wno-nonportable-include-path</MiscControls>
               <Define></Define>
               <Undefine></Undefine>
-              <IncludePath>.\platform;..\..\Library\Include;.\platform\stm32f746g-discovery;.</IncludePath>
+              <IncludePath>.\platform;..\..\Library\Include;.\platform\stm32f746g-discovery;.;..\..\Helper\Include</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -6900,26 +6900,6 @@
               <FileName>GLCD_Fonts.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\platform\GLCD_Fonts.c</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
-          <GroupName>display_adapter</GroupName>
-          <Files>
-            <File>
-              <FileName>app_cfg.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\display_adapter\app_cfg.h</FilePath>
-            </File>
-            <File>
-              <FileName>display_adapter.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\display_adapter\display_adapter.h</FilePath>
-            </File>
-            <File>
-              <FileName>display_adapter.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\display_adapter\display_adapter.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -7243,6 +7223,26 @@
               <FileName>platform_stm32f746g_discovery.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\platform\stm32f746g-discovery\platform_stm32f746g_discovery.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>arm-2d-helper</GroupName>
+          <Files>
+            <File>
+              <FileName>arm_2d_helper.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\Helper\Include\arm_2d_helper.h</FilePath>
+            </File>
+            <File>
+              <FileName>arm_2d_helper_pfb.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\Helper\Include\arm_2d_helper_pfb.h</FilePath>
+            </File>
+            <File>
+              <FileName>arm_2d_helper_pfb.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Helper\Source\arm_2d_helper_pfb.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -7728,7 +7728,7 @@
               <MiscControls>-Omax -Wno-padded</MiscControls>
               <Define>LCD_MIRROR_X=1,GLCD_MIRROR_Y=0,EXTERANL_DELAY_MS_DECLARE="extern void delay_ms(uint32_t);",ARM_MATH_HELIUM,__USE_AN547__</Define>
               <Undefine></Undefine>
-              <IncludePath>.\platform;.\platform\mps3\v2m_mps3;..\..\Library\Include;.\platform\mps3;.</IncludePath>
+              <IncludePath>.\platform;.\platform\mps3\v2m_mps3;..\..\Library\Include;.\platform\mps3;.;..\..\Helper\Include</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -7841,26 +7841,6 @@
               <FileName>GLCD_Fonts.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\platform\GLCD_Fonts.c</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
-          <GroupName>display_adapter</GroupName>
-          <Files>
-            <File>
-              <FileName>app_cfg.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\display_adapter\app_cfg.h</FilePath>
-            </File>
-            <File>
-              <FileName>display_adapter.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\display_adapter\display_adapter.h</FilePath>
-            </File>
-            <File>
-              <FileName>display_adapter.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\display_adapter\display_adapter.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -8184,6 +8164,26 @@
               <FileName>platform_stm32f746g_discovery.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\platform\stm32f746g-discovery\platform_stm32f746g_discovery.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>arm-2d-helper</GroupName>
+          <Files>
+            <File>
+              <FileName>arm_2d_helper.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\Helper\Include\arm_2d_helper.h</FilePath>
+            </File>
+            <File>
+              <FileName>arm_2d_helper_pfb.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\Helper\Include\arm_2d_helper_pfb.h</FilePath>
+            </File>
+            <File>
+              <FileName>arm_2d_helper_pfb.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Helper\Source\arm_2d_helper_pfb.c</FilePath>
             </File>
           </Files>
         </Group>
