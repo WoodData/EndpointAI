@@ -77,7 +77,7 @@ void progress_bar_drill_init(void)
     s_wUnit = (SystemCoreClock  / 1000) * PROGRESS_BAR_DRILL_SPEED;
 }
 
-void progress_bar_drill_show(arm_2d_tile_t *ptTarget, int_fast16_t iProgress)
+void progress_bar_drill_show(const arm_2d_tile_t *ptTarget, int_fast16_t iProgress)
 {
     int_fast16_t iWidth = ptTarget->tRegion.tSize.iWidth * 3 >> 3;         //!< 3/8 Width
  

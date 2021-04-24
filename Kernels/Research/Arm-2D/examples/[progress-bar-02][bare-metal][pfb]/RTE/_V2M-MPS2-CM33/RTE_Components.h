@@ -3,7 +3,7 @@
  * Auto generated Run-Time-Environment Configuration File
  *      *** Do not modify ! ***
  *
- * Project: 'progress-bar-02' 
+ * Project: 'progress-bar-01' 
  * Target:  'V2M-MPS2-CM33' 
  */
 

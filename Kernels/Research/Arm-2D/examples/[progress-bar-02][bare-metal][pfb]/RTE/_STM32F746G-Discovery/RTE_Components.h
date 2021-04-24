@@ -3,7 +3,7 @@
  * Auto generated Run-Time-Environment Configuration File
  *      *** Do not modify ! ***
  *
- * Project: 'progress-bar-02' 
+ * Project: 'template' 
  * Target:  'STM32F746G-Discovery' 
  */
 
