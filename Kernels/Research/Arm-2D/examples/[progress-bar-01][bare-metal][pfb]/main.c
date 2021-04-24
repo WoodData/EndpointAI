@@ -63,10 +63,11 @@ void display_task(void)
 IMPL_ARM_2D_REGION_LIST(s_tDirtyRegions, static const)
     
     ADD_REGION_TO_LIST(s_tDirtyRegions,
-        .tLocation = {50,110},
+        .tLocation = {(APP_SCREEN_WIDTH - (APP_SCREEN_WIDTH * 3 >> 3) - 20) / 2,
+                      (APP_SCREEN_HEIGHT - 10) / 2},
         .tSize = {
-            .iWidth = APP_SCREEN_WIDTH - 100,
-            .iHeight = APP_SCREEN_HEIGHT - 220,  
+            .iWidth = (APP_SCREEN_WIDTH * 3 >> 3) + 20,
+            .iHeight = 10,  
         },
     ),
     
