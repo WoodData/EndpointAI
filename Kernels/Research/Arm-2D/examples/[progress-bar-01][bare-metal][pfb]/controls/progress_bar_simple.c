@@ -86,7 +86,7 @@ void progress_bar_simple_init(void)
 
 }
 
-void progress_bar_simple_show(arm_2d_tile_t *ptTarget, int_fast16_t iProgress)
+void progress_bar_simple_show(const arm_2d_tile_t *ptTarget, int_fast16_t iProgress)
 {
     int_fast16_t iWidth = ptTarget->tRegion.tSize.iWidth * 3 >> 3;         //!< 3/8 Width
  

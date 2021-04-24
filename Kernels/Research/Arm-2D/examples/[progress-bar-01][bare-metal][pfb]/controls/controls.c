@@ -45,7 +45,7 @@
 
 void controls_init(void)
 {
-    busy_wheel_init();
+    //busy_wheel_init();
     progress_bar_simple_init();
 }
 

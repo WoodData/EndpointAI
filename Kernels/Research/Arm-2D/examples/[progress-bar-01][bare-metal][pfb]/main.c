@@ -19,7 +19,7 @@
 /*============================ INCLUDES ======================================*/
 #include <stdio.h>
 #include "platform.h"
-#include "./display_adapter/display_adapter.h"
+#include "arm_2d_helper.h"
 #include "example_gui.h"
 
 #if defined(__clang__)
@@ -31,6 +31,8 @@
 #   pragma clang diagnostic ignored "-Wmissing-field-initializers"
 #   pragma clang diagnostic ignored "-Wgnu-zero-variadic-macro-arguments"
 #   pragma clang diagnostic ignored "-Wmissing-prototypes"
+#   pragma clang diagnostic ignored "-Wunused-variable"
+#   pragma clang diagnostic ignored "-Wgnu-statement-expression"
 #endif
 
 /*============================ MACROS ========================================*/
@@ -47,61 +49,115 @@
 /*============================ GLOBAL VARIABLES ==============================*/
 /*============================ PROTOTYPES ====================================*/
 /*============================ LOCAL VARIABLES ===============================*/
+
+static char s_chPerformanceInfo[(GLCD_WIDTH/6)+1] = {0};
+
 /*============================ IMPLEMENTATION ================================*/
 
+static ARM_NOINIT arm_2d_helper_pfb_t s_tExamplePFB;
+
 void display_task(void) 
-{   
-    static const arm_2d_region_t c_tRefreshRegion = {
+{  
+            
+
+IMPL_ARM_2D_REGION_LIST(s_tDirtyRegions, static const)
+    
+    ADD_REGION_TO_LIST(s_tDirtyRegions,
         .tLocation = {50,110},
         .tSize = {
             .iWidth = APP_SCREEN_WIDTH - 100,
-            .iHeight = APP_SCREEN_HEIGHT - 220,  //!< only refresh dirty area
+            .iHeight = APP_SCREEN_HEIGHT - 220,  
         },
-    };
-
-    int32_t nTotalCyclCount = 0;
-    int32_t nTotalLCDCycCount = 0;
+    ),
     
+    ADD_LAST_REGION_TO_LIST(s_tDirtyRegions,
+        .tLocation = {0,APP_SCREEN_HEIGHT - 8},
+        .tSize = {
+            .iWidth = APP_SCREEN_WIDTH,
+            .iHeight = 8,  
+        },
+    ),
+
+END_IMPL_ARM_2D_REGION_LIST()
+            
+
+/*! define the partial-flushing area */
+
     example_gui_do_events();
-    
-    start_cycle_counter(); 
+
+    //! call partial framebuffer helper service
+    while(arm_fsm_rt_cpl != arm_2d_helper_pfb_task( 
+                                &s_tExamplePFB, 
+                                (arm_2d_region_list_item_t *)s_tDirtyRegions));
+                                        
+    //! update performance info
     do {
-        nTotalLCDCycCount += stop_cycle_counter(); 
-        arm_2d_tile_t * ptFrameBuffer;
-        /*! begin of the drawing iteration, 
-         *! try to request the tile of frame buffer
-         */
-        start_cycle_counter(); 
-        do {
-            //! request to draw the whole LCD
-            ptFrameBuffer = drawing_iteration_begin((arm_2d_region_t *)&c_tRefreshRegion);
-            if (NULL == ptFrameBuffer) {
-                //wait_for_lcd_ready();    //! wait until lcd is ready
-                continue;
-            } else if (-1 == (intptr_t)ptFrameBuffer) {
-                /* display driver wants to end the drawing */
-                return ;
-            }
-        } while(NULL == ptFrameBuffer);
 
-        //! draw all the gui elements on target frame buffer
-        example_gui_refresh(ptFrameBuffer);
-        
-        nTotalCyclCount += stop_cycle_counter(); 
-        
-        start_cycle_counter(); 
-    } while(drawing_iteration_end());
-    
+        int32_t nTotalCyclCount = s_tExamplePFB.Statistics.nTotalCycle;
+        int32_t nTotalLCDCycCount = s_tExamplePFB.Statistics.nRenderingCycle;
 
-    lcd_printf("\r\nFPS %3d:%2dms (LCD Latency %2dms) " 
+        sprintf(s_chPerformanceInfo, 
+                "UPS %3d:%2dms (LCD Latency %2dms) " 
                 STR(APP_SCREEN_WIDTH) "*"
                 STR(APP_SCREEN_HEIGHT) " %dMHz", 
-                SystemCoreClock / nTotalCyclCount, 
-                nTotalCyclCount / (SystemCoreClock / 1000ul),
-                nTotalLCDCycCount / (SystemCoreClock / 1000ul),
-                SystemCoreClock / 1000000ul);
-    
+                (int32_t)SystemCoreClock / nTotalCyclCount, 
+                nTotalCyclCount / ((int32_t)SystemCoreClock / 1000),
+                nTotalLCDCycCount / ((int32_t)SystemCoreClock / 1000),
+                (int32_t)SystemCoreClock / 1000000);
+
+    } while(0);
+
 }        
+
+__OVERRIDE_WEAK 
+void example_gui_on_refresh_evt_handler(const arm_2d_tile_t *ptFrameBuffer)
+{
+    ARM_2D_UNUSED(ptFrameBuffer);
+    
+    //! print performance info
+    lcd_text_location( GLCD_HEIGHT / 8 - 1, 0);
+    //lcd_text_location( 0, 0);
+    lcd_puts(s_chPerformanceInfo);
+}
+
+
+__OVERRIDE_WEAK 
+void arm_2d_helper_perf_counter_start(void)
+{
+    start_cycle_counter();
+}
+
+__OVERRIDE_WEAK 
+int32_t arm_2d_helper_perf_counter_stop(void)
+{
+    return stop_cycle_counter();
+}
+
+
+static arm_fsm_rt_t __pfb_draw_handler_t( void *pTarget,
+                                          const arm_2d_tile_t *ptTile)
+{
+    ARM_2D_UNUSED(pTarget);
+    example_gui_refresh(ptTile);
+
+    return arm_fsm_rt_cpl;
+}
+
+static void __pfb_render_handler( void *pTarget, const arm_2d_pfb_t *ptPFB)
+{
+    const arm_2d_tile_t *ptTile = &(ptPFB->tTile);
+
+    ARM_2D_UNUSED(pTarget);
+
+    GLCD_DrawBitmap(ptTile->tRegion.tLocation.iX,
+                    ptTile->tRegion.tLocation.iY,
+                    ptTile->tRegion.tSize.iWidth,
+                    ptTile->tRegion.tSize.iHeight,
+                    ptTile->pchBuffer);
+                    
+    arm_2d_helper_report_rendering_complete(&s_tExamplePFB, 
+                                            (arm_2d_pfb_t *)ptPFB);
+}
 
 
 
@@ -113,9 +169,33 @@ int main (void)
     arm_irq_safe {
         arm_2d_init();
         /* put your code here */
-        platform_disp_init();
         example_gui_init();
+    }         
+
+    //! initialise FPB helper
+    if (ARM_2D_HELPER_PFB_INIT( 
+            &s_tExamplePFB,                 //!< FPB Helper object
+            APP_SCREEN_WIDTH,               //!< screen width
+            APP_SCREEN_HEIGHT,              //!< screen height
+            uint16_t,                       //!< colour date type
+            PBF_BLOCK_WIDTH,                //!< PFB block width
+            PBF_BLOCK_HEIGHT,               //!< PFB block height
+            1,                              //!< number of PFB in the PFB pool
+            {
+                .evtOnLowLevelRendering = {
+                    //! callback for low level rendering 
+                    .fnHandler = &__pfb_render_handler,                         
+                },
+                .evtOnDrawing = {
+                    //! callback for drawing GUI 
+                    .fnHandler = &__pfb_draw_handler_t, 
+                },
+            }
+        ) < 0) {
+        //! error detected
+        assert(false);
     }
+
     
     while (1) {
         display_task();

@@ -49,7 +49,7 @@
             <InvalidFlash>1</InvalidFlash>
           </TargetStatus>
           <OutputDirectory>.\Out\</OutputDirectory>
-          <OutputName>progress-bar-01</OutputName>
+          <OutputName>template</OutputName>
           <CreateExecutable>1</CreateExecutable>
           <CreateLib>0</CreateLib>
           <CreateHexFile>0</CreateHexFile>
@@ -339,7 +339,7 @@
               <MiscControls>-Omax</MiscControls>
               <Define>GLCD_MIRROR_X=1,GLCD_MIRROR_Y=0,EXTERANL_DELAY_MS_DECLARE="extern void delay_ms(uint32_t);"</Define>
               <Undefine></Undefine>
-              <IncludePath>.\platform;.\platform\mps3\v2m_mps3;..\..\Library\Include;.\platform\mps3;.</IncludePath>
+              <IncludePath>.\platform;.\platform\mps3\v2m_mps3;..\..\Library\Include;.\platform\mps3;.;..\..\Helper\Include</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -456,26 +456,6 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>display_adapter</GroupName>
-          <Files>
-            <File>
-              <FileName>app_cfg.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\display_adapter\app_cfg.h</FilePath>
-            </File>
-            <File>
-              <FileName>display_adapter.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\display_adapter\display_adapter.h</FilePath>
-            </File>
-            <File>
-              <FileName>display_adapter.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\display_adapter\display_adapter.c</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
           <GroupName>asset</GroupName>
           <Files>
             <File>
@@ -493,16 +473,6 @@
         <Group>
           <GroupName>controls</GroupName>
           <Files>
-            <File>
-              <FileName>busy_wheel.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\controls\busy_wheel.c</FilePath>
-            </File>
-            <File>
-              <FileName>busy_wheel.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\controls\busy_wheel.h</FilePath>
-            </File>
             <File>
               <FileName>controls.h</FileName>
               <FileType>5</FileType>
@@ -814,6 +784,26 @@
           </Files>
         </Group>
         <Group>
+          <GroupName>arm-2d-helper</GroupName>
+          <Files>
+            <File>
+              <FileName>arm_2d_helper.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\Helper\Include\arm_2d_helper.h</FilePath>
+            </File>
+            <File>
+              <FileName>arm_2d_helper_pfb.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\Helper\Include\arm_2d_helper_pfb.h</FilePath>
+            </File>
+            <File>
+              <FileName>arm_2d_helper_pfb.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Helper\Source\arm_2d_helper_pfb.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
           <GroupName>::Board Support</GroupName>
           <GroupOption>
             <CommonProperty>
@@ -936,7 +926,7 @@
             <InvalidFlash>1</InvalidFlash>
           </TargetStatus>
           <OutputDirectory>.\Out\</OutputDirectory>
-          <OutputName>progress-bar-01</OutputName>
+          <OutputName>template</OutputName>
           <CreateExecutable>1</CreateExecutable>
           <CreateLib>0</CreateLib>
           <CreateHexFile>0</CreateHexFile>
@@ -1226,7 +1216,7 @@
               <MiscControls>-Omax</MiscControls>
               <Define>GLCD_MIRROR_X=1,GLCD_MIRROR_Y=0</Define>
               <Undefine></Undefine>
-              <IncludePath>.\platform;..\..\Library\Include;.</IncludePath>
+              <IncludePath>.\platform;..\..\Library\Include;.;..\..\Helper\Include</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -1343,26 +1333,6 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>display_adapter</GroupName>
-          <Files>
-            <File>
-              <FileName>app_cfg.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\display_adapter\app_cfg.h</FilePath>
-            </File>
-            <File>
-              <FileName>display_adapter.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\display_adapter\display_adapter.h</FilePath>
-            </File>
-            <File>
-              <FileName>display_adapter.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\display_adapter\display_adapter.c</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
           <GroupName>asset</GroupName>
           <Files>
             <File>
@@ -1380,16 +1350,6 @@
         <Group>
           <GroupName>controls</GroupName>
           <Files>
-            <File>
-              <FileName>busy_wheel.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\controls\busy_wheel.c</FilePath>
-            </File>
-            <File>
-              <FileName>busy_wheel.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\controls\busy_wheel.h</FilePath>
-            </File>
             <File>
               <FileName>controls.h</FileName>
               <FileType>5</FileType>
@@ -1701,6 +1661,26 @@
           </Files>
         </Group>
         <Group>
+          <GroupName>arm-2d-helper</GroupName>
+          <Files>
+            <File>
+              <FileName>arm_2d_helper.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\Helper\Include\arm_2d_helper.h</FilePath>
+            </File>
+            <File>
+              <FileName>arm_2d_helper_pfb.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\Helper\Include\arm_2d_helper_pfb.h</FilePath>
+            </File>
+            <File>
+              <FileName>arm_2d_helper_pfb.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Helper\Source\arm_2d_helper_pfb.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
           <GroupName>::Board Support</GroupName>
           <GroupOption>
             <CommonProperty>
@@ -1892,7 +1872,7 @@
             <InvalidFlash>1</InvalidFlash>
           </TargetStatus>
           <OutputDirectory>.\Out\</OutputDirectory>
-          <OutputName>progress-bar-01</OutputName>
+          <OutputName>template</OutputName>
           <CreateExecutable>1</CreateExecutable>
           <CreateLib>0</CreateLib>
           <CreateHexFile>0</CreateHexFile>
@@ -2156,7 +2136,7 @@
           </ArmAdsMisc>
           <Cads>
             <interw>1</interw>
-            <Optim>7</Optim>
+            <Optim>0</Optim>
             <oTime>1</oTime>
             <SplitLS>0</SplitLS>
             <OneElfS>1</OneElfS>
@@ -2179,10 +2159,10 @@
             <v6WtE>0</v6WtE>
             <v6Rtti>0</v6Rtti>
             <VariousControls>
-              <MiscControls></MiscControls>
+              <MiscControls>-Omax</MiscControls>
               <Define>GLCD_MIRROR_X=1,GLCD_MIRROR_Y=0,ITERATION_CNT=10</Define>
               <Undefine></Undefine>
-              <IncludePath>.\platform;.;..\..\Library\Include</IncludePath>
+              <IncludePath>.\platform;.;..\..\Library\Include;..\..\Helper\Include</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -2298,26 +2278,6 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>display_adapter</GroupName>
-          <Files>
-            <File>
-              <FileName>app_cfg.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\display_adapter\app_cfg.h</FilePath>
-            </File>
-            <File>
-              <FileName>display_adapter.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\display_adapter\display_adapter.h</FilePath>
-            </File>
-            <File>
-              <FileName>display_adapter.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\display_adapter\display_adapter.c</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
           <GroupName>asset</GroupName>
           <Files>
             <File>
@@ -2335,16 +2295,6 @@
         <Group>
           <GroupName>controls</GroupName>
           <Files>
-            <File>
-              <FileName>busy_wheel.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\controls\busy_wheel.c</FilePath>
-            </File>
-            <File>
-              <FileName>busy_wheel.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\controls\busy_wheel.h</FilePath>
-            </File>
             <File>
               <FileName>controls.h</FileName>
               <FileType>5</FileType>
@@ -2656,6 +2606,26 @@
           </Files>
         </Group>
         <Group>
+          <GroupName>arm-2d-helper</GroupName>
+          <Files>
+            <File>
+              <FileName>arm_2d_helper.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\Helper\Include\arm_2d_helper.h</FilePath>
+            </File>
+            <File>
+              <FileName>arm_2d_helper_pfb.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\Helper\Include\arm_2d_helper_pfb.h</FilePath>
+            </File>
+            <File>
+              <FileName>arm_2d_helper_pfb.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Helper\Source\arm_2d_helper_pfb.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
           <GroupName>::Board Support</GroupName>
           <GroupOption>
             <CommonProperty>
@@ -2847,7 +2817,7 @@
             <InvalidFlash>1</InvalidFlash>
           </TargetStatus>
           <OutputDirectory>.\Out\</OutputDirectory>
-          <OutputName>progress-bar-01</OutputName>
+          <OutputName>template</OutputName>
           <CreateExecutable>1</CreateExecutable>
           <CreateLib>0</CreateLib>
           <CreateHexFile>0</CreateHexFile>
@@ -3137,7 +3107,7 @@
               <MiscControls>-Omax</MiscControls>
               <Define>GLCD_MIRROR_X=1,GLCD_MIRROR_Y=0,EXTERANL_DELAY_MS_DECLARE="extern void delay_ms(uint32_t);"</Define>
               <Undefine></Undefine>
-              <IncludePath>.\platform;.\platform\v2m_mps3;..\..\Library\Include;.</IncludePath>
+              <IncludePath>.\platform;.\platform\v2m_mps3;..\..\Library\Include;.;..\..\Helper\Include</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -3254,26 +3224,6 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>display_adapter</GroupName>
-          <Files>
-            <File>
-              <FileName>app_cfg.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\display_adapter\app_cfg.h</FilePath>
-            </File>
-            <File>
-              <FileName>display_adapter.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\display_adapter\display_adapter.h</FilePath>
-            </File>
-            <File>
-              <FileName>display_adapter.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\display_adapter\display_adapter.c</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
           <GroupName>asset</GroupName>
           <Files>
             <File>
@@ -3291,16 +3241,6 @@
         <Group>
           <GroupName>controls</GroupName>
           <Files>
-            <File>
-              <FileName>busy_wheel.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\controls\busy_wheel.c</FilePath>
-            </File>
-            <File>
-              <FileName>busy_wheel.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\controls\busy_wheel.h</FilePath>
-            </File>
             <File>
               <FileName>controls.h</FileName>
               <FileType>5</FileType>
@@ -3612,6 +3552,26 @@
           </Files>
         </Group>
         <Group>
+          <GroupName>arm-2d-helper</GroupName>
+          <Files>
+            <File>
+              <FileName>arm_2d_helper.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\Helper\Include\arm_2d_helper.h</FilePath>
+            </File>
+            <File>
+              <FileName>arm_2d_helper_pfb.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\Helper\Include\arm_2d_helper_pfb.h</FilePath>
+            </File>
+            <File>
+              <FileName>arm_2d_helper_pfb.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Helper\Source\arm_2d_helper_pfb.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
           <GroupName>::Board Support</GroupName>
           <GroupOption>
             <CommonProperty>
@@ -3734,7 +3694,7 @@
             <InvalidFlash>1</InvalidFlash>
           </TargetStatus>
           <OutputDirectory>.\Out\</OutputDirectory>
-          <OutputName>progress-bar-01</OutputName>
+          <OutputName>template</OutputName>
           <CreateExecutable>1</CreateExecutable>
           <CreateLib>0</CreateLib>
           <CreateHexFile>0</CreateHexFile>
@@ -4024,7 +3984,7 @@
               <MiscControls>-Omax</MiscControls>
               <Define>LCD_MIRROR_X=1,GLCD_MIRROR_Y=0,EXTERANL_DELAY_MS_DECLARE="extern void delay_ms(uint32_t);",ARM_MATH_HELIUM</Define>
               <Undefine></Undefine>
-              <IncludePath>.\platform;.\platform\mps3\v2m_mps3;..\..\Library\Include;.\platform\mps3;.</IncludePath>
+              <IncludePath>.\platform;.\platform\mps3\v2m_mps3;..\..\Library\Include;.\platform\mps3;.;..\..\Helper\Include</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -4141,26 +4101,6 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>display_adapter</GroupName>
-          <Files>
-            <File>
-              <FileName>app_cfg.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\display_adapter\app_cfg.h</FilePath>
-            </File>
-            <File>
-              <FileName>display_adapter.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\display_adapter\display_adapter.h</FilePath>
-            </File>
-            <File>
-              <FileName>display_adapter.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\display_adapter\display_adapter.c</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
           <GroupName>asset</GroupName>
           <Files>
             <File>
@@ -4178,16 +4118,6 @@
         <Group>
           <GroupName>controls</GroupName>
           <Files>
-            <File>
-              <FileName>busy_wheel.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\controls\busy_wheel.c</FilePath>
-            </File>
-            <File>
-              <FileName>busy_wheel.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\controls\busy_wheel.h</FilePath>
-            </File>
             <File>
               <FileName>controls.h</FileName>
               <FileType>5</FileType>
@@ -4499,6 +4429,26 @@
           </Files>
         </Group>
         <Group>
+          <GroupName>arm-2d-helper</GroupName>
+          <Files>
+            <File>
+              <FileName>arm_2d_helper.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\Helper\Include\arm_2d_helper.h</FilePath>
+            </File>
+            <File>
+              <FileName>arm_2d_helper_pfb.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\Helper\Include\arm_2d_helper_pfb.h</FilePath>
+            </File>
+            <File>
+              <FileName>arm_2d_helper_pfb.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Helper\Source\arm_2d_helper_pfb.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
           <GroupName>::Board Support</GroupName>
           <GroupOption>
             <CommonProperty>
@@ -4690,7 +4640,7 @@
             <InvalidFlash>1</InvalidFlash>
           </TargetStatus>
           <OutputDirectory>.\Out\</OutputDirectory>
-          <OutputName>progress-bar-01</OutputName>
+          <OutputName>template</OutputName>
           <CreateExecutable>1</CreateExecutable>
           <CreateLib>0</CreateLib>
           <CreateHexFile>0</CreateHexFile>
@@ -4980,7 +4930,7 @@
               <MiscControls>-Omax</MiscControls>
               <Define>GLCD_MIRROR_X=1,GLCD_MIRROR_Y=0</Define>
               <Undefine></Undefine>
-              <IncludePath>.\platform;..\..\Library\Include;.</IncludePath>
+              <IncludePath>.\platform;..\..\Library\Include;.;..\..\Helper\Include</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -5097,26 +5047,6 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>display_adapter</GroupName>
-          <Files>
-            <File>
-              <FileName>app_cfg.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\display_adapter\app_cfg.h</FilePath>
-            </File>
-            <File>
-              <FileName>display_adapter.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\display_adapter\display_adapter.h</FilePath>
-            </File>
-            <File>
-              <FileName>display_adapter.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\display_adapter\display_adapter.c</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
           <GroupName>asset</GroupName>
           <Files>
             <File>
@@ -5134,16 +5064,6 @@
         <Group>
           <GroupName>controls</GroupName>
           <Files>
-            <File>
-              <FileName>busy_wheel.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\controls\busy_wheel.c</FilePath>
-            </File>
-            <File>
-              <FileName>busy_wheel.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\controls\busy_wheel.h</FilePath>
-            </File>
             <File>
               <FileName>controls.h</FileName>
               <FileType>5</FileType>
@@ -5455,6 +5375,26 @@
           </Files>
         </Group>
         <Group>
+          <GroupName>arm-2d-helper</GroupName>
+          <Files>
+            <File>
+              <FileName>arm_2d_helper.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\Helper\Include\arm_2d_helper.h</FilePath>
+            </File>
+            <File>
+              <FileName>arm_2d_helper_pfb.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\Helper\Include\arm_2d_helper_pfb.h</FilePath>
+            </File>
+            <File>
+              <FileName>arm_2d_helper_pfb.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Helper\Source\arm_2d_helper_pfb.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
           <GroupName>::Board Support</GroupName>
           <GroupOption>
             <CommonProperty>
@@ -5646,7 +5586,7 @@
             <InvalidFlash>1</InvalidFlash>
           </TargetStatus>
           <OutputDirectory>.\Out\</OutputDirectory>
-          <OutputName>progress-bar-01</OutputName>
+          <OutputName>template</OutputName>
           <CreateExecutable>1</CreateExecutable>
           <CreateLib>0</CreateLib>
           <CreateHexFile>0</CreateHexFile>
@@ -5936,7 +5876,7 @@
               <MiscControls>-Omax -Wno-nonportable-include-path</MiscControls>
               <Define>GLCD_MIRROR_X=1,GLCD_MIRROR_Y=0</Define>
               <Undefine></Undefine>
-              <IncludePath>.\platform;..\..\Library\Include;.</IncludePath>
+              <IncludePath>.\platform;..\..\Library\Include;.;..\..\Helper\Include</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -6053,26 +5993,6 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>display_adapter</GroupName>
-          <Files>
-            <File>
-              <FileName>app_cfg.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\display_adapter\app_cfg.h</FilePath>
-            </File>
-            <File>
-              <FileName>display_adapter.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\display_adapter\display_adapter.h</FilePath>
-            </File>
-            <File>
-              <FileName>display_adapter.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\display_adapter\display_adapter.c</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
           <GroupName>asset</GroupName>
           <Files>
             <File>
@@ -6090,16 +6010,6 @@
         <Group>
           <GroupName>controls</GroupName>
           <Files>
-            <File>
-              <FileName>busy_wheel.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\controls\busy_wheel.c</FilePath>
-            </File>
-            <File>
-              <FileName>busy_wheel.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\controls\busy_wheel.h</FilePath>
-            </File>
             <File>
               <FileName>controls.h</FileName>
               <FileType>5</FileType>
@@ -6411,6 +6321,26 @@
           </Files>
         </Group>
         <Group>
+          <GroupName>arm-2d-helper</GroupName>
+          <Files>
+            <File>
+              <FileName>arm_2d_helper.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\Helper\Include\arm_2d_helper.h</FilePath>
+            </File>
+            <File>
+              <FileName>arm_2d_helper_pfb.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\Helper\Include\arm_2d_helper_pfb.h</FilePath>
+            </File>
+            <File>
+              <FileName>arm_2d_helper_pfb.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Helper\Source\arm_2d_helper_pfb.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
           <GroupName>::Board Support</GroupName>
           <GroupOption>
             <CommonProperty>
@@ -6602,7 +6532,7 @@
             <InvalidFlash>1</InvalidFlash>
           </TargetStatus>
           <OutputDirectory>.\Out\</OutputDirectory>
-          <OutputName>progress-bar-01</OutputName>
+          <OutputName>template</OutputName>
           <CreateExecutable>1</CreateExecutable>
           <CreateLib>0</CreateLib>
           <CreateHexFile>0</CreateHexFile>
@@ -6866,7 +6796,7 @@
           </ArmAdsMisc>
           <Cads>
             <interw>1</interw>
-            <Optim>7</Optim>
+            <Optim>5</Optim>
             <oTime>1</oTime>
             <SplitLS>0</SplitLS>
             <OneElfS>1</OneElfS>
@@ -6885,14 +6815,14 @@
             <v6LangP>3</v6LangP>
             <vShortEn>1</vShortEn>
             <vShortWch>1</vShortWch>
-            <v6Lto>1</v6Lto>
+            <v6Lto>0</v6Lto>
             <v6WtE>0</v6WtE>
             <v6Rtti>0</v6Rtti>
             <VariousControls>
               <MiscControls>-Wno-nonportable-include-path</MiscControls>
               <Define></Define>
               <Undefine></Undefine>
-              <IncludePath>.\platform;..\..\Library\Include;.\platform\stm32f746g-discovery;.</IncludePath>
+              <IncludePath>.\platform;..\..\Library\Include;.\platform\stm32f746g-discovery;.;..\..\Helper\Include</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -7009,26 +6939,6 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>display_adapter</GroupName>
-          <Files>
-            <File>
-              <FileName>app_cfg.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\display_adapter\app_cfg.h</FilePath>
-            </File>
-            <File>
-              <FileName>display_adapter.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\display_adapter\display_adapter.h</FilePath>
-            </File>
-            <File>
-              <FileName>display_adapter.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\display_adapter\display_adapter.c</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
           <GroupName>asset</GroupName>
           <Files>
             <File>
@@ -7046,16 +6956,6 @@
         <Group>
           <GroupName>controls</GroupName>
           <Files>
-            <File>
-              <FileName>busy_wheel.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\controls\busy_wheel.c</FilePath>
-            </File>
-            <File>
-              <FileName>busy_wheel.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\controls\busy_wheel.h</FilePath>
-            </File>
             <File>
               <FileName>controls.h</FileName>
               <FileType>5</FileType>
@@ -7367,6 +7267,26 @@
           </Files>
         </Group>
         <Group>
+          <GroupName>arm-2d-helper</GroupName>
+          <Files>
+            <File>
+              <FileName>arm_2d_helper.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\Helper\Include\arm_2d_helper.h</FilePath>
+            </File>
+            <File>
+              <FileName>arm_2d_helper_pfb.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\Helper\Include\arm_2d_helper_pfb.h</FilePath>
+            </File>
+            <File>
+              <FileName>arm_2d_helper_pfb.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Helper\Source\arm_2d_helper_pfb.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
           <GroupName>::Board Support</GroupName>
           <GroupOption>
             <CommonProperty>
@@ -7558,7 +7478,7 @@
             <InvalidFlash>1</InvalidFlash>
           </TargetStatus>
           <OutputDirectory>.\Out\</OutputDirectory>
-          <OutputName>progress-bar-01</OutputName>
+          <OutputName>template</OutputName>
           <CreateExecutable>1</CreateExecutable>
           <CreateLib>0</CreateLib>
           <CreateHexFile>0</CreateHexFile>
@@ -7848,7 +7768,7 @@
               <MiscControls>-Omax -Wno-padded</MiscControls>
               <Define>LCD_MIRROR_X=1,GLCD_MIRROR_Y=0,EXTERANL_DELAY_MS_DECLARE="extern void delay_ms(uint32_t);",ARM_MATH_HELIUM,__USE_AN547__</Define>
               <Undefine></Undefine>
-              <IncludePath>.\platform;.\platform\mps3\v2m_mps3;..\..\Library\Include;.\platform\mps3;.</IncludePath>
+              <IncludePath>.\platform;.\platform\mps3\v2m_mps3;..\..\Library\Include;.\platform\mps3;.;..\..\Helper\Include</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -7965,26 +7885,6 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>display_adapter</GroupName>
-          <Files>
-            <File>
-              <FileName>app_cfg.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\display_adapter\app_cfg.h</FilePath>
-            </File>
-            <File>
-              <FileName>display_adapter.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\display_adapter\display_adapter.h</FilePath>
-            </File>
-            <File>
-              <FileName>display_adapter.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\display_adapter\display_adapter.c</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
           <GroupName>asset</GroupName>
           <Files>
             <File>
@@ -8002,16 +7902,6 @@
         <Group>
           <GroupName>controls</GroupName>
           <Files>
-            <File>
-              <FileName>busy_wheel.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\controls\busy_wheel.c</FilePath>
-            </File>
-            <File>
-              <FileName>busy_wheel.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\controls\busy_wheel.h</FilePath>
-            </File>
             <File>
               <FileName>controls.h</FileName>
               <FileType>5</FileType>
@@ -8319,6 +8209,26 @@
               <FileName>platform_stm32f746g_discovery.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\platform\stm32f746g-discovery\platform_stm32f746g_discovery.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>arm-2d-helper</GroupName>
+          <Files>
+            <File>
+              <FileName>arm_2d_helper.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\Helper\Include\arm_2d_helper.h</FilePath>
+            </File>
+            <File>
+              <FileName>arm_2d_helper_pfb.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\Helper\Include\arm_2d_helper_pfb.h</FilePath>
+            </File>
+            <File>
+              <FileName>arm_2d_helper_pfb.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Helper\Source\arm_2d_helper_pfb.c</FilePath>
             </File>
           </Files>
         </Group>
