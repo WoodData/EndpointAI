@@ -164,7 +164,7 @@ static void MPU_Config(void)
 
     /* Disables the MPU */
     HAL_MPU_Disable();
-    
+#if 0
     uint8_t chRegionNum = 0;
     for (uintptr_t ptrAddress = 0x2001000; ptrAddress < 0x20040000; ptrAddress += 0x10000) {
         MPU_Region_InitTypeDef MPU_InitStruct = {0};
@@ -187,7 +187,7 @@ static void MPU_Config(void)
     
     /* Enables the MPU */
     HAL_MPU_Enable(MPU_PRIVILEGED_DEFAULT);
-
+#endif
 
 }
 

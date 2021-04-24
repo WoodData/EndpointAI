@@ -59,15 +59,6 @@ static ARM_NOINIT arm_2d_helper_pfb_t s_tExamplePFB;
 
 void display_task(void) 
 {  
-    /*! define the partial-flushing area */
-    static const arm_2d_region_t c_tRefreshRegion = {
-        .tLocation = {0,0},
-        .tSize = {
-            .iWidth = APP_SCREEN_WIDTH,
-            .iHeight = APP_SCREEN_HEIGHT - 8,  //!< reserve two lines for benchmark info
-        },
-    };
-
     example_gui_do_events();
 
     //! call partial framebuffer helper service
