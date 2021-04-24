@@ -3,7 +3,7 @@
  * Auto generated Run-Time-Environment Configuration File
  *      *** Do not modify ! ***
  *
- * Project: 'progress-bar-03' 
+ * Project: 'progress-bar-01' 
  * Target:  'AN547-Cortex-M55_r0' 
  */
 

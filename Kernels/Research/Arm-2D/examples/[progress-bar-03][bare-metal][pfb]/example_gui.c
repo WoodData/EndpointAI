@@ -20,7 +20,6 @@
 #include <stdio.h>
 #include "platform.h"
 #include "example_gui.h"
-#include "./display_adapter/display_adapter.h"
 #include "./controls/controls.h"
 #include <time.h>
 
@@ -51,6 +50,9 @@
 /*============================ TYPES =========================================*/
 /*============================ GLOBAL VARIABLES ==============================*/
 /*============================ PROTOTYPES ====================================*/
+extern
+void example_gui_on_refresh_evt_handler(const arm_2d_tile_t *ptFrameBuffer);
+
 /*============================ LOCAL VARIABLES ===============================*/
 /*============================ IMPLEMENTATION ================================*/
 
@@ -103,14 +105,18 @@ void example_gui_do_events(void)
 
 }
 
+__WEAK 
+void example_gui_on_refresh_evt_handler(const arm_2d_tile_t *ptFrameBuffer)
+{
+     ARM_2D_UNUSED(ptFrameBuffer);
+}
 
-
-void example_gui_refresh(arm_2d_tile_t *ptFrameBuffer)
+void example_gui_refresh(const arm_2d_tile_t *ptFrameBuffer)
 {
     arm_2d_rgb16_fill_colour(ptFrameBuffer, NULL, GLCD_COLOR_WHITE);
     
     progress_bar_flowing_show(ptFrameBuffer, s_iDemoProgress);
-    //busy_wheel_show(ptFrameBuffer);
+    example_gui_on_refresh_evt_handler(ptFrameBuffer);
 }
 
 
