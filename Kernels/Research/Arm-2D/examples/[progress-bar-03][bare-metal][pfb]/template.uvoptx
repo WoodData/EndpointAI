@@ -1259,7 +1259,7 @@
         <SetRegEntry>
           <Number>0</Number>
           <Key>ULP2CM3</Key>
-          <Name>-UP1521341 -O143 -S14 -C0 -P00000000 -N00("ARM CoreSight JTAG-DP") -D00(0BA01477) -L00(4) -TO65554 -TC10000000 -TT10000000 -TP11 -TDX0 -TDD0 -TDS8007 -TDT0 -TDC1F -TIEFFFFFFFF -TIP8 -FO7 -FD20000000 -FC1000 -FN0</Name>
+          <Name>-UP1521341 -O143 -S14 -C0 -P00000000 -N00("ARM CoreSight JTAG-DP") -D00(4BA00477) -L00(4) -TO65554 -TC10000000 -TT10000000 -TP11 -TDX0 -TDD0 -TDS8007 -TDT0 -TDC1F -TIEFFFFFFFF -TIP8 -FO7 -FD20000000 -FC1000 -FN0</Name>
         </SetRegEntry>
         <SetRegEntry>
           <Number>0</Number>
@@ -1335,7 +1335,7 @@
         <periodic>1</periodic>
         <aLwin>1</aLwin>
         <aCover>0</aCover>
-        <aSer1>0</aSer1>
+        <aSer1>1</aSer1>
         <aSer2>0</aSer2>
         <aPa>0</aPa>
         <viewmode>1</viewmode>
