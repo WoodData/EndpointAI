@@ -20,7 +20,7 @@
 
 ## Features of the Arm-2D Library
 
-#### In this release ( ver0.9.0 )
+#### In this release ( ver0.9.4 )
 
 The Arm-2D library provides **Low-Level 2D Image Processing Services** that are mainly used in **Display system**. Those servers include but not limited to:
 
@@ -286,8 +286,8 @@ Since there is no public benchmark available for micro-controllers, we decide to
   - What's the design principles behind the code
   - What's the structure of the design in details
 - Some design considerations:
-  - The library is supposed to support **Arm Compiler 5/6**, **GCC**, **LLVM** and **IAR**. So far, **ONLY Arm Compiler 6** is validated. 
-  - The library is supposed to support **ALL** Cortex-M processors. There should be no problem for working with existing Cortex-M processors, i.e. **Cortex-M0/M0+/M1/M3/M4/M7/M23/M33/M35P/M55**. If you find any problems, please feel free to raise an issue. 
+  - The library supports **Arm Compiler 5/6**, **GCC**, **LLVM** and **IAR**.
+  - The library supports **ALL** Cortex-M processors. There should be no problem for working with existing Cortex-M processors, i.e. **Cortex-M0/M0+/M1/M3/M4/M7/M23/M33/M35P/M55**. If you find any issue, please feel free to let us know. 
   - The library is designed with some **OOPC** (Object-Oriented Programming with ANSI-C) methodologies. And the bottom line is that any methods and tricks adopted in this library should come with no or very little cost. 
 - This library is compliant with **C11** standard and uses some **widely accepted GCC extensions**:
   - [Macros with a Variable Number of Arguments](https://gcc.gnu.org/onlinedocs/gcc/Variadic-Macros.html#Variadic-Macros) 
@@ -391,7 +391,7 @@ const struct __arm_2d_io_table __ARM_2D_IO_TABLE = {
 
 ### 5.2 The Temporary Limitations
 
-- The library currently is developed and validated using Arm Compiler 6. 
+- The library currently is developed and validated using Arm Compiler 6, Arm Compiler 5 and GCC.
 - The library currently can only be used in the C environment. C++ support will be added later.
 - The library currently only supports two specific colours, i.e. **RGB565** and **RGB888**
 - Anti-aliasing algorithms haven't been implemented yet.

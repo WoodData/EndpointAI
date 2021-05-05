@@ -40,6 +40,14 @@
 #include "arm_2d_features.h"
 #include "arm_2d_utils.h"
 
+#if     defined(__IS_COMPILER_ARM_COMPILER_5__)                                 \
+    &&  defined(__ARM_2D_HAS_HELIUM__) && __ARM_2D_HAS_HELIUM__
+#   warning 'Arm Compiler 5 doesn\'t support Armv8.1-M architecture, please use Arm Compiler 5 instead. If you insist using Arm Compiler 5, __ARM_2D_HAS_HELIUM__ is forced to 0.'
+#   undef __ARM_2D_HAS_HELIUM__
+#   define __ARM_2D_HAS_HELIUM__            0
+#endif
+
+
 #if defined(__ARM_2D_HAS_HELIUM__) && __ARM_2D_HAS_HELIUM__
 #include <arm_mve.h>
 #else
@@ -53,14 +61,16 @@ extern "C"
 #endif
 
 #if defined(__clang__)
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wmissing-declarations"
-#pragma clang diagnostic ignored "-Wpadded"
-#pragma clang diagnostic ignored "-Wc11-extensions"
-#elif defined(__GNUC__)
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wmissing-declarations"
-#pragma GCC diagnostic ignored "-Wpadded"
+#   pragma clang diagnostic push
+#   pragma clang diagnostic ignored "-Wmissing-declarations"
+#   pragma clang diagnostic ignored "-Wpadded"
+#   pragma clang diagnostic ignored "-Wc11-extensions"
+#elif __IS_COMPILER_ARM_COMPILER_5__
+#   pragma diag_suppress 64
+#elif __IS_COMPILER_GCC__
+#   pragma GCC diagnostic push
+#   pragma GCC diagnostic ignored "-Wmissing-declarations"
+#   pragma GCC diagnostic ignored "-Wpadded"
 #endif
 
 
@@ -285,9 +295,11 @@ typedef struct arm_2d_evt_t {
 } arm_2d_evt_t;
 
 
-#define ARM_2D_OP_INFO_PARAM_HAS_SOURCE           __BV(0)
-#define ARM_2D_OP_INFO_PARAM_HAS_TARGET           __BV(1)
-#define ARM_2D_OP_INFO_PARAM_HAS_ALPHA_MASK       __BV(2)
+#define ARM_2D_OP_INFO_PARAM_HAS_SOURCE           _BV(0)
+#define ARM_2D_OP_INFO_PARAM_HAS_ORIGIN           _BV(1)
+#define ARM_2D_OP_INFO_PARAM_HAS_TARGET           _BV(2)
+#define ARM_2D_OP_INFO_PARAM_HAS_ALPHA_MASK       _BV(3)
+
 
 typedef union __arm_2d_op_info_t {
     struct {
@@ -295,9 +307,10 @@ typedef union __arm_2d_op_info_t {
         union {
             struct {
                 uint8_t bHasSource              : 1;                            //!< whether this operation contains source tile
+                uint8_t bHasOrigin              : 1;                            //!< whether the Source has an origin tile
                 uint8_t bHasTarget              : 1;                            //!< whether this operation contains target tile
                 uint8_t bHasAlphaMask           : 1;                            //!< whether this operation has Alpha Mask layer
-                uint8_t                         : 1;
+
                 uint8_t                         : 3;
                 uint8_t bAllowEnforcedColour    : 1;                            //!< whether this operation allow enforced colours in tiles
             };
@@ -311,6 +324,10 @@ typedef union __arm_2d_op_info_t {
             struct {
                 uint8_t CopyLike;
                 uint8_t FillLike;
+            };
+            struct {
+                uint8_t CopyOrigLike;
+                uint8_t FillOrigLike;
             };
             struct {
                 uint8_t TileProcessLike;
@@ -385,6 +402,26 @@ typedef struct arm_2d_op_src_t {
     uint32_t wMode;
 } arm_2d_op_src_t;
 
+/*! \brief arm_2d_op_src_orig_t is inherit from arm_2d_op_src_t
+ */
+typedef struct arm_2d_op_src_orig_t {
+    inherit(arm_2d_op_core_t);
+    struct {
+        const arm_2d_tile_t     *ptTile;        //!< target tile
+        const arm_2d_region_t   *ptRegion;      //!< target region
+    } Target;
+    struct {
+        const arm_2d_tile_t     *ptTile;        //!< source tile
+    }Source;
+    uint32_t wMode;
+    
+    struct {
+        const arm_2d_tile_t     *ptTile;        //!< the origin tile
+        arm_2d_tile_t           tSource;        //!< the buffer for the source
+    }Origin;
+    
+} arm_2d_op_src_orig_t;
+
 
 typedef struct arm_2d_op_src_alpha_msk_t {
     inherit(arm_2d_op_core_t);
@@ -405,7 +442,9 @@ typedef struct arm_2d_op_src_alpha_msk_t {
 
 #if defined(__clang__)
 #pragma clang diagnostic pop
-#elif defined(__GNUC__)
+#elif __IS_COMPILER_ARM_COMPILER_5__
+#pragma diag_warning 64
+#elif __IS_COMPILER_GCC__
 #pragma GCC diagnostic pop
 #endif
 
