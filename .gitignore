@@ -2,3 +2,4 @@
 Kernels/Research/Arm-2D/examples/alpha_blending/Out/alpha_blending.sct
 Kernels/Research/Arm-2D/examples/alpha_blending/Out/alpha_blending_sct.Bak
 *.scvd
+*.elf
