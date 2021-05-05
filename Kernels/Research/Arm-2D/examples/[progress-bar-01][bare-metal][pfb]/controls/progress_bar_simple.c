@@ -117,17 +117,20 @@ void progress_bar_simple_show(const arm_2d_tile_t *ptTarget, int_fast16_t iProgr
                 .iY = tBarRegion.tLocation.iY,
             },
         };
-        arm_2d_rgb16_tile_copy( &c_tileSemisphere,          //!< source tile
+        arm_2d_rgb16_tile_copy_with_colour_masking( &c_tileSemisphere,          //!< source tile
                                 ptTarget,                   //!< display buffer
                                 &tSemisphere,               //!< region to draw
+                                GLCD_COLOR_BLACK,
                                 ARM_2D_CP_MODE_COPY);       //!< copy only
+                                       
                                
         tSemisphere.tLocation.iX = tBarRegion.tLocation.iX + tBarRegion.tSize.iWidth;
-        arm_2d_rgb16_tile_copy( &c_tileSemisphere,          //!< source tile
+        arm_2d_rgb16_tile_copy_with_colour_masking( &c_tileSemisphere,          //!< source tile
                                 ptTarget,                   //!< display buffer
                                 &tSemisphere,               //!< region to draw
+                                GLCD_COLOR_BLACK,
                                 ARM_2D_CP_MODE_COPY |       //!< copy with x-mirroring
-                                ARM_2D_CP_MODE_X_MIRROR );   
+                                ARM_2D_CP_MODE_X_MIRROR);   
     } while(0);
     
     //! draw inner bar

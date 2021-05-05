@@ -453,6 +453,16 @@
               <FileType>1</FileType>
               <FilePath>.\platform\GLCD_Fonts.c</FilePath>
             </File>
+            <File>
+              <FileName>lcd_printf.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\platform\lcd_printf.c</FilePath>
+            </File>
+            <File>
+              <FileName>lcd_printf.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\platform\lcd_printf.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -1329,6 +1339,16 @@
               <FileName>GLCD_Fonts.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\platform\GLCD_Fonts.c</FilePath>
+            </File>
+            <File>
+              <FileName>lcd_printf.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\platform\lcd_printf.c</FilePath>
+            </File>
+            <File>
+              <FileName>lcd_printf.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\platform\lcd_printf.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -2274,6 +2294,16 @@
               <FileName>GLCD_Fonts.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\platform\GLCD_Fonts.c</FilePath>
+            </File>
+            <File>
+              <FileName>lcd_printf.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\platform\lcd_printf.c</FilePath>
+            </File>
+            <File>
+              <FileName>lcd_printf.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\platform\lcd_printf.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -3221,6 +3251,16 @@
               <FileType>1</FileType>
               <FilePath>.\platform\GLCD_Fonts.c</FilePath>
             </File>
+            <File>
+              <FileName>lcd_printf.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\platform\lcd_printf.c</FilePath>
+            </File>
+            <File>
+              <FileName>lcd_printf.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\platform\lcd_printf.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -4097,6 +4137,16 @@
               <FileName>GLCD_Fonts.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\platform\GLCD_Fonts.c</FilePath>
+            </File>
+            <File>
+              <FileName>lcd_printf.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\platform\lcd_printf.c</FilePath>
+            </File>
+            <File>
+              <FileName>lcd_printf.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\platform\lcd_printf.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -5044,6 +5094,16 @@
               <FileType>1</FileType>
               <FilePath>.\platform\GLCD_Fonts.c</FilePath>
             </File>
+            <File>
+              <FileName>lcd_printf.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\platform\lcd_printf.c</FilePath>
+            </File>
+            <File>
+              <FileName>lcd_printf.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\platform\lcd_printf.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -5990,6 +6050,16 @@
               <FileType>1</FileType>
               <FilePath>.\platform\GLCD_Fonts.c</FilePath>
             </File>
+            <File>
+              <FileName>lcd_printf.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\platform\lcd_printf.c</FilePath>
+            </File>
+            <File>
+              <FileName>lcd_printf.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\platform\lcd_printf.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -6796,7 +6866,7 @@
           </ArmAdsMisc>
           <Cads>
             <interw>1</interw>
-            <Optim>5</Optim>
+            <Optim>6</Optim>
             <oTime>1</oTime>
             <SplitLS>0</SplitLS>
             <OneElfS>1</OneElfS>
@@ -6935,6 +7005,16 @@
               <FileName>GLCD_Fonts.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\platform\GLCD_Fonts.c</FilePath>
+            </File>
+            <File>
+              <FileName>lcd_printf.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\platform\lcd_printf.c</FilePath>
+            </File>
+            <File>
+              <FileName>lcd_printf.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\platform\lcd_printf.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -7881,6 +7961,16 @@
               <FileName>GLCD_Fonts.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\platform\GLCD_Fonts.c</FilePath>
+            </File>
+            <File>
+              <FileName>lcd_printf.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\platform\lcd_printf.c</FilePath>
+            </File>
+            <File>
+              <FileName>lcd_printf.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\platform\lcd_printf.h</FilePath>
             </File>
           </Files>
         </Group>

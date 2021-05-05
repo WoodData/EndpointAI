@@ -16,51 +16,17 @@
  * limitations under the License.
  */
 
-<<<<<<< HEAD:Kernels/Research/Arm-2D/examples/[progress-bar-01][bare-metal][pfb]/controls/app_cfg.h
 #include "../app_cfg.h"
 
 #ifndef __CONTROL_APP_CFG_H__
 #define __CONTROL_APP_CFG_H__
-=======
-#ifndef __LCD_PRINTF_H__
-#define __LCD_PRINTF_H__
->>>>>>> master:Kernels/Research/Arm-2D/examples/[template][bare-metal][pfb]/platform/lcd_printf.h
 
 /*============================ INCLUDES ======================================*/
-#include <stdint.h>
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 /*============================ MACROS ========================================*/
 /*============================ MACROFIED FUNCTIONS ===========================*/
-<<<<<<< HEAD:Kernels/Research/Arm-2D/examples/[progress-bar-01][bare-metal][pfb]/controls/app_cfg.h
-=======
-#define __PRINT_BANNER(__STR)                                                   \
-        do {                                                                    \
-            lcd_text_location(  (GLCD_HEIGHT / 8) / 2 - 1,                      \
-                                ((GLCD_WIDTH / 6) - sizeof(__STR)) / 2);        \
-            lcd_puts(__STR);                                                    \
-        } while(0)
-
->>>>>>> master:Kernels/Research/Arm-2D/examples/[template][bare-metal][pfb]/platform/lcd_printf.h
 /*============================ TYPES =========================================*/
 /*============================ GLOBAL VARIABLES ==============================*/
 /*============================ PROTOTYPES ====================================*/
 
-
-extern
-int lcd_printf(const char *format, ...);
-
-extern
-void lcd_puts(const char *str);
-
-extern 
-void lcd_text_location(uint8_t chY, uint8_t chX);
-
-#ifdef __cplusplus
-}
-#endif
 
 #endif

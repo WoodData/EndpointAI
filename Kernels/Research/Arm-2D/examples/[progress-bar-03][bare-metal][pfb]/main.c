@@ -33,6 +33,11 @@
 #   pragma clang diagnostic ignored "-Wmissing-prototypes"
 #   pragma clang diagnostic ignored "-Wunused-variable"
 #   pragma clang diagnostic ignored "-Wgnu-statement-expression"
+#elif __IS_COMPILER_ARM_COMPILER_5__
+#elif __IS_COMPILER_GCC__
+#   pragma GCC diagnostic push
+#   pragma GCC diagnostic ignored "-Wformat="
+#   pragma GCC diagnostic ignored "-Wpedantic"
 #endif
 
 /*============================ MACROS ========================================*/
@@ -48,8 +53,6 @@
 /*============================ TYPES =========================================*/
 /*============================ GLOBAL VARIABLES ==============================*/
 /*============================ PROTOTYPES ====================================*/
-static void demo_draw_background(void);
-
 /*============================ LOCAL VARIABLES ===============================*/
 
 static char s_chPerformanceInfo[(GLCD_WIDTH/6)+1] = {0};
@@ -61,27 +64,27 @@ static ARM_NOINIT arm_2d_helper_pfb_t s_tExamplePFB;
 void display_task(void) 
 {  
             
+    /*! define dirty regions */
+    IMPL_ARM_2D_REGION_LIST(s_tDirtyRegions, static const)
+        
+        ADD_REGION_TO_LIST(s_tDirtyRegions,
+            .tLocation = {(APP_SCREEN_WIDTH - (APP_SCREEN_WIDTH * 3 >> 3)) / 2,
+                          (APP_SCREEN_HEIGHT - 20) / 2},
+            .tSize = {
+                .iWidth = (APP_SCREEN_WIDTH * 3 >> 3),
+                .iHeight = 20,  
+            },
+        ),
+        
+        ADD_LAST_REGION_TO_LIST(s_tDirtyRegions,
+            .tLocation = {0,APP_SCREEN_HEIGHT - 8},
+            .tSize = {
+                .iWidth = APP_SCREEN_WIDTH,
+                .iHeight = 8,  
+            },
+        ),
 
-IMPL_ARM_2D_REGION_LIST(s_tDirtyRegions, static const)
-    
-    ADD_REGION_TO_LIST(s_tDirtyRegions,
-        .tLocation = {(APP_SCREEN_WIDTH - (APP_SCREEN_WIDTH * 3 >> 3)) / 2,
-                      (APP_SCREEN_HEIGHT - 20) / 2},
-        .tSize = {
-            .iWidth = (APP_SCREEN_WIDTH * 3 >> 3),
-            .iHeight = 20,  
-        },
-    ),
-    
-    ADD_LAST_REGION_TO_LIST(s_tDirtyRegions,
-        .tLocation = {0,APP_SCREEN_HEIGHT - 8},
-        .tSize = {
-            .iWidth = APP_SCREEN_WIDTH,
-            .iHeight = 8,  
-        },
-    ),
-
-END_IMPL_ARM_2D_REGION_LIST()
+    END_IMPL_ARM_2D_REGION_LIST()
             
 
 /*! define the partial-flushing area */
@@ -137,7 +140,7 @@ int32_t arm_2d_helper_perf_counter_stop(void)
 }
 
 
-static arm_fsm_rt_t __pfb_draw_handler_t( void *pTarget,
+static arm_fsm_rt_t __pfb_draw_handler( void *pTarget,
                                           const arm_2d_tile_t *ptTile)
 {
     ARM_2D_UNUSED(pTarget);
@@ -146,6 +149,16 @@ static arm_fsm_rt_t __pfb_draw_handler_t( void *pTarget,
     return arm_fsm_rt_cpl;
 }
 
+static arm_fsm_rt_t __pfb_draw_background_handler( 
+                                            void *pTarget,
+                                            const arm_2d_tile_t *ptTile)
+{
+    ARM_2D_UNUSED(pTarget);
+
+    arm_2d_rgb16_fill_colour(ptTile, NULL, GLCD_COLOR_WHITE);
+
+    return arm_fsm_rt_cpl;
+}
 
 static void __pfb_render_handler( void *pTarget, const arm_2d_pfb_t *ptPFB)
 {
@@ -159,11 +172,9 @@ static void __pfb_render_handler( void *pTarget, const arm_2d_pfb_t *ptPFB)
                     ptTile->tRegion.tSize.iHeight,
                     ptTile->pchBuffer);
                     
-    arm_2d_helper_report_rendering_complete(&s_tExamplePFB, 
-                                            (arm_2d_pfb_t *)ptPFB);
+    arm_2d_helper_pfb_report_rendering_complete(&s_tExamplePFB, 
+                                                (arm_2d_pfb_t *)ptPFB);
 }
-
-
 
 
 
@@ -172,14 +183,16 @@ static void __pfb_render_handler( void *pTarget, const arm_2d_pfb_t *ptPFB)
  *----------------------------------------------------------------------------*/
 int main (void) 
 {
+#if __IS_COMPILER_GCC__
+    app_platform_init();
+#endif
+
     arm_irq_safe {
         arm_2d_init();
         /* put your code here */
         example_gui_init();
     }         
 
-    demo_draw_background();
-
     //! initialise FPB helper
     if (ARM_2D_HELPER_PFB_INIT( 
             &s_tExamplePFB,                 //!< FPB Helper object
@@ -196,64 +209,35 @@ int main (void)
                 },
                 .evtOnDrawing = {
                     //! callback for drawing GUI 
-                    .fnHandler = &__pfb_draw_handler_t, 
+                    .fnHandler = &__pfb_draw_background_handler, 
                 },
             }
         ) < 0) {
         //! error detected
         assert(false);
     }
-
+    
+    //! draw background first
+    while(arm_fsm_rt_cpl != arm_2d_helper_pfb_task(&s_tExamplePFB,NULL));
+    
+    //! update draw function
+    arm_2d_helper_pfb_update_dependency(&s_tExamplePFB,
+                                        ARM_2D_PFB_DEPEND_ON_DRAWING,
+                                        &(arm_2d_helper_pfb_dependency_t) {
+                                            .evtOnDrawing = {
+                                                .fnHandler = &__pfb_draw_handler,
+                                                .pTarget = NULL,
+                                            },
+                                        });
     
     while (1) {
         display_task();
     }
 }
 
-static arm_fsm_rt_t __pfb_draw_background_handler_t( void *pTarget,
-                                                    const arm_2d_tile_t *ptTile)
-{
-    ARM_2D_UNUSED(pTarget);
-    arm_2d_rgb16_fill_colour(ptTile, NULL, GLCD_COLOR_WHITE);
-
-    return arm_fsm_rt_cpl;
-}
-
-
-static void demo_draw_background(void)
-{
-    //! initialise FPB helper
-    if (ARM_2D_HELPER_PFB_INIT( 
-            &s_tExamplePFB,                 //!< FPB Helper object
-            APP_SCREEN_WIDTH,               //!< screen width
-            APP_SCREEN_HEIGHT,              //!< screen height
-            uint16_t,                       //!< colour date type
-            PBF_BLOCK_WIDTH,                //!< PFB block width
-            PBF_BLOCK_HEIGHT,               //!< PFB block height
-            1,                              //!< number of PFB in the PFB pool
-            {
-                .evtOnLowLevelRendering = {
-                    //! callback for low level rendering 
-                    .fnHandler = &__pfb_render_handler,                         
-                },
-                .evtOnDrawing = {
-                    //! callback for drawing GUI 
-                    .fnHandler = &__pfb_draw_background_handler_t, 
-                },
-            }
-        ) < 0) {
-        //! error detected
-        assert(false);
-    }
-    
-    //! call partial framebuffer helper service
-    while(arm_fsm_rt_cpl != arm_2d_helper_pfb_task(&s_tExamplePFB, NULL));
-    
-}
-
-
 #if defined(__clang__)
 #   pragma clang diagnostic pop
 #endif
+
 
 
