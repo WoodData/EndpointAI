@@ -99,11 +99,15 @@ void example_gui_on_refresh_evt_handler(const arm_2d_tile_t *ptFrameBuffer)
 }
 
 
-void example_gui_refresh(const arm_2d_tile_t *ptFrameBuffer)
+void example_gui_refresh(const arm_2d_tile_t *ptFrameBuffer, bool bIsNewFrame)
 {
+    static int_fast16_t s_iProgress = 0;
     arm_2d_rgb16_fill_colour(ptFrameBuffer, NULL, GLCD_COLOR_WHITE);
     
-    progress_bar_drill_show(ptFrameBuffer, s_iDemoProgress);
+    if (bIsNewFrame) {
+        s_iProgress = s_iDemoProgress;
+    }
+    progress_bar_drill_show(ptFrameBuffer, s_iProgress);
     example_gui_on_refresh_evt_handler(ptFrameBuffer);
 }
 

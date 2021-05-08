@@ -95,11 +95,16 @@ void example_gui_on_refresh_evt_handler(const arm_2d_tile_t *ptFrameBuffer)
      ARM_2D_UNUSED(ptFrameBuffer);
 }
 
-void example_gui_refresh(const arm_2d_tile_t *ptFrameBuffer)
+void example_gui_refresh(const arm_2d_tile_t *ptFrameBuffer, bool bIsNewFrame)
 {
+    static uint_fast16_t s_hwProgress = 0;
     arm_2d_rgb16_fill_colour(ptFrameBuffer, NULL, GLCD_COLOR_BLACK);
     
-    progress_bar_simple_show(ptFrameBuffer, s_hwDemoProgress);
+    if (bIsNewFrame) {
+        s_hwProgress = s_hwDemoProgress;
+    }
+    
+    progress_bar_simple_show(ptFrameBuffer, s_hwProgress);
     
     example_gui_on_refresh_evt_handler(ptFrameBuffer);
 }
