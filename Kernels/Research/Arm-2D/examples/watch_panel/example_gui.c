@@ -21,6 +21,7 @@
 #include "platform.h"
 #include "example_gui.h"
 #include "./controls/controls.h"
+#include <math.h>
 
 #if defined(__clang__)
 #   pragma clang diagnostic push
@@ -33,6 +34,7 @@
 #   pragma clang diagnostic ignored "-Wmissing-braces"
 #   pragma clang diagnostic ignored "-Wunused-const-variable"
 #   pragma clang diagnostic ignored "-Wmissing-prototypes"
+#   pragma clang diagnostic ignored "-Wgnu-statement-expression"
 #endif
 
 /*============================ MACROS ========================================*/
@@ -65,7 +67,7 @@ extern void platform_1ms_event_handler(void);
 
 void platform_1ms_event_handler(void)
 {
-    s_wSystemTimeInMs++; 
+    s_wSystemTimeInMs++;
     if (!(s_wSystemTimeInMs & (_BV(10) - 1))) {
         s_bTimeout = true;
     }
@@ -74,7 +76,7 @@ void platform_1ms_event_handler(void)
 void example_gui_init(void)
 {
     controls_init();
-    
+
 }
 
 
@@ -84,7 +86,7 @@ void example_gui_do_events(void)
 }
 
 
-__WEAK 
+__WEAK
 void example_gui_on_refresh_evt_handler(const arm_2d_tile_t *ptFrameBuffer)
 {
      ARM_2D_UNUSED(ptFrameBuffer);
@@ -93,8 +95,19 @@ void example_gui_on_refresh_evt_handler(const arm_2d_tile_t *ptFrameBuffer)
 extern const arm_2d_tile_t c_tileArrow;
 extern
 const arm_2d_tile_t c_tileGear01;
-extern 
+extern
 const arm_2d_tile_t c_tileGear02;
+extern
+const arm_2d_tile_t c_tilePointerSec;
+
+extern 
+const arm_2d_tile_t c_tileWatchPanel;
+
+extern 
+const arm_2d_tile_t c_tileClockface;
+ 
+extern 
+const arm_2d_tile_t c_tileBackground;
 
 typedef struct {
     arm_2d_op_rotate_alpha_t tOP;
@@ -106,19 +119,21 @@ typedef struct {
     uint8_t chOpacity;
 } demo_gears_t;
 
+static
 demo_gears_t s_tGears[] = {
 
     {
         .ptTile = &c_tileGear02,
-        .fAngleSpeed = -3,
+        .fAngleSpeed = 3.0f,
         .tCentre = {
             .iX = 20,
             .iY = 20,
         },
+
         .tRegion = {
             .tLocation = {
-                .iX = ((APP_SCREEN_WIDTH - 41) >> 1) + 10,
-                .iY = ((APP_SCREEN_HEIGHT - 40) >>1) + 10,
+                .iX = ((APP_SCREEN_WIDTH - 41) >> 1) + 30,
+                .iY = ((APP_SCREEN_HEIGHT - 40) >>1) + 30,
             },
             .tSize = {
                 .iWidth = 41,
@@ -130,63 +145,102 @@ demo_gears_t s_tGears[] = {
 
     {
         .ptTile = &c_tileGear01,
-        .fAngleSpeed = 0.8,
+        .fAngleSpeed = -0.5f,
         .tCentre = {
             .iX = 61,
             .iY = 60,
         },
         .tRegion = {
             .tLocation = {
-                .iX = ((APP_SCREEN_WIDTH - 120) >> 1) - 20,
-                .iY = ((APP_SCREEN_HEIGHT - 120) >>1) - 20,
+                .iX = ((APP_SCREEN_WIDTH - 120) >> 1),
+                .iY = ((APP_SCREEN_HEIGHT - 120) >>1),
             },
             .tSize = {
                 .iWidth = 120,
                 .iHeight = 120,
             },
         },
-        .chOpacity = 128,
+        .chOpacity = 200,
     },
 
+    {
+        .ptTile = &c_tilePointerSec,
+        .fAngleSpeed = 1.0f,
+        .tCentre = {
+            .iX = 6,
+            .iY = 111,
+        },
+        .tRegion = {
+            .tLocation = {
+                .iX = ((APP_SCREEN_WIDTH - 12) >> 1),
+                .iY = ((APP_SCREEN_HEIGHT - 147) >>1),
+            },
+            .tSize = {
+                .iWidth = 12,
+                .iHeight = 147,
+            },
+        },
+        .chOpacity = 255,
+    },
 
-    
 };
 
 void example_gui_refresh(const arm_2d_tile_t *ptTile, bool bIsNewFrame)
 {
-    static float s_fAngle = 0;
 
-    arm_2d_rgb16_fill_colour(ptTile, NULL, GLCD_COLOR_BLACK);
+    static const arm_2d_region_t tPanelRegion = {
+        .tLocation = {
+            .iX = ((APP_SCREEN_WIDTH - 221) >> 1),
+            .iY = ((APP_SCREEN_HEIGHT - 221) >> 1),
+        },
+        .tSize = {
+            .iWidth = 221,
+            .iHeight = 221,
+        },
+    };
     
+    //arm_2d_rgb16_fill_colour(ptTile, NULL, GLCD_COLOR_BLACK);
+    arm_2d_rgb16_tile_copy(&c_tileBackground,
+                            ptTile,
+                            NULL,
+                            ARM_2D_CP_MODE_COPY);
+    
+    arm_2d_rbg565_alpha_blending_with_colour_masking(
+                                &c_tileWatchPanel,
+                                ptTile,
+                                &tPanelRegion,
+                                128,
+                                (arm_2d_color_rgb565_t){GLCD_COLOR_BLACK});
+
     arm_foreach (demo_gears_t, s_tGears) {
-    
+
         if (bIsNewFrame) {
             _->fAngle += ARM_2D_ANGLE(_->fAngleSpeed);
-            if (s_fAngle >= ARM_2D_ANGLE(360)) {
-                s_fAngle -= ARM_2D_ANGLE(360);
-            }
+
+            _->fAngle = fmodf(_->fAngle,ARM_2D_ANGLE(360));
+
         }
 
         if (255 == _->chOpacity) {
-            arm_2d_2dp_rgb565_tile_rotation(  
+            arm_2dp_rgb565_tile_rotation(
                                             (arm_2d_op_rotate_t *)&(_->tOP),
-                                            _->ptTile,          //!< source tile 
+                                            _->ptTile,          //!< source tile
                                             ptTile,             //!< target tile
                                             &(_->tRegion),      //!< target region
                                             _->tCentre,         //!< center point
                                             _->fAngle,          //!< rotation angle
                                             GLCD_COLOR_BLACK);  //!< masking colour
-                                                          
+
         } else {
-            arm_2d_2dp_rgb565_tile_rotation_with_alpha(  
+            arm_2dp_rgb565_tile_rotation_with_alpha(
                                             &(_->tOP),
-                                            _->ptTile,          //!< source tile 
+                                            _->ptTile,          //!< source tile
                                             ptTile,             //!< target tile
                                             &(_->tRegion),      //!< target region
                                             _->tCentre,         //!< center point
                                             _->fAngle,          //!< rotation angle
                                             GLCD_COLOR_BLACK,   //!< masking colour
-                                            _->chOpacity);      //!< Opacity     
+                                            _->chOpacity);      //!< Opacity
         }
     }
 
@@ -197,6 +251,3 @@ void example_gui_refresh(const arm_2d_tile_t *ptTile, bool bIsNewFrame)
 #if defined(__clang__)
 #   pragma clang diagnostic pop
 #endif
-
-
- 

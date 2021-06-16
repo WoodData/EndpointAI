@@ -129,7 +129,8 @@ static void lcd_draw_char(int16_t iX, int16_t iY, char chChar)
                                 ptFrameBuffer, 
                                 &tDrawRegion,
                                     ARM_2D_DRW_PATN_MODE_COPY           
-                                //| ARM_2D_DRW_PATN_MODE_NO_FG_COLOR    
+                                //| ARM_2D_DRW_PATN_MODE_NO_FG_COLOR 
+                                //| ARM_2D_DRW_PATN_MODE_WITH_BG_COLOR
                                 //| ARM_2D_DRW_PATH_MODE_COMP_FG_COLOUR 
                                 ,
                                 GLCD_COLOR_GREEN,
@@ -186,7 +187,7 @@ void lcd_puts(const char *str)
 int lcd_printf(const char *format, ...)
 {
     int real_size;
-    static char s_chBuffer[MIN(((GLCD_WIDTH/6)+1), 54)];
+    static char s_chBuffer[MAX(((GLCD_WIDTH/6)+1), 54)];
     __va_list ap;
     va_start(ap, format);
         real_size = vsnprintf(s_chBuffer, sizeof(s_chBuffer)-1, format, ap);

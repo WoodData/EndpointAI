@@ -16,7 +16,7 @@
         <TargetCommonOption>
           <Device>ARMCM33_DSP_FP_TZ</Device>
           <Vendor>ARM</Vendor>
-          <PackID>ARM.CMSIS.5.7.0</PackID>
+          <PackID>ARM.CMSIS.5.8.0</PackID>
           <PackURL>http://www.keil.com/pack/</PackURL>
           <Cpu>IRAM(0x20000000,0x00020000) IRAM2(0x20200000,0x00020000) IROM(0x00000000,0x00200000) IROM2(0x00200000,0x00200000) CPUTYPE("Cortex-M33") FPU3(SFPU) DSP TZ CLOCK(12000000) ESEL ELITTLE</Cpu>
           <FlashUtilSpec></FlashUtilSpec>
@@ -488,6 +488,26 @@
               <FileType>1</FileType>
               <FilePath>.\asset\gear_02.c</FilePath>
             </File>
+            <File>
+              <FileName>pointer_sec.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\asset\pointer_sec.c</FilePath>
+            </File>
+            <File>
+              <FileName>clockface.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\asset\clockface.c</FilePath>
+            </File>
+            <File>
+              <FileName>watch_panel.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\asset\watch_panel.c</FilePath>
+            </File>
+            <File>
+              <FileName>background.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\asset\background.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -942,7 +962,7 @@
       <TargetName>V2M-MPS2-CM4</TargetName>
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
-      <pCCUsed>6160000::V6.16::ARMCLANG</pCCUsed>
+      <pCCUsed>6160001::V6.16.1::..\..\Program Files\ARMCompiler6.16.1</pCCUsed>
       <uAC6>1</uAC6>
       <TargetOption>
         <TargetCommonOption>
@@ -1419,6 +1439,26 @@
               <FileName>gear_02.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\asset\gear_02.c</FilePath>
+            </File>
+            <File>
+              <FileName>pointer_sec.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\asset\pointer_sec.c</FilePath>
+            </File>
+            <File>
+              <FileName>clockface.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\asset\clockface.c</FilePath>
+            </File>
+            <File>
+              <FileName>watch_panel.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\asset\watch_panel.c</FilePath>
+            </File>
+            <File>
+              <FileName>background.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\asset\background.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -1943,7 +1983,7 @@
       <TargetName>FastModel</TargetName>
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
-      <pCCUsed>6160000::V6.16::ARMCLANG</pCCUsed>
+      <pCCUsed>6160001::V6.16.1::..\..\Program Files\ARMCompiler6.16.1</pCCUsed>
       <uAC6>1</uAC6>
       <TargetOption>
         <TargetCommonOption>
@@ -2270,7 +2310,7 @@
             <v6Rtti>0</v6Rtti>
             <VariousControls>
               <MiscControls>-Omax</MiscControls>
-              <Define>NDEBUG,GLCD_MIRROR_X=1,GLCD_MIRROR_Y=0</Define>
+              <Define>NDEBUG,GLCD_MIRROR_X=1,GLCD_MIRROR_Y=0,ITERATION_CNT=10</Define>
               <Undefine></Undefine>
               <IncludePath>.\platform;.;..\..\Library\Include;..\..\Helper\Include</IncludePath>
             </VariousControls>
@@ -2419,6 +2459,26 @@
               <FileName>gear_02.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\asset\gear_02.c</FilePath>
+            </File>
+            <File>
+              <FileName>pointer_sec.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\asset\pointer_sec.c</FilePath>
+            </File>
+            <File>
+              <FileName>clockface.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\asset\clockface.c</FilePath>
+            </File>
+            <File>
+              <FileName>watch_panel.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\asset\watch_panel.c</FilePath>
+            </File>
+            <File>
+              <FileName>background.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\asset\background.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -2867,75 +2927,6 @@
         </Group>
         <Group>
           <GroupName>::Device</GroupName>
-          <GroupOption>
-            <CommonProperty>
-              <UseCPPCompiler>0</UseCPPCompiler>
-              <RVCTCodeConst>0</RVCTCodeConst>
-              <RVCTZI>0</RVCTZI>
-              <RVCTOtherData>0</RVCTOtherData>
-              <ModuleSelection>0</ModuleSelection>
-              <IncludeInBuild>1</IncludeInBuild>
-              <AlwaysBuild>2</AlwaysBuild>
-              <GenerateAssemblyFile>2</GenerateAssemblyFile>
-              <AssembleAssemblyFile>2</AssembleAssemblyFile>
-              <PublicsOnly>2</PublicsOnly>
-              <StopOnExitCode>11</StopOnExitCode>
-              <CustomArgument></CustomArgument>
-              <IncludeLibraryModules></IncludeLibraryModules>
-              <ComprImg>1</ComprImg>
-            </CommonProperty>
-            <GroupArmAds>
-              <Cads>
-                <interw>2</interw>
-                <Optim>0</Optim>
-                <oTime>2</oTime>
-                <SplitLS>2</SplitLS>
-                <OneElfS>2</OneElfS>
-                <Strict>2</Strict>
-                <EnumInt>2</EnumInt>
-                <PlainCh>2</PlainCh>
-                <Ropi>2</Ropi>
-                <Rwpi>2</Rwpi>
-                <wLevel>0</wLevel>
-                <uThumb>2</uThumb>
-                <uSurpInc>2</uSurpInc>
-                <uC99>2</uC99>
-                <uGnu>2</uGnu>
-                <useXO>2</useXO>
-                <v6Lang>0</v6Lang>
-                <v6LangP>0</v6LangP>
-                <vShortEn>2</vShortEn>
-                <vShortWch>2</vShortWch>
-                <v6Lto>2</v6Lto>
-                <v6WtE>2</v6WtE>
-                <v6Rtti>2</v6Rtti>
-                <VariousControls>
-                  <MiscControls></MiscControls>
-                  <Define></Define>
-                  <Undefine></Undefine>
-                  <IncludePath></IncludePath>
-                </VariousControls>
-              </Cads>
-              <Aads>
-                <interw>2</interw>
-                <Ropi>2</Ropi>
-                <Rwpi>2</Rwpi>
-                <thumb>2</thumb>
-                <SplitLS>2</SplitLS>
-                <SwStkChk>2</SwStkChk>
-                <NoWarn>2</NoWarn>
-                <uSurpInc>2</uSurpInc>
-                <useXO>2</useXO>
-                <ClangAsOpt>0</ClangAsOpt>
-                <VariousControls>
-                  <MiscControls></MiscControls>
-                  <Define></Define>
-                  <Undefine></Undefine>
-                  <IncludePath></IncludePath>
-                </VariousControls>
-              </Aads>
-            </GroupArmAds>
-          </GroupOption>
         </Group>
       </Groups>
     </Target>
@@ -2943,7 +2934,7 @@
       <TargetName>V2M-MPS2-CM33</TargetName>
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
-      <pCCUsed>6160000::V6.16::ARMCLANG</pCCUsed>
+      <pCCUsed>6160001::V6.16.1::..\..\Program Files\ARMCompiler6.16.1</pCCUsed>
       <uAC6>1</uAC6>
       <TargetOption>
         <TargetCommonOption>
@@ -3255,7 +3246,7 @@
             <PlainCh>0</PlainCh>
             <Ropi>0</Ropi>
             <Rwpi>0</Rwpi>
-            <wLevel>3</wLevel>
+            <wLevel>2</wLevel>
             <uThumb>0</uThumb>
             <uSurpInc>0</uSurpInc>
             <uC99>0</uC99>
@@ -3270,7 +3261,7 @@
             <v6Rtti>0</v6Rtti>
             <VariousControls>
               <MiscControls>-Omax</MiscControls>
-              <Define>NDEBUG,GLCD_MIRROR_X=1,GLCD_MIRROR_Y=0,EXTERANL_DELAY_MS_DECLARE="extern void delay_ms(uint32_t);"</Define>
+              <Define>NDEBUG,GLCD_MIRROR_X=1,GLCD_MIRROR_Y=0</Define>
               <Undefine></Undefine>
               <IncludePath>.\platform;.\platform\v2m_mps3;..\..\Library\Include;.;..\..\Helper\Include</IncludePath>
             </VariousControls>
@@ -3420,6 +3411,26 @@
               <FileName>gear_02.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\asset\gear_02.c</FilePath>
+            </File>
+            <File>
+              <FileName>pointer_sec.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\asset\pointer_sec.c</FilePath>
+            </File>
+            <File>
+              <FileName>clockface.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\asset\clockface.c</FilePath>
+            </File>
+            <File>
+              <FileName>watch_panel.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\asset\watch_panel.c</FilePath>
+            </File>
+            <File>
+              <FileName>background.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\asset\background.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -3881,7 +3892,7 @@
         <TargetCommonOption>
           <Device>ARMCM55</Device>
           <Vendor>ARM</Vendor>
-          <PackID>ARM.CMSIS.5.7.0</PackID>
+          <PackID>ARM.CMSIS.5.8.0</PackID>
           <PackURL>http://www.keil.com/pack/</PackURL>
           <Cpu>IRAM(0x30000000,0x00020000) IRAM2(0x20000000,0x00020000) IROM(0x10000000,0x00200000) IROM2(0x00000000,0x00200000) CPUTYPE("Cortex-M55") FPU3(DFPU) DSP TZ MVE(FP) CLOCK(12000000) ESEL ELITTLE</Cpu>
           <FlashUtilSpec></FlashUtilSpec>
@@ -4187,7 +4198,7 @@
             <PlainCh>0</PlainCh>
             <Ropi>0</Ropi>
             <Rwpi>0</Rwpi>
-            <wLevel>3</wLevel>
+            <wLevel>2</wLevel>
             <uThumb>0</uThumb>
             <uSurpInc>0</uSurpInc>
             <uC99>0</uC99>
@@ -4202,7 +4213,7 @@
             <v6Rtti>0</v6Rtti>
             <VariousControls>
               <MiscControls>-Omax</MiscControls>
-              <Define>NDEBUG,LCD_MIRROR_X=1,GLCD_MIRROR_Y=0,EXTERANL_DELAY_MS_DECLARE="extern void delay_ms(uint32_t);",ARM_MATH_HELIUM</Define>
+              <Define>NDEBUG,LCD_MIRROR_X=1,GLCD_MIRROR_Y=0,EXTERANL_DELAY_MS_DECLARE="extern void delay_ms(uint32_t);"</Define>
               <Undefine></Undefine>
               <IncludePath>.\platform;.\platform\mps3\v2m_mps3;..\..\Library\Include;.\platform\mps3;.;..\..\Helper\Include</IncludePath>
             </VariousControls>
@@ -4352,6 +4363,26 @@
               <FileName>gear_02.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\asset\gear_02.c</FilePath>
+            </File>
+            <File>
+              <FileName>pointer_sec.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\asset\pointer_sec.c</FilePath>
+            </File>
+            <File>
+              <FileName>clockface.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\asset\clockface.c</FilePath>
+            </File>
+            <File>
+              <FileName>watch_panel.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\asset\watch_panel.c</FilePath>
+            </File>
+            <File>
+              <FileName>background.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\asset\background.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -4800,75 +4831,6 @@
         </Group>
         <Group>
           <GroupName>::Device</GroupName>
-          <GroupOption>
-            <CommonProperty>
-              <UseCPPCompiler>0</UseCPPCompiler>
-              <RVCTCodeConst>0</RVCTCodeConst>
-              <RVCTZI>0</RVCTZI>
-              <RVCTOtherData>0</RVCTOtherData>
-              <ModuleSelection>0</ModuleSelection>
-              <IncludeInBuild>1</IncludeInBuild>
-              <AlwaysBuild>2</AlwaysBuild>
-              <GenerateAssemblyFile>2</GenerateAssemblyFile>
-              <AssembleAssemblyFile>2</AssembleAssemblyFile>
-              <PublicsOnly>2</PublicsOnly>
-              <StopOnExitCode>11</StopOnExitCode>
-              <CustomArgument></CustomArgument>
-              <IncludeLibraryModules></IncludeLibraryModules>
-              <ComprImg>1</ComprImg>
-            </CommonProperty>
-            <GroupArmAds>
-              <Cads>
-                <interw>2</interw>
-                <Optim>0</Optim>
-                <oTime>2</oTime>
-                <SplitLS>2</SplitLS>
-                <OneElfS>2</OneElfS>
-                <Strict>2</Strict>
-                <EnumInt>2</EnumInt>
-                <PlainCh>2</PlainCh>
-                <Ropi>2</Ropi>
-                <Rwpi>2</Rwpi>
-                <wLevel>0</wLevel>
-                <uThumb>2</uThumb>
-                <uSurpInc>2</uSurpInc>
-                <uC99>2</uC99>
-                <uGnu>2</uGnu>
-                <useXO>2</useXO>
-                <v6Lang>0</v6Lang>
-                <v6LangP>0</v6LangP>
-                <vShortEn>2</vShortEn>
-                <vShortWch>2</vShortWch>
-                <v6Lto>2</v6Lto>
-                <v6WtE>2</v6WtE>
-                <v6Rtti>2</v6Rtti>
-                <VariousControls>
-                  <MiscControls></MiscControls>
-                  <Define></Define>
-                  <Undefine></Undefine>
-                  <IncludePath></IncludePath>
-                </VariousControls>
-              </Cads>
-              <Aads>
-                <interw>2</interw>
-                <Ropi>2</Ropi>
-                <Rwpi>2</Rwpi>
-                <thumb>2</thumb>
-                <SplitLS>2</SplitLS>
-                <SwStkChk>2</SwStkChk>
-                <NoWarn>2</NoWarn>
-                <uSurpInc>2</uSurpInc>
-                <useXO>2</useXO>
-                <ClangAsOpt>0</ClangAsOpt>
-                <VariousControls>
-                  <MiscControls></MiscControls>
-                  <Define></Define>
-                  <Undefine></Undefine>
-                  <IncludePath></IncludePath>
-                </VariousControls>
-              </Aads>
-            </GroupArmAds>
-          </GroupOption>
         </Group>
       </Groups>
     </Target>
@@ -4876,7 +4838,7 @@
       <TargetName>V2M-MPS2-CM0+</TargetName>
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
-      <pCCUsed>6160000::V6.16::ARMCLANG</pCCUsed>
+      <pCCUsed>6160001::V6.16.1::..\..\Program Files\ARMCompiler6.16.1</pCCUsed>
       <uAC6>1</uAC6>
       <TargetOption>
         <TargetCommonOption>
@@ -5188,7 +5150,7 @@
             <PlainCh>0</PlainCh>
             <Ropi>0</Ropi>
             <Rwpi>0</Rwpi>
-            <wLevel>2</wLevel>
+            <wLevel>3</wLevel>
             <uThumb>0</uThumb>
             <uSurpInc>0</uSurpInc>
             <uC99>0</uC99>
@@ -5353,6 +5315,26 @@
               <FileName>gear_02.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\asset\gear_02.c</FilePath>
+            </File>
+            <File>
+              <FileName>pointer_sec.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\asset\pointer_sec.c</FilePath>
+            </File>
+            <File>
+              <FileName>clockface.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\asset\clockface.c</FilePath>
+            </File>
+            <File>
+              <FileName>watch_panel.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\asset\watch_panel.c</FilePath>
+            </File>
+            <File>
+              <FileName>background.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\asset\background.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -5801,75 +5783,6 @@
         </Group>
         <Group>
           <GroupName>::Device</GroupName>
-          <GroupOption>
-            <CommonProperty>
-              <UseCPPCompiler>0</UseCPPCompiler>
-              <RVCTCodeConst>0</RVCTCodeConst>
-              <RVCTZI>0</RVCTZI>
-              <RVCTOtherData>0</RVCTOtherData>
-              <ModuleSelection>0</ModuleSelection>
-              <IncludeInBuild>1</IncludeInBuild>
-              <AlwaysBuild>2</AlwaysBuild>
-              <GenerateAssemblyFile>2</GenerateAssemblyFile>
-              <AssembleAssemblyFile>2</AssembleAssemblyFile>
-              <PublicsOnly>2</PublicsOnly>
-              <StopOnExitCode>11</StopOnExitCode>
-              <CustomArgument></CustomArgument>
-              <IncludeLibraryModules></IncludeLibraryModules>
-              <ComprImg>1</ComprImg>
-            </CommonProperty>
-            <GroupArmAds>
-              <Cads>
-                <interw>2</interw>
-                <Optim>0</Optim>
-                <oTime>2</oTime>
-                <SplitLS>2</SplitLS>
-                <OneElfS>2</OneElfS>
-                <Strict>2</Strict>
-                <EnumInt>2</EnumInt>
-                <PlainCh>2</PlainCh>
-                <Ropi>2</Ropi>
-                <Rwpi>2</Rwpi>
-                <wLevel>0</wLevel>
-                <uThumb>2</uThumb>
-                <uSurpInc>2</uSurpInc>
-                <uC99>2</uC99>
-                <uGnu>2</uGnu>
-                <useXO>2</useXO>
-                <v6Lang>0</v6Lang>
-                <v6LangP>0</v6LangP>
-                <vShortEn>2</vShortEn>
-                <vShortWch>2</vShortWch>
-                <v6Lto>2</v6Lto>
-                <v6WtE>2</v6WtE>
-                <v6Rtti>2</v6Rtti>
-                <VariousControls>
-                  <MiscControls></MiscControls>
-                  <Define></Define>
-                  <Undefine></Undefine>
-                  <IncludePath></IncludePath>
-                </VariousControls>
-              </Cads>
-              <Aads>
-                <interw>2</interw>
-                <Ropi>2</Ropi>
-                <Rwpi>2</Rwpi>
-                <thumb>2</thumb>
-                <SplitLS>2</SplitLS>
-                <SwStkChk>2</SwStkChk>
-                <NoWarn>2</NoWarn>
-                <uSurpInc>2</uSurpInc>
-                <useXO>2</useXO>
-                <ClangAsOpt>0</ClangAsOpt>
-                <VariousControls>
-                  <MiscControls></MiscControls>
-                  <Define></Define>
-                  <Undefine></Undefine>
-                  <IncludePath></IncludePath>
-                </VariousControls>
-              </Aads>
-            </GroupArmAds>
-          </GroupOption>
         </Group>
       </Groups>
     </Target>
@@ -5877,7 +5790,7 @@
       <TargetName>V2M-MPS2-CM7</TargetName>
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
-      <pCCUsed>6160000::V6.16::ARMCLANG</pCCUsed>
+      <pCCUsed>6160001::V6.16.1::..\..\Program Files\ARMCompiler6.16.1</pCCUsed>
       <uAC6>1</uAC6>
       <TargetOption>
         <TargetCommonOption>
@@ -6050,7 +5963,7 @@
             <hadIRAM>1</hadIRAM>
             <hadXRAM>0</hadXRAM>
             <uocXRam>0</uocXRam>
-            <RvdsVP>3</RvdsVP>
+            <RvdsVP>2</RvdsVP>
             <RvdsMve>0</RvdsMve>
             <RvdsCdeCp>0</RvdsCdeCp>
             <hadIRAM2>0</hadIRAM2>
@@ -6189,7 +6102,7 @@
             <PlainCh>0</PlainCh>
             <Ropi>0</Ropi>
             <Rwpi>0</Rwpi>
-            <wLevel>2</wLevel>
+            <wLevel>3</wLevel>
             <uThumb>0</uThumb>
             <uSurpInc>0</uSurpInc>
             <uC99>0</uC99>
@@ -6354,6 +6267,26 @@
               <FileName>gear_02.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\asset\gear_02.c</FilePath>
+            </File>
+            <File>
+              <FileName>pointer_sec.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\asset\pointer_sec.c</FilePath>
+            </File>
+            <File>
+              <FileName>clockface.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\asset\clockface.c</FilePath>
+            </File>
+            <File>
+              <FileName>watch_panel.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\asset\watch_panel.c</FilePath>
+            </File>
+            <File>
+              <FileName>background.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\asset\background.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -6802,75 +6735,6 @@
         </Group>
         <Group>
           <GroupName>::Device</GroupName>
-          <GroupOption>
-            <CommonProperty>
-              <UseCPPCompiler>0</UseCPPCompiler>
-              <RVCTCodeConst>0</RVCTCodeConst>
-              <RVCTZI>0</RVCTZI>
-              <RVCTOtherData>0</RVCTOtherData>
-              <ModuleSelection>0</ModuleSelection>
-              <IncludeInBuild>1</IncludeInBuild>
-              <AlwaysBuild>2</AlwaysBuild>
-              <GenerateAssemblyFile>2</GenerateAssemblyFile>
-              <AssembleAssemblyFile>2</AssembleAssemblyFile>
-              <PublicsOnly>2</PublicsOnly>
-              <StopOnExitCode>11</StopOnExitCode>
-              <CustomArgument></CustomArgument>
-              <IncludeLibraryModules></IncludeLibraryModules>
-              <ComprImg>1</ComprImg>
-            </CommonProperty>
-            <GroupArmAds>
-              <Cads>
-                <interw>2</interw>
-                <Optim>0</Optim>
-                <oTime>2</oTime>
-                <SplitLS>2</SplitLS>
-                <OneElfS>2</OneElfS>
-                <Strict>2</Strict>
-                <EnumInt>2</EnumInt>
-                <PlainCh>2</PlainCh>
-                <Ropi>2</Ropi>
-                <Rwpi>2</Rwpi>
-                <wLevel>0</wLevel>
-                <uThumb>2</uThumb>
-                <uSurpInc>2</uSurpInc>
-                <uC99>2</uC99>
-                <uGnu>2</uGnu>
-                <useXO>2</useXO>
-                <v6Lang>0</v6Lang>
-                <v6LangP>0</v6LangP>
-                <vShortEn>2</vShortEn>
-                <vShortWch>2</vShortWch>
-                <v6Lto>2</v6Lto>
-                <v6WtE>2</v6WtE>
-                <v6Rtti>2</v6Rtti>
-                <VariousControls>
-                  <MiscControls></MiscControls>
-                  <Define></Define>
-                  <Undefine></Undefine>
-                  <IncludePath></IncludePath>
-                </VariousControls>
-              </Cads>
-              <Aads>
-                <interw>2</interw>
-                <Ropi>2</Ropi>
-                <Rwpi>2</Rwpi>
-                <thumb>2</thumb>
-                <SplitLS>2</SplitLS>
-                <SwStkChk>2</SwStkChk>
-                <NoWarn>2</NoWarn>
-                <uSurpInc>2</uSurpInc>
-                <useXO>2</useXO>
-                <ClangAsOpt>0</ClangAsOpt>
-                <VariousControls>
-                  <MiscControls></MiscControls>
-                  <Define></Define>
-                  <Undefine></Undefine>
-                  <IncludePath></IncludePath>
-                </VariousControls>
-              </Aads>
-            </GroupArmAds>
-          </GroupOption>
         </Group>
       </Groups>
     </Target>
@@ -7057,7 +6921,7 @@
             <hadIRAM2>1</hadIRAM2>
             <hadIROM2>1</hadIROM2>
             <StupSel>8</StupSel>
-            <useUlib>1</useUlib>
+            <useUlib>0</useUlib>
             <EndSel>0</EndSel>
             <uLtcg>0</uLtcg>
             <nSecure>0</nSecure>
@@ -7356,6 +7220,26 @@
               <FileType>1</FileType>
               <FilePath>.\asset\gear_02.c</FilePath>
             </File>
+            <File>
+              <FileName>pointer_sec.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\asset\pointer_sec.c</FilePath>
+            </File>
+            <File>
+              <FileName>clockface.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\asset\clockface.c</FilePath>
+            </File>
+            <File>
+              <FileName>watch_panel.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\asset\watch_panel.c</FilePath>
+            </File>
+            <File>
+              <FileName>background.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\asset\background.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -7803,75 +7687,6 @@
         </Group>
         <Group>
           <GroupName>::Device</GroupName>
-          <GroupOption>
-            <CommonProperty>
-              <UseCPPCompiler>0</UseCPPCompiler>
-              <RVCTCodeConst>0</RVCTCodeConst>
-              <RVCTZI>0</RVCTZI>
-              <RVCTOtherData>0</RVCTOtherData>
-              <ModuleSelection>0</ModuleSelection>
-              <IncludeInBuild>1</IncludeInBuild>
-              <AlwaysBuild>2</AlwaysBuild>
-              <GenerateAssemblyFile>2</GenerateAssemblyFile>
-              <AssembleAssemblyFile>2</AssembleAssemblyFile>
-              <PublicsOnly>2</PublicsOnly>
-              <StopOnExitCode>11</StopOnExitCode>
-              <CustomArgument></CustomArgument>
-              <IncludeLibraryModules></IncludeLibraryModules>
-              <ComprImg>1</ComprImg>
-            </CommonProperty>
-            <GroupArmAds>
-              <Cads>
-                <interw>2</interw>
-                <Optim>0</Optim>
-                <oTime>2</oTime>
-                <SplitLS>2</SplitLS>
-                <OneElfS>2</OneElfS>
-                <Strict>2</Strict>
-                <EnumInt>2</EnumInt>
-                <PlainCh>2</PlainCh>
-                <Ropi>2</Ropi>
-                <Rwpi>2</Rwpi>
-                <wLevel>0</wLevel>
-                <uThumb>2</uThumb>
-                <uSurpInc>2</uSurpInc>
-                <uC99>2</uC99>
-                <uGnu>2</uGnu>
-                <useXO>2</useXO>
-                <v6Lang>0</v6Lang>
-                <v6LangP>0</v6LangP>
-                <vShortEn>2</vShortEn>
-                <vShortWch>2</vShortWch>
-                <v6Lto>2</v6Lto>
-                <v6WtE>2</v6WtE>
-                <v6Rtti>2</v6Rtti>
-                <VariousControls>
-                  <MiscControls></MiscControls>
-                  <Define></Define>
-                  <Undefine></Undefine>
-                  <IncludePath></IncludePath>
-                </VariousControls>
-              </Cads>
-              <Aads>
-                <interw>2</interw>
-                <Ropi>2</Ropi>
-                <Rwpi>2</Rwpi>
-                <thumb>2</thumb>
-                <SplitLS>2</SplitLS>
-                <SwStkChk>2</SwStkChk>
-                <NoWarn>2</NoWarn>
-                <uSurpInc>2</uSurpInc>
-                <useXO>2</useXO>
-                <ClangAsOpt>0</ClangAsOpt>
-                <VariousControls>
-                  <MiscControls></MiscControls>
-                  <Define></Define>
-                  <Undefine></Undefine>
-                  <IncludePath></IncludePath>
-                </VariousControls>
-              </Aads>
-            </GroupArmAds>
-          </GroupOption>
         </Group>
       </Groups>
     </Target>
@@ -7879,7 +7694,7 @@
       <TargetName>AN547-Cortex-M55_r0</TargetName>
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
-      <pCCUsed>6160000::V6.16::ARMCLANG</pCCUsed>
+      <pCCUsed>6160001::V6.16.1::..\..\Program Files\ARMCompiler6.16.1</pCCUsed>
       <uAC6>1</uAC6>
       <TargetOption>
         <TargetCommonOption>
@@ -8053,7 +7868,7 @@
             <hadXRAM>1</hadXRAM>
             <uocXRam>0</uocXRam>
             <RvdsVP>3</RvdsVP>
-            <RvdsMve>2</RvdsMve>
+            <RvdsMve>0</RvdsMve>
             <RvdsCdeCp>0</RvdsCdeCp>
             <hadIRAM2>1</hadIRAM2>
             <hadIROM2>0</hadIROM2>
@@ -8205,8 +8020,8 @@
             <v6WtE>0</v6WtE>
             <v6Rtti>0</v6Rtti>
             <VariousControls>
-              <MiscControls>-Omax -Wno-padded</MiscControls>
-              <Define>NDEBUG,LCD_MIRROR_X=1,GLCD_MIRROR_Y=0,EXTERANL_DELAY_MS_DECLARE="extern void delay_ms(uint32_t);",ARM_MATH_HELIUM,__USE_AN547__</Define>
+              <MiscControls>-Wno-padded -Omax</MiscControls>
+              <Define>NDEBUG,LCD_MIRROR_X=1,GLCD_MIRROR_Y=0,EXTERANL_DELAY_MS_DECLARE="extern void delay_ms(uint32_t);",__USE_AN547__</Define>
               <Undefine></Undefine>
               <IncludePath>.\platform;.\platform\mps3\v2m_mps3;..\..\Library\Include;.\platform\mps3;.;..\..\Helper\Include</IncludePath>
             </VariousControls>
@@ -8356,6 +8171,26 @@
               <FileName>gear_02.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\asset\gear_02.c</FilePath>
+            </File>
+            <File>
+              <FileName>pointer_sec.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\asset\pointer_sec.c</FilePath>
+            </File>
+            <File>
+              <FileName>clockface.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\asset\clockface.c</FilePath>
+            </File>
+            <File>
+              <FileName>watch_panel.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\asset\watch_panel.c</FilePath>
+            </File>
+            <File>
+              <FileName>background.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\asset\background.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -8804,75 +8639,6 @@
         </Group>
         <Group>
           <GroupName>::Device</GroupName>
-          <GroupOption>
-            <CommonProperty>
-              <UseCPPCompiler>0</UseCPPCompiler>
-              <RVCTCodeConst>0</RVCTCodeConst>
-              <RVCTZI>0</RVCTZI>
-              <RVCTOtherData>0</RVCTOtherData>
-              <ModuleSelection>0</ModuleSelection>
-              <IncludeInBuild>1</IncludeInBuild>
-              <AlwaysBuild>2</AlwaysBuild>
-              <GenerateAssemblyFile>2</GenerateAssemblyFile>
-              <AssembleAssemblyFile>2</AssembleAssemblyFile>
-              <PublicsOnly>2</PublicsOnly>
-              <StopOnExitCode>11</StopOnExitCode>
-              <CustomArgument></CustomArgument>
-              <IncludeLibraryModules></IncludeLibraryModules>
-              <ComprImg>1</ComprImg>
-            </CommonProperty>
-            <GroupArmAds>
-              <Cads>
-                <interw>2</interw>
-                <Optim>0</Optim>
-                <oTime>2</oTime>
-                <SplitLS>2</SplitLS>
-                <OneElfS>2</OneElfS>
-                <Strict>2</Strict>
-                <EnumInt>2</EnumInt>
-                <PlainCh>2</PlainCh>
-                <Ropi>2</Ropi>
-                <Rwpi>2</Rwpi>
-                <wLevel>0</wLevel>
-                <uThumb>2</uThumb>
-                <uSurpInc>2</uSurpInc>
-                <uC99>2</uC99>
-                <uGnu>2</uGnu>
-                <useXO>2</useXO>
-                <v6Lang>0</v6Lang>
-                <v6LangP>0</v6LangP>
-                <vShortEn>2</vShortEn>
-                <vShortWch>2</vShortWch>
-                <v6Lto>2</v6Lto>
-                <v6WtE>2</v6WtE>
-                <v6Rtti>2</v6Rtti>
-                <VariousControls>
-                  <MiscControls></MiscControls>
-                  <Define></Define>
-                  <Undefine></Undefine>
-                  <IncludePath></IncludePath>
-                </VariousControls>
-              </Cads>
-              <Aads>
-                <interw>2</interw>
-                <Ropi>2</Ropi>
-                <Rwpi>2</Rwpi>
-                <thumb>2</thumb>
-                <SplitLS>2</SplitLS>
-                <SwStkChk>2</SwStkChk>
-                <NoWarn>2</NoWarn>
-                <uSurpInc>2</uSurpInc>
-                <useXO>2</useXO>
-                <ClangAsOpt>0</ClangAsOpt>
-                <VariousControls>
-                  <MiscControls></MiscControls>
-                  <Define></Define>
-                  <Undefine></Undefine>
-                  <IncludePath></IncludePath>
-                </VariousControls>
-              </Aads>
-            </GroupArmAds>
-          </GroupOption>
         </Group>
       </Groups>
     </Target>
@@ -9358,6 +9124,26 @@
               <FileType>1</FileType>
               <FilePath>.\asset\gear_02.c</FilePath>
             </File>
+            <File>
+              <FileName>pointer_sec.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\asset\pointer_sec.c</FilePath>
+            </File>
+            <File>
+              <FileName>clockface.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\asset\clockface.c</FilePath>
+            </File>
+            <File>
+              <FileName>watch_panel.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\asset\watch_panel.c</FilePath>
+            </File>
+            <File>
+              <FileName>background.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\asset\background.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -9805,81 +9591,27 @@
         </Group>
         <Group>
           <GroupName>::Device</GroupName>
-          <GroupOption>
-            <CommonProperty>
-              <UseCPPCompiler>0</UseCPPCompiler>
-              <RVCTCodeConst>0</RVCTCodeConst>
-              <RVCTZI>0</RVCTZI>
-              <RVCTOtherData>0</RVCTOtherData>
-              <ModuleSelection>0</ModuleSelection>
-              <IncludeInBuild>1</IncludeInBuild>
-              <AlwaysBuild>2</AlwaysBuild>
-              <GenerateAssemblyFile>2</GenerateAssemblyFile>
-              <AssembleAssemblyFile>2</AssembleAssemblyFile>
-              <PublicsOnly>2</PublicsOnly>
-              <StopOnExitCode>11</StopOnExitCode>
-              <CustomArgument></CustomArgument>
-              <IncludeLibraryModules></IncludeLibraryModules>
-              <ComprImg>1</ComprImg>
-            </CommonProperty>
-            <GroupArmAds>
-              <Cads>
-                <interw>2</interw>
-                <Optim>0</Optim>
-                <oTime>2</oTime>
-                <SplitLS>2</SplitLS>
-                <OneElfS>2</OneElfS>
-                <Strict>2</Strict>
-                <EnumInt>2</EnumInt>
-                <PlainCh>2</PlainCh>
-                <Ropi>2</Ropi>
-                <Rwpi>2</Rwpi>
-                <wLevel>0</wLevel>
-                <uThumb>2</uThumb>
-                <uSurpInc>2</uSurpInc>
-                <uC99>2</uC99>
-                <uGnu>2</uGnu>
-                <useXO>2</useXO>
-                <v6Lang>0</v6Lang>
-                <v6LangP>0</v6LangP>
-                <vShortEn>2</vShortEn>
-                <vShortWch>2</vShortWch>
-                <v6Lto>2</v6Lto>
-                <v6WtE>2</v6WtE>
-                <v6Rtti>2</v6Rtti>
-                <VariousControls>
-                  <MiscControls></MiscControls>
-                  <Define></Define>
-                  <Undefine></Undefine>
-                  <IncludePath></IncludePath>
-                </VariousControls>
-              </Cads>
-              <Aads>
-                <interw>2</interw>
-                <Ropi>2</Ropi>
-                <Rwpi>2</Rwpi>
-                <thumb>2</thumb>
-                <SplitLS>2</SplitLS>
-                <SwStkChk>2</SwStkChk>
-                <NoWarn>2</NoWarn>
-                <uSurpInc>2</uSurpInc>
-                <useXO>2</useXO>
-                <ClangAsOpt>0</ClangAsOpt>
-                <VariousControls>
-                  <MiscControls></MiscControls>
-                  <Define></Define>
-                  <Undefine></Undefine>
-                  <IncludePath></IncludePath>
-                </VariousControls>
-              </Aads>
-            </GroupArmAds>
-          </GroupOption>
         </Group>
       </Groups>
     </Target>
   </Targets>
 
   <RTE>
+    <packages>
+      <filter>
+        <targetInfos/>
+      </filter>
+      <package name="CMSIS" schemaVersion="1.3" url="http://www.keil.com/pack/" vendor="ARM" version="5.7.0">
+        <targetInfos>
+          <targetInfo name="V2M-MPS3-CM55"/>
+        </targetInfos>
+      </package>
+      <package name="ARM_Compiler" schemaVersion="1.6.3" url="http://www.keil.com/pack/" vendor="Keil" version="1.6.3">
+        <targetInfos>
+          <targetInfo name="V2M-MPS3-CM55" versionMatchMode="fixed"/>
+        </targetInfos>
+      </package>
+    </packages>
     <apis>
       <api Capiversion="1.1.0" Cclass="Device" Cgroup="STM32Cube Framework" exclusive="1">
         <package name="STM32L4xx_DFP" schemaVersion="1.2" url="http://www.keil.com/pack" vendor="Keil" version="2.2.0"/>
@@ -9890,8 +9622,8 @@
       </api>
     </apis>
     <components>
-      <component Cclass="CMSIS" Cgroup="CORE" Cvendor="ARM" Cversion="5.4.0" condition="ARMv6_7_8-M Device">
-        <package name="CMSIS" schemaVersion="1.3" url="http://www.keil.com/pack/" vendor="ARM" version="5.7.0"/>
+      <component Cclass="CMSIS" Cgroup="CORE" Cvendor="ARM" Cversion="5.5.0" condition="ARMv6_7_8-M Device">
+        <package name="CMSIS" schemaVersion="1.3" url="http://www.keil.com/pack/" vendor="ARM" version="5.8.0"/>
         <targetInfos>
           <targetInfo name="AN547-Cortex-M55_r0"/>
           <targetInfo name="DO_NOT_USE_V2M-MPS3-CM33"/>
@@ -9905,12 +9637,12 @@
           <targetInfo name="V2M-MPS3-CM55"/>
         </targetInfos>
       </component>
-      <component Cclass="CMSIS" Cgroup="DSP" Cvariant="Source" Cvendor="ARM" Cversion="1.8.0" condition="CMSIS DSP" isTargetSpecific="1">
-        <package name="CMSIS" schemaVersion="1.3" url="http://www.keil.com/pack/" vendor="ARM" version="5.7.0"/>
+      <component Cclass="CMSIS" Cgroup="DSP" Cvariant="Source" Cvendor="ARM" Cversion="1.9.0-dev" condition="CMSIS DSP" isTargetSpecific="1">
+        <package name="CMSIS" schemaVersion="1.3" url="http://www.keil.com/pack/" vendor="ARM" version="5.8.0"/>
         <targetInfos>
           <targetInfo name="AN547-Cortex-M55_r0">
             <c>
-              <MiscControls>-Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-cast-qual -Wno-implicit-int-conversion -Wno-extra-semi-stmt -Wno-padded -Wno-cast-align -Wno-shadow -Wno-shorten-64-to-32 -Wno-conditional-uninitialized -Wno-vector-conversion -Wno-implicit-float-conversion -Wno-double-promotion -Wno-vla -Wno-newline-eof</MiscControls>
+              <MiscControls>-Wno-undef -Wno-align-mismatch -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-cast-qual -Wno-implicit-int-conversion -Wno-extra-semi-stmt -Wno-padded -Wno-cast-align -Wno-shadow -Wno-shorten-64-to-32 -Wno-conditional-uninitialized -Wno-vector-conversion -Wno-implicit-float-conversion -Wno-double-promotion -Wno-vla -Wno-newline-eof</MiscControls>
             </c>
           </targetInfo>
           <targetInfo name="DO_NOT_USE_V2M-MPS3-CM33">
@@ -9920,43 +9652,44 @@
           </targetInfo>
           <targetInfo name="FastModel">
             <c>
-              <MiscControls>-Ofast -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-cast-qual -Wno-implicit-int-conversion -Wno-extra-semi-stmt -Wno-padded -Wno-cast-align -Wno-shadow -Wno-shorten-64-to-32 -Wno-conditional-uninitialized -Wno-vector-conversion -Wno-implicit-float-conversion -Wno-double-promotion -Wno-vla -Wno-newline-eof</MiscControls>
+              <MiscControls>-Ofast -Wno-undef -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-cast-qual -Wno-implicit-int-conversion -Wno-extra-semi-stmt -Wno-padded -Wno-cast-align -Wno-shadow -Wno-shorten-64-to-32 -Wno-conditional-uninitialized -Wno-vector-conversion -Wno-implicit-float-conversion -Wno-double-promotion -Wno-vla -Wno-newline-eof</MiscControls>
             </c>
           </targetInfo>
           <targetInfo name="STM32F746G-Discovery">
             <c>
-              <MiscControls>-Ofast -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-cast-qual -Wno-implicit-int-conversion -Wno-extra-semi-stmt -Wno-padded -Wno-cast-align -Wno-shadow -Wno-shorten-64-to-32 -Wno-conditional-uninitialized -Wno-vector-conversion -Wno-implicit-float-conversion -Wno-double-promotion -Wno-vla -Wno-newline-eof</MiscControls>
+              <MiscControls>-Ofast -Wno-undef -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-cast-qual -Wno-implicit-int-conversion -Wno-extra-semi-stmt -Wno-padded -Wno-cast-align -Wno-shadow -Wno-shorten-64-to-32 -Wno-conditional-uninitialized -Wno-vector-conversion -Wno-implicit-float-conversion -Wno-double-promotion -Wno-vla -Wno-newline-eof</MiscControls>
             </c>
           </targetInfo>
           <targetInfo name="STM32F746G-Discovery-AC5">
             <c>
+              <MiscControls>-W</MiscControls>
               <Optim>4</Optim>
               <oTime>1</oTime>
             </c>
           </targetInfo>
           <targetInfo name="V2M-MPS2-CM0+">
             <c>
-              <MiscControls>-Ofast -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-cast-qual -Wno-implicit-int-conversion -Wno-extra-semi-stmt -Wno-padded -Wno-cast-align -Wno-shadow -Wno-shorten-64-to-32 -Wno-conditional-uninitialized -Wno-vector-conversion -Wno-implicit-float-conversion -Wno-double-promotion -Wno-vla -Wno-newline-eof</MiscControls>
+              <MiscControls>-Ofast -Wno-undef -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-cast-qual -Wno-implicit-int-conversion -Wno-extra-semi-stmt -Wno-padded -Wno-cast-align -Wno-shadow -Wno-shorten-64-to-32 -Wno-conditional-uninitialized -Wno-vector-conversion -Wno-implicit-float-conversion -Wno-double-promotion -Wno-vla -Wno-newline-eof</MiscControls>
             </c>
           </targetInfo>
           <targetInfo name="V2M-MPS2-CM33">
             <c>
-              <MiscControls>-Ofast -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-cast-qual -Wno-implicit-int-conversion -Wno-extra-semi-stmt -Wno-padded -Wno-cast-align -Wno-shadow -Wno-shorten-64-to-32 -Wno-conditional-uninitialized -Wno-vector-conversion -Wno-implicit-float-conversion -Wno-double-promotion -Wno-vla -Wno-newline-eof</MiscControls>
+              <MiscControls>-w</MiscControls>
             </c>
           </targetInfo>
           <targetInfo name="V2M-MPS2-CM4">
             <c>
-              <MiscControls>-Ofast -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-cast-qual -Wno-implicit-int-conversion -Wno-extra-semi-stmt -Wno-padded -Wno-cast-align -Wno-shadow -Wno-shorten-64-to-32 -Wno-conditional-uninitialized -Wno-vector-conversion -Wno-implicit-float-conversion -Wno-double-promotion -Wno-vla -Wno-newline-eof</MiscControls>
+              <MiscControls>-w</MiscControls>
             </c>
           </targetInfo>
           <targetInfo name="V2M-MPS2-CM7">
             <c>
-              <MiscControls>-Ofast -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-cast-qual -Wno-implicit-int-conversion -Wno-extra-semi-stmt -Wno-padded -Wno-cast-align -Wno-shadow -Wno-shorten-64-to-32 -Wno-conditional-uninitialized -Wno-vector-conversion -Wno-implicit-float-conversion -Wno-double-promotion -Wno-vla -Wno-newline-eof</MiscControls>
+              <MiscControls>-Ofast -Wno-undef -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-cast-qual -Wno-implicit-int-conversion -Wno-extra-semi-stmt -Wno-padded -Wno-cast-align -Wno-shadow -Wno-shorten-64-to-32 -Wno-conditional-uninitialized -Wno-vector-conversion -Wno-implicit-float-conversion -Wno-double-promotion -Wno-vla -Wno-newline-eof</MiscControls>
             </c>
           </targetInfo>
           <targetInfo name="V2M-MPS3-CM55">
             <c>
-              <MiscControls>-Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-cast-qual -Wno-implicit-int-conversion -Wno-extra-semi-stmt -Wno-padded -Wno-cast-align -Wno-shadow -Wno-shorten-64-to-32 -Wno-conditional-uninitialized -Wno-vector-conversion -Wno-implicit-float-conversion -Wno-double-promotion -Wno-vla -Wno-newline-eof</MiscControls>
+              <MiscControls>-w</MiscControls>
             </c>
           </targetInfo>
         </targetInfos>
@@ -9967,14 +9700,14 @@
           <targetInfo name="AN547-Cortex-M55_r0"/>
         </targetInfos>
       </component>
-      <component Cclass="Device" Cgroup="Startup" Cvendor="ARM" Cversion="1.2.2" condition="ARMCM33 CMSIS">
-        <package name="CMSIS" schemaVersion="1.3" url="http://www.keil.com/pack/" vendor="ARM" version="5.7.0"/>
+      <component Cclass="Device" Cgroup="Startup" Cvendor="ARM" Cversion="1.3.0" condition="ARMCM33 CMSIS">
+        <package name="CMSIS" schemaVersion="1.3" url="http://www.keil.com/pack/" vendor="ARM" version="5.8.0"/>
         <targetInfos>
           <targetInfo name="DO_NOT_USE_V2M-MPS3-CM33"/>
         </targetInfos>
       </component>
-      <component Cclass="Device" Cgroup="Startup" Cvariant="C Startup" Cvendor="ARM" Cversion="1.0.0" condition="ARMCM55 CMSIS">
-        <package name="CMSIS" schemaVersion="1.3" url="http://www.keil.com/pack/" vendor="ARM" version="5.7.0"/>
+      <component Cclass="Device" Cgroup="Startup" Cvariant="C Startup" Cvendor="ARM" Cversion="1.1.0" condition="ARMCM55 CMSIS">
+        <package name="CMSIS" schemaVersion="1.3" url="http://www.keil.com/pack/" vendor="ARM" version="5.8.0"/>
         <targetInfos>
           <targetInfo name="V2M-MPS3-CM55"/>
         </targetInfos>
@@ -10089,7 +9822,7 @@
           <targetInfo name="V2M-MPS2-CM7"/>
         </targetInfos>
       </component>
-      <component Cclass="Device" Cgroup="Startup" Cvendor="Keil" Cversion="1.0.3" condition="IOTKit_CM33 CMSIS" isTargetSpecific="1">
+      <component Cclass="Device" Cgroup="Startup" Cvendor="Keil" Cversion="1.0.3" condition="IOTKit_CM33 CMSIS">
         <package name="V2M-MPS2_IOTKit_BSP" schemaVersion="1.4.9" url="http://www.keil.com/pack/" vendor="Keil" version="1.4.2"/>
         <targetInfos>
           <targetInfo name="V2M-MPS2-CM33"/>
@@ -10104,11 +9837,13 @@
       </component>
     </components>
     <files>
-      <file attr="config" category="linkerScript" condition="TZ Secure ARMCC6" name="Device\ARM\ARMCM33\Source\ARM\ARMCM33_ac6_s.sct" version="0.0.0">
-        <instance index="0" removed="1">RTE\Device\ARMCM33_DSP_FP_TZ\ARMCM33_ac6_s.sct</instance>
+      <file attr="config" category="linkerScript" condition="TZ Secure ARMCC6" name="Device\ARM\ARMCM33\Source\ARM\ARMCM33_ac6_s.sct" version="1.1.0">
+        <instance index="0">RTE\Device\ARMCM33_DSP_FP_TZ\ARMCM33_ac6_s.sct</instance>
         <component Cclass="Device" Cgroup="Startup" Cvendor="ARM" Cversion="1.3.0" condition="ARMCM33 CMSIS"/>
-        <package name="CMSIS" schemaVersion="1.3" url="http://www.keil.com/pack/" vendor="ARM" version="5.7.1-dev1"/>
-        <targetInfos/>
+        <package name="CMSIS" schemaVersion="1.3" url="http://www.keil.com/pack/" vendor="ARM" version="5.8.0"/>
+        <targetInfos>
+          <targetInfo name="DO_NOT_USE_V2M-MPS3-CM33"/>
+        </targetInfos>
       </file>
       <file attr="config" category="header" name="template\RTE_Device.h" version="1.0.0">
         <instance index="0" removed="1">RTE\Device\ARMCM33_DSP_FP_TZ\RTE_Device.h</instance>
@@ -10118,24 +9853,24 @@
       </file>
       <file attr="config" category="header" condition="TZ Secure" name="Device\ARM\ARMCM33\Include\Template\partition_ARMCM33.h" version="1.1.1">
         <instance index="0">RTE\Device\ARMCM33_DSP_FP_TZ\partition_ARMCM33.h</instance>
-        <component Cclass="Device" Cgroup="Startup" Cvendor="ARM" Cversion="1.2.2" condition="ARMCM33 CMSIS"/>
-        <package name="CMSIS" schemaVersion="1.3" url="http://www.keil.com/pack/" vendor="ARM" version="5.7.0"/>
+        <component Cclass="Device" Cgroup="Startup" Cvendor="ARM" Cversion="1.3.0" condition="ARMCM33 CMSIS"/>
+        <package name="CMSIS" schemaVersion="1.3" url="http://www.keil.com/pack/" vendor="ARM" version="5.8.0"/>
         <targetInfos>
           <targetInfo name="DO_NOT_USE_V2M-MPS3-CM33"/>
         </targetInfos>
       </file>
-      <file attr="config" category="sourceAsm" condition="ARMCC" name="Device\ARM\ARMCM33\Source\ARM\startup_ARMCM33.s" version="1.0.1">
-        <instance index="0">RTE\Device\ARMCM33_DSP_FP_TZ\startup_ARMCM33.s</instance>
-        <component Cclass="Device" Cgroup="Startup" Cvendor="ARM" Cversion="1.2.2" condition="ARMCM33 CMSIS"/>
-        <package name="CMSIS" schemaVersion="1.3" url="http://www.keil.com/pack/" vendor="ARM" version="5.7.0"/>
+      <file attr="config" category="sourceAsm" condition="ARMCC6" name="Device\ARM\ARMCM33\Source\ARM\startup_ARMCM33.S" version="1.0.1">
+        <instance index="0">RTE\Device\ARMCM33_DSP_FP_TZ\startup_ARMCM33.S</instance>
+        <component Cclass="Device" Cgroup="Startup" Cvendor="ARM" Cversion="1.3.0" condition="ARMCM33 CMSIS"/>
+        <package name="CMSIS" schemaVersion="1.3" url="http://www.keil.com/pack/" vendor="ARM" version="5.8.0"/>
         <targetInfos>
           <targetInfo name="DO_NOT_USE_V2M-MPS3-CM33"/>
         </targetInfos>
       </file>
       <file attr="config" category="sourceC" name="Device\ARM\ARMCM33\Source\system_ARMCM33.c" version="1.0.1">
         <instance index="0">RTE\Device\ARMCM33_DSP_FP_TZ\system_ARMCM33.c</instance>
-        <component Cclass="Device" Cgroup="Startup" Cvendor="ARM" Cversion="1.2.2" condition="ARMCM33 CMSIS"/>
-        <package name="CMSIS" schemaVersion="1.3" url="http://www.keil.com/pack/" vendor="ARM" version="5.7.0"/>
+        <component Cclass="Device" Cgroup="Startup" Cvendor="ARM" Cversion="1.3.0" condition="ARMCM33 CMSIS"/>
+        <package name="CMSIS" schemaVersion="1.3" url="http://www.keil.com/pack/" vendor="ARM" version="5.8.0"/>
         <targetInfos>
           <targetInfo name="DO_NOT_USE_V2M-MPS3-CM33"/>
         </targetInfos>
@@ -10152,10 +9887,10 @@
         <package name="CMSIS" schemaVersion="1.3" url="http://www.keil.com/pack/" vendor="ARM" version="4.2.0"/>
         <targetInfos/>
       </file>
-      <file attr="config" category="linkerScript" condition="ARMCC6" name="Device\ARM\ARMCM55\Source\ARM\ARMCM55_ac6.sct" version="1.0.0">
+      <file attr="config" category="linkerScript" condition="TZ Non-secure ARMCC6" name="Device\ARM\ARMCM55\Source\ARM\ARMCM55_ac6.sct" version="1.0.0">
         <instance index="0">RTE\Device\ARMCM55\ARMCM55_ac6.sct</instance>
-        <component Cclass="Device" Cgroup="Startup" Cvariant="C Startup" Cvendor="ARM" Cversion="1.0.0" condition="ARMCM55 CMSIS"/>
-        <package name="CMSIS" schemaVersion="1.3" url="http://www.keil.com/pack/" vendor="ARM" version="5.7.0"/>
+        <component Cclass="Device" Cgroup="Startup" Cvariant="C Startup" Cvendor="ARM" Cversion="1.1.0" condition="ARMCM55 CMSIS" isDefaultVariant="1"/>
+        <package name="CMSIS" schemaVersion="1.3" url="http://www.keil.com/pack/" vendor="ARM" version="5.8.0"/>
         <targetInfos>
           <targetInfo name="V2M-MPS3-CM55"/>
         </targetInfos>
@@ -10168,16 +9903,16 @@
       </file>
       <file attr="config" category="sourceC" name="Device\ARM\ARMCM55\Source\startup_ARMCM55.c" version="1.0.0">
         <instance index="0">RTE\Device\ARMCM55\startup_ARMCM55.c</instance>
-        <component Cclass="Device" Cgroup="Startup" Cvariant="C Startup" Cvendor="ARM" Cversion="1.0.0" condition="ARMCM55 CMSIS"/>
-        <package name="CMSIS" schemaVersion="1.3" url="http://www.keil.com/pack/" vendor="ARM" version="5.7.0"/>
+        <component Cclass="Device" Cgroup="Startup" Cvariant="C Startup" Cvendor="ARM" Cversion="1.1.0" condition="ARMCM55 CMSIS" isDefaultVariant="1"/>
+        <package name="CMSIS" schemaVersion="1.3" url="http://www.keil.com/pack/" vendor="ARM" version="5.8.0"/>
         <targetInfos>
           <targetInfo name="V2M-MPS3-CM55"/>
         </targetInfos>
       </file>
       <file attr="config" category="sourceC" name="Device\ARM\ARMCM55\Source\system_ARMCM55.c" version="1.0.0">
         <instance index="0">RTE\Device\ARMCM55\system_ARMCM55.c</instance>
-        <component Cclass="Device" Cgroup="Startup" Cvariant="C Startup" Cvendor="ARM" Cversion="1.0.0" condition="ARMCM55 CMSIS"/>
-        <package name="CMSIS" schemaVersion="1.3" url="http://www.keil.com/pack/" vendor="ARM" version="5.7.0"/>
+        <component Cclass="Device" Cgroup="Startup" Cvariant="C Startup" Cvendor="ARM" Cversion="1.1.0" condition="ARMCM55 CMSIS" isDefaultVariant="1"/>
+        <package name="CMSIS" schemaVersion="1.3" url="http://www.keil.com/pack/" vendor="ARM" version="5.8.0"/>
         <targetInfos>
           <targetInfo name="V2M-MPS3-CM55"/>
         </targetInfos>

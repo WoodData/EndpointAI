@@ -27,22 +27,28 @@
 
 /*============================ INCLUDES ======================================*/
 
-/*! \note arm-2d relies on CMSIS 5.4.0 and above. 
+#if defined(__clang__)
+#   pragma clang diagnostic push
+#   pragma clang diagnostic ignored "-Wgnu-zero-variadic-macro-arguments"
+#   pragma clang diagnostic ignored "-Wpadded"
+#   pragma clang diagnostic ignored "-Wsign-conversion"
+#   pragma clang diagnostic ignored "-Wimplicit-int-conversion"
+#   pragma clang diagnostic ignored "-Wundef"
+#elif __IS_COMPILER_GCC__
+#   pragma GCC diagnostic push
+#   pragma GCC diagnostic ignored "-Wpedantic"
+#endif
+
+/*! \note arm-2d relies on CMSIS 5.4.0 and above.
  */
 #include "cmsis_compiler.h"
+#include <arm_math.h>
 
 #ifdef   __cplusplus
 extern "C" {
 #endif
 
-#if defined(__clang__)
-#   pragma clang diagnostic push
-#   pragma clang diagnostic ignored "-Wgnu-zero-variadic-macro-arguments"
-//#   pragma clang diagnostic ignored "-Wpadded"
-#elif __IS_COMPILER_GCC__
-#   pragma GCC diagnostic push
-#   pragma GCC diagnostic ignored "-Wpedantic"
-#endif
+
 
 /*============================ MACROS ========================================*/
 
@@ -124,7 +130,7 @@ extern "C" {
                                                         use_as__##__type)
 
 #define __inherit(__type)               __inherit_ex(__type,use_as__##__type)
-                                                        
+
 #define implement(__type)               __implement(__type)
 #define implement_ex(__type, __name)    __implement_ex(__type, __name)
 
@@ -169,7 +175,7 @@ extern "C" {
 #define __ARM_VA_NUM_ARGS(...)                                                  \
             __ARM_VA_NUM_ARGS_IMPL( 0,##__VA_ARGS__,16,15,14,13,12,11,10,9,     \
                                       8,7,6,5,4,3,2,1,0)
-            
+
 #define __ARM_CONNECT2(__A, __B)                        __A##__B
 #define __ARM_CONNECT3(__A, __B, __C)                   __A##__B##__C
 #define __ARM_CONNECT4(__A, __B, __C, __D)              __A##__B##__C##__D
@@ -182,25 +188,25 @@ extern "C" {
                                     __A##__B##__C##__D##__E##__F##__G##__H
 #define __ARM_CONNECT9(__A, __B, __C, __D, __E, __F, __G, __H, __I)             \
                                     __A##__B##__C##__D##__E##__F##__G##__H##__I
-                                                    
+
 #define ARM_CONNECT2(__A, __B)                  __ARM_CONNECT2(__A, __B)
 #define ARM_CONNECT3(__A, __B, __C)             __ARM_CONNECT3(__A, __B, __C)
 #define ARM_CONNECT4(__A, __B, __C, __D)        __ARM_CONNECT4(__A, __B, __C, __D)
 #define ARM_CONNECT5(__A, __B, __C, __D, __E)                                   \
-                __ARM_CONNECT5(__A, __B, __C, __D, __E)       
+                __ARM_CONNECT5(__A, __B, __C, __D, __E)
 #define ARM_CONNECT6(__A, __B, __C, __D, __E, __F)                              \
-                __ARM_CONNECT6(__A, __B, __C, __D, __E, __F) 
+                __ARM_CONNECT6(__A, __B, __C, __D, __E, __F)
 #define ARM_CONNECT7(__A, __B, __C, __D, __E, __F, __G)                         \
-                __ARM_CONNECT7(__A, __B, __C, __D, __E, __F, __G) 
+                __ARM_CONNECT7(__A, __B, __C, __D, __E, __F, __G)
 #define ARM_CONNECT8(__A, __B, __C, __D, __E, __F, __G, __H)                    \
-                __ARM_CONNECT8(__A, __B, __C, __D, __E, __F, __G, __H) 
+                __ARM_CONNECT8(__A, __B, __C, __D, __E, __F, __G, __H)
 #define ARM_CONNECT9(__A, __B, __C, __D, __E, __F, __G, __H, __I)               \
                 __ARM_CONNECT9(__A, __B, __C, __D, __E, __F, __G, __H, __I)
-       
+
 #define arm_connect(...)                                                        \
             ARM_CONNECT2(ARM_CONNECT, __ARM_VA_NUM_ARGS(__VA_ARGS__))(__VA_ARGS__)
-            
-            
+
+
 
 #define __ARM_USING1(__declare)                                                 \
             for (__declare, *ARM_CONNECT3(__ARM_USING_, __LINE__,_ptr) = NULL;  \
@@ -219,14 +225,14 @@ extern "C" {
                     ((__on_enter_expr),1) : 0;                                  \
                  __on_leave_expr                                                \
                 )
-                
+
 #define __ARM_USING4(__dcl1, __dcl2, __on_enter_expr, __on_leave_expr)          \
             for (__dcl1,__dcl2,*ARM_CONNECT3(__ARM_USING_, __LINE__,_ptr)= NULL;\
                  ARM_CONNECT3(__ARM_USING_, __LINE__,_ptr)++ == NULL ?          \
                     ((__on_enter_expr),1) : 0;                                  \
                  __on_leave_expr                                                \
                 )
-               
+
 #define arm_using(...)                                                          \
             ARM_CONNECT2(__ARM_USING, __ARM_VA_NUM_ARGS(__VA_ARGS__))(__VA_ARGS__)
 
@@ -271,7 +277,7 @@ extern "C" {
         defined(__IS_COMPILER_LLVM__)
 #       define ARM_NONNULL(...)     __attribute__((nonnull(__VA_ARGS__)))
 #   else
-#       define ARM_NONNULL(...)     
+#       define ARM_NONNULL(...)
 #   endif
 #endif
 
@@ -288,6 +294,13 @@ extern "C" {
 #       define ARM_NOINIT
 #   endif
 #endif
+
+
+#ifndef ARM_ALIGN
+#   define __ARM_ALIGN(__N)        __attribute__((aligned(__N)))
+#   define ARM_ALIGN(__N)          __ARM_ALIGN(__N) 
+#endif
+
 
 #ifndef __RESTRICT
 #   define __RESTRICT                __restrict
@@ -310,30 +323,30 @@ extern "C" {
 #define arm_irq_safe                                                            \
             arm_using(  uint32_t ARM_CONNECT2(temp,__LINE__) =                  \
                         ({uint32_t temp=__get_PRIMASK();__disable_irq();temp;}),\
-                        __set_PRIMASK(ARM_CONNECT2(temp,__LINE__))) 
+                        __set_PRIMASK(ARM_CONNECT2(temp,__LINE__)))
 
 
 
 /*----------------------------------------------------------------------------*
  * List Operations                                                            *
  *----------------------------------------------------------------------------*/
- 
-/*! \note ALL the parameters passed to following macros must be pointer 
+
+/*! \note ALL the parameters passed to following macros must be pointer
  *!       variables.
  */
- 
+
 #define __ARM_LIST_STACK_PUSH(__P_TOP, __P_NODE)                                \
         do {                                                                    \
             ((__arm_slist_node_t *)(__P_NODE))->ptNext =                        \
                 (__arm_slist_node_t *)(__P_TOP);                                \
             (*(__arm_slist_node_t **)&(__P_TOP)) =                              \
                 (__arm_slist_node_t *)(__P_NODE);                               \
-        } while(0)                                
+        } while(0)
 #define ARM_LIST_STACK_PUSH(__P_TOP, __P_NODE)                                  \
             __ARM_LIST_STACK_PUSH((__P_TOP), (__P_NODE))
 #define ARM_LIST_INSERT_AFTER(__P_TARGET, __P_NODE)                             \
             __ARM_LIST_STACK_PUSH((__P_TARGET), (__P_NODE))
-        
+
 #define __ARM_LIST_STACK_POP(__P_TOP, __P_NODE)                                 \
         do {                                                                    \
             (*(__arm_slist_node_t **)&(__P_NODE)) =                             \
@@ -343,12 +356,12 @@ extern "C" {
                     ((__arm_slist_node_t *)(__P_NODE))->ptNext;                 \
                 ((__arm_slist_node_t *)(__P_NODE))->ptNext = NULL;              \
             }                                                                   \
-        } while(0)                                 
+        } while(0)
 #define ARM_LIST_STACK_POP(__P_TOP, __P_NODE)    __ARM_LIST_STACK_POP((__P_TOP), (__P_NODE))
 #define ARM_LIST_REMOVE_AFTER(__P_TARGET, __P_NODE)                             \
             ARM_LIST_STACK_POP((__P_TARGET), (__P_NODE))
-        
-        
+
+
 #define __ARM_LIST_QUEUE_ENQUEUE(__HEAD, __TAIL, __ITEM)                        \
     do {                                                                        \
         if (NULL == (__TAIL)) {                                                 \
@@ -367,7 +380,7 @@ extern "C" {
     } while(0)
 #define ARM_LIST_QUEUE_ENQUEUE(__HEAD, __TAIL, __ITEM)  \
             __ARM_LIST_QUEUE_ENQUEUE((__HEAD), (__TAIL), (__ITEM))
-    
+
 #define __ARM_LIST_QUEUE_DEQUEUE(__HEAD, __TAIL, __ITEM)                        \
     do {                                                                        \
         (*(__arm_slist_node_t **)&(__ITEM)) =  (__arm_slist_node_t *)(__HEAD);  \
@@ -379,7 +392,7 @@ extern "C" {
             }                                                                   \
         }                                                                       \
     } while(0)
-    
+
 #define ARM_LIST_QUEUE_DEQUEUE(__HEAD, __TAIL, __ITEM)  \
             __ARM_LIST_QUEUE_DEQUEUE((__HEAD), (__TAIL), (__ITEM))
 
@@ -436,7 +449,7 @@ struct __arm_slist_node_t {
  * Reentrant Macros                                                           *
  *----------------------------------------------------------------------------*/
 
-/* un-define macros */ 
+/* un-define macros */
 #undef ARM_PRIVATE
 
 
@@ -455,6 +468,9 @@ struct __arm_slist_node_t {
                 [sizeof(struct {__VA_ARGS__})]                                  \
                 __ALIGNED(__alignof__(struct {__VA_ARGS__}));
 #endif
+
+
+
 
 /* post un-define macros */
 

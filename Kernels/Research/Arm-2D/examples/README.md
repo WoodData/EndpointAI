@@ -52,6 +52,21 @@ It is an **ALL-IN-ONE** example that demonstrates almost all the features provid
 
 The visual effects is the same as Alpha-blending but using Partial-Frame-buffer scheme.
 
+### 1.3 Watch-Panel
+
+**PROJECT:    watch_panel**
+
+It is an example of rotation APIs. It consists of five layers:
+
+1. A background layer (Using Tile Copy)
+2. A clock_panel layer (Using Alpha-Blending-With-Colour-Masking)
+3. A small gold gear (Rotation)
+4. A big black gear (Rotation with Alpha Blending)
+5. A red pointer (Rotation)
+
+This demo also shows how a fancy looking clock could be rendered with just less than 10K RAM (or even less by setting a smaller PFB size). 
+
+![watch_panel](../documents/pictures/watch_panel.gif) 
 
 
 ## 2 Extended Examples
@@ -89,4 +104,3 @@ A bare-metal example using Partial-Frame-Buffer scheme shows how to build a prog
 **PROJECT:    \[progress-bar-03\]\[bare-metal\]\[pfb\]**
 
 A bare-metal example using Partial-Frame-Buffer scheme shows how to build a progress bar with a waving pulse effect using only  Arm-2D APIs.
-
