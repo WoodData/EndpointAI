@@ -160,9 +160,9 @@ void example_gui_on_refresh_evt_handler(const arm_2d_tile_t *ptFrameBuffer)
                     STR(ITERATION_CNT)
                     " iterations\r\n");
 
-        lcd_printf( "PFB Size: " STR(PFB_BLOCK_WIDTH)"*" STR(PFB_BLOCK_HEIGHT)
-                  "  Screen Size: "STR(APP_SCREEN_WIDTH)"*" STR(APP_SCREEN_HEIGHT)
-                  "  %dMHz\r\n", SystemCoreClock / 1000000ul);
+        lcd_puts(   "PFB Size: " STR(PFB_BLOCK_WIDTH)"*" STR(PFB_BLOCK_HEIGHT)
+                    "  Screen Size: "STR(APP_SCREEN_WIDTH)"*" STR(APP_SCREEN_HEIGHT));
+        lcd_printf( "\r\nCPU Freq: %dMHz\r\n", SystemCoreClock / 1000000ul);
         lcd_puts( "Testing...\r\n");
         
         lcd_printf("Average: %d ", BENCHMARK.wAverage);
@@ -223,9 +223,9 @@ IMPL_PFB_ON_DRAW(__pfb_draw_background_handler)
                 STR(ITERATION_CNT)
                 " iterations\r\n");
 
-    lcd_printf( "PFB Size: " STR(PFB_BLOCK_WIDTH)"*" STR(PFB_BLOCK_HEIGHT)
-              "  Screen Size: "STR(APP_SCREEN_WIDTH)"*" STR(APP_SCREEN_HEIGHT)
-              "  %dMHz\r\n", SystemCoreClock / 1000000ul);
+    lcd_puts(   "PFB Size: " STR(PFB_BLOCK_WIDTH)"*" STR(PFB_BLOCK_HEIGHT)
+                "  Screen Size: "STR(APP_SCREEN_WIDTH)"*" STR(APP_SCREEN_HEIGHT));
+    lcd_printf( "\r\nCPU Freq: %dMHz\r\n", SystemCoreClock / 1000000ul);
     lcd_puts( "Testing...\r\n\r\n");
 
     //lcd_text_location( GLCD_HEIGHT / 8 - 2, 0);

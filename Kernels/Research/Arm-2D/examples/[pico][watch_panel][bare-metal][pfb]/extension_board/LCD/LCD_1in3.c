@@ -273,10 +273,9 @@ void GLCD_DrawBitmap(   int_fast16_t x, int_fast16_t y,
     LCD_1IN3_SetWindows(x, y, x+width, y+height);
     DEV_Digital_Write(EPD_DC_PIN, 1);
     DEV_Digital_Write(EPD_CS_PIN, 0);
-    for (j = 0; j < height; j++) {
-        DEV_SPI_Write_nByte((uint8_t *)frame_ptr, width*2);
-        frame_ptr += width;
-    }
+    
+    DEV_SPI_Write_nByte((uint8_t *)frame_ptr, height*width*2);
+    
     DEV_Digital_Write(EPD_CS_PIN, 1);
     LCD_1IN3_SendCommand(0x29);
 }

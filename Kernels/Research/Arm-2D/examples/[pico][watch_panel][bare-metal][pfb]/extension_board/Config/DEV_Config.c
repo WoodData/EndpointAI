@@ -171,7 +171,7 @@ UBYTE DEV_Module_Init(void)
     EPD_SDA_PIN    = 6;
     
     // SPI Config
-    spi_init(SPI_PORT, 10000 * 1000);
+    spi_init(SPI_PORT, 80000 * 1000);
     gpio_set_function(EPD_CLK_PIN, GPIO_FUNC_SPI);
     gpio_set_function(EPD_MOSI_PIN, GPIO_FUNC_SPI);
     
