@@ -159,6 +159,10 @@ enum {
     PICO_ERROR_TIMEOUT = -1,
 };
 
+
+#define __sev       __SEV
+#define __wfe       __WFE
+
 #include "pico/platform.h"
 
 #endif

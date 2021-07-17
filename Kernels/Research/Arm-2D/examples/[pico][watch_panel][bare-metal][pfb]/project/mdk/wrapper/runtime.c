@@ -32,6 +32,13 @@
 
 extern char __StackLimit; /* Set by linker.  */
 
+
+#if defined(__IS_COMPILER_ARM_COMPILER_6__)
+#   undef __breakpoint
+#   define __breakpoint(...)      __BKPT(0)
+#endif
+
+
 uint32_t __attribute__((section(".ram_vector_table"))) ram_vector_table[48];
 
 // this is called for each thread since they have their own MPU
@@ -139,7 +146,7 @@ void runtime_init(void) {
 #ifndef NDEBUG
     if (__get_current_exception()) {
         // crap; started in exception handler
-        __asm ("bkpt #0");
+        __breakpoint();
     }
 #endif
 
