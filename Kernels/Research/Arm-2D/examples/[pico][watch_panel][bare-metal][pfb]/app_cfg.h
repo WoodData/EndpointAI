@@ -52,9 +52,9 @@
 //#define PFB_BLOCK_HEIGHT        120
 
 #define PFB_BLOCK_WIDTH         GLCD_WIDTH
-#define PFB_BLOCK_HEIGHT        80
+#define PFB_BLOCK_HEIGHT        GLCD_HEIGHT
 
-#define BUSY_WHEEL_SPIN_SPEED   100
+#define BUSY_WHEEL_SPIN_SPEED   10
 
 #ifndef APP_SCREEN_WIDTH 
 #   define APP_SCREEN_WIDTH         GLCD_WIDTH

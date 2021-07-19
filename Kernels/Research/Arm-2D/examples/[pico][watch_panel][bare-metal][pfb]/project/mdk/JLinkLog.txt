@@ -1,0 +1,86 @@
+T34DC 000:016.042   SEGGER J-Link V7.22b Log File
+T34DC 000:016.331   DLL Compiled: Jun 17 2021 17:22:49
+T34DC 000:016.359   Logging started @ 2021-07-19 12:35
+T34DC 000:016.381 - 16.393ms
+T34DC 000:016.417 JLINK_SetWarnOutHandler(...)
+T34DC 000:016.442 - 0.035ms
+T34DC 000:016.466 JLINK_OpenEx(...)
+T34DC 000:019.044   Firmware: J-Link ARM V8 compiled Nov 28 2014 13:44:46
+T34DC 000:019.496   Firmware: J-Link ARM V8 compiled Nov 28 2014 13:44:46
+T34DC 000:022.208   Hardware: V8.00
+T34DC 000:022.275   S/N: 17935099
+T34DC 000:022.317   OEM: SEGGER
+T34DC 000:022.351   Feature(s): RDI,FlashDL,FlashBP,JFlash
+T34DC 000:023.813   TELNET listener socket opened on port 19021
+T34DC 000:024.260   WEBSRV Starting webserver
+T34DC 000:024.657   WEBSRV Webserver running on local port 19080
+T34DC 000:024.701 - 8.245ms returns "O.K."
+T34DC 000:024.739 JLINK_GetEmuCaps()
+T34DC 000:024.761 - 0.032ms returns 0xB9FF7BBF
+T34DC 000:024.795 JLINK_TIF_GetAvailable(...)
+T34DC 000:024.992 - 0.230ms
+T34DC 000:025.054 JLINK_SetErrorOutHandler(...)
+T34DC 000:025.081 - 0.038ms
+T34DC 000:025.150 JLINK_ExecCommand("ProjectFile = "C:\Work\personal\Raspberry Pi Pico\Pico_Template\project\mdk\JLinkSettings.ini"", ...). 
+T34DC 000:047.352   Ref file found at: C:\Keil_v5\ARM\Segger\JLinkDevices.ref
+T34DC 000:047.655   XML referenced by ref file: C:\Program Files (x86)\SEGGER\JLink_V644g\JLinkDevices.xml
+T34DC 000:049.820   C:\Program Files (x86)\SEGGER\JLink_V644g\JLinkDevices.xml evaluated successfully.
+T34DC 000:193.922   Device "RP2040_M0_0" selected.
+T34DC 000:195.299 - 170.174ms returns 0x00
+T34DC 000:202.240 JLINK_ExecCommand("Device = ARMCM0P_MPU", ...). 
+T34DC 000:218.872   Device "RP2040_M0_0" selected.
+T34DC 000:220.394 - 18.138ms returns 0x00
+T34DC 000:220.460 JLINK_GetHardwareVersion()
+T34DC 000:220.485 - 0.035ms returns 80000
+T34DC 000:220.510 JLINK_GetDLLVersion()
+T34DC 000:220.531 - 0.032ms returns 72202
+T34DC 000:220.556 JLINK_GetOEMString(...)
+T34DC 000:220.582 JLINK_GetFirmwareString(...)
+T34DC 000:220.619 - 0.049ms
+T34DC 000:244.271 JLINK_GetDLLVersion()
+T34DC 000:244.318 - 0.057ms returns 72202
+T34DC 000:244.343 JLINK_GetCompileDateTime()
+T34DC 000:244.365 - 0.032ms
+T34DC 000:250.830 JLINK_GetFirmwareString(...)
+T34DC 000:250.879 - 0.060ms
+T34DC 000:257.662 JLINK_GetHardwareVersion()
+T34DC 000:257.715 - 0.064ms returns 80000
+T34DC 000:263.848 JLINK_GetSN()
+T34DC 000:263.898 - 0.061ms returns 17935099
+T34DC 000:270.143 JLINK_GetOEMString(...)
+T34DC 000:284.763 JLINK_TIF_Select(JLINKARM_TIF_SWD)
+T34DC 000:285.421 - 0.702ms returns 0x00
+T34DC 000:285.486 JLINK_HasError()
+T34DC 000:285.525 JLINK_SetSpeed(5000)
+T34DC 000:285.633 - 0.127ms
+T34DC 000:285.670 JLINK_GetId()
+T34DC 000:293.448   ConfigTargetSettings() start
+T34DC 000:293.516    J-Link Script File: Executing ConfigTargetSettings()
+T34DC 000:300.164   J-Link script: ConfigTargetSettings()
+T34DC 000:307.181   ConfigTargetSettings() end
+T34DC 000:313.205   InitTarget() start
+T34DC 000:313.263    J-Link Script File: Executing InitTarget()
+T34DC 000:322.850   InitTarget() end
+T34DC 000:329.863   Found SW-DP with ID 0x0BC12477
+T34DC 000:334.027   Old FW that does not support reading DPIDR via DAP jobs
+T34DC 000:345.217   DPv0 detected
+T34DC 000:351.651   Scanning AP map to find all available APs
+T34DC 000:361.468   AP[1]: Stopped AP scan as end of AP map has been reached
+T34DC 000:368.057   AP[0]: AHB-AP (IDR: 0x04770031)
+T34DC 000:375.186   Iterating through AP map to find AHB-AP to use
+T34DC 000:388.459   AP[0]: Core found
+T34DC 000:394.701   AP[0]: AHB-AP ROM base: 0xE00FF000
+T34DC 000:403.397   CPUID register: 0x410CC601. Implementer code: 0x41 (ARM)
+T34DC 000:410.934   Found Cortex-M0 r0p1, Little endian.
+T34DC 000:512.389   -- Max. mem block: 0x00002408
+T34DC 000:513.213   Looking for J-Link GUI Server exe at: C:\Keil_v5\ARM\Segger\JLinkGUIServer.exe
+T34DC 000:513.683   Looking for J-Link GUI Server exe at: C:\Program Files (x86)\SEGGER\JLink_V644g\\JLinkGUIServer.exe
+T34DC 000:814.268   Failed to connect to J-Link GUI Server.
+T34DC 003:010.495   
+  ***** Error: 
+T34DC 003:010.571   Specific core setup failed.
+T34DC 003:010.618 - 2724.969ms returns 0x00000000
+T34DC 004:404.565 JLINK_Close()
+T34DC 004:427.899 - 23.390ms
+T34DC 004:427.969   
+T34DC 004:427.989   Closed

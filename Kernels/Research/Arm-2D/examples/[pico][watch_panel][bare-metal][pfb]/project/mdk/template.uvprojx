@@ -10,13 +10,13 @@
       <TargetName>AC6</TargetName>
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
-      <pCCUsed>6160000::V6.16::ARMCLANG</pCCUsed>
+      <pCCUsed>6160001::V6.16.1::..\..\Program Files\ARMCompiler6.16.1</pCCUsed>
       <uAC6>1</uAC6>
       <TargetOption>
         <TargetCommonOption>
           <Device>ARMCM0P_MPU</Device>
           <Vendor>ARM</Vendor>
-          <PackID>ARM.CMSIS.5.7.0</PackID>
+          <PackID>ARM.CMSIS.5.8.0</PackID>
           <PackURL>http://www.keil.com/pack/</PackURL>
           <Cpu>IRAM(0x20000000,0x00020000) IROM(0x00000000,0x00040000) CPUTYPE("Cortex-M0+") CLOCK(12000000) ESEL ELITTLE</Cpu>
           <FlashUtilSpec></FlashUtilSpec>
@@ -339,7 +339,7 @@
               <MiscControls>-include env_wrapper.h -Omax</MiscControls>
               <Define>PICO</Define>
               <Undefine></Undefine>
-              <IncludePath>..\..\pico-sdk\src\rp2040\hardware_structs\include;..\..\pico-sdk\src\rp2_common\cmsis\include\cmsis;..\..\pico-sdk\src\rp2_common\cmsis\stub\CMSIS\Device\RaspberryPi\RP2040\Include;..\..\pico-sdk\src\boards\include\boards;..\..\pico-sdk\src\rp2040\hardware_regs\include;.\wrapper;..\..\pico-sdk\src\rp2_common\hardware_base\include;..\..\pico-sdk\src\rp2_common\hardware_watchdog\include;..\..\pico-sdk\src\rp2_common\hardware_pll\include;..\..\pico-sdk\src\rp2_common\hardware_xosc\include;..\..\pico-sdk\src\rp2_common\hardware_irq\include;..\..\pico-sdk\src\rp2_common\hardware_gpio\include;..\..\pico-sdk\src\rp2_common\hardware_resets\include;..\..\pico-sdk\src\rp2_common\hardware_clocks\include;..\..\pico-sdk\src\rp2_common\hardware_timer\include;..\..\pico-sdk\src\rp2_common\hardware_sync\include;..\..\pico-sdk\src\rp2_common\hardware_claim\include;..\..\pico-sdk\src\rp2_common\hardware_spi\include;..\..\pico-sdk\src\rp2_common\hardware_uart\include;..\..\pico-sdk\src\rp2_common\hardware_i2c\include;..\..\pico-sdk\src\rp2_common\hardware_pwm\include;..\..\pico-sdk\src\common\pico_base\include;..\..\pico-sdk\src\rp2_common\pico_multicore\include;..\..\pico-sdk\src\common\pico_sync\include;..\..\pico-sdk\src\common\pico_time\include;..\..\pico-sdk\src\common\pico_util\include;..\..\pico-sdk\src\common\pico_stdlib\include;..\..\pico-sdk\src\rp2_common\pico_stdio\include;..\..\pico-sdk\src;.\perf_counter\lib;..\..\pico-sdk\src\rp2_common\pico_runtime\include;..\..\pico-sdk\src\rp2_common\pico_printf\include;..\..\extension_board\LCD;..\..\extension_board\Config;..\..\..\..\Library\Include;..\..\..\..\Helper\Include;..\..\platform;..\..\..\[pico][watch_panel][bare-metal][pfb]</IncludePath>
+              <IncludePath>..\..\pico-sdk\src\rp2040\hardware_structs\include;..\..\pico-sdk\src\rp2_common\cmsis\include\cmsis;..\..\pico-sdk\src\rp2_common\cmsis\stub\CMSIS\Device\RaspberryPi\RP2040\Include;..\..\pico-sdk\src\boards\include\boards;..\..\pico-sdk\src\rp2040\hardware_regs\include;.\wrapper;..\..\pico-sdk\src\rp2_common\hardware_base\include;..\..\pico-sdk\src\rp2_common\hardware_watchdog\include;..\..\pico-sdk\src\rp2_common\hardware_pll\include;..\..\pico-sdk\src\rp2_common\hardware_xosc\include;..\..\pico-sdk\src\rp2_common\hardware_irq\include;..\..\pico-sdk\src\rp2_common\hardware_gpio\include;..\..\pico-sdk\src\rp2_common\hardware_resets\include;..\..\pico-sdk\src\rp2_common\hardware_clocks\include;..\..\pico-sdk\src\rp2_common\hardware_timer\include;..\..\pico-sdk\src\rp2_common\hardware_sync\include;..\..\pico-sdk\src\rp2_common\hardware_claim\include;..\..\pico-sdk\src\rp2_common\hardware_spi\include;..\..\pico-sdk\src\rp2_common\hardware_pwm\include;..\..\pico-sdk\src\rp2_common\hardware_i2c\include;..\..\pico-sdk\src\rp2_common\hardware_uart\include;..\..\pico-sdk\src\rp2_common\hardware_adc\include;..\..\pico-sdk\src\common\pico_base\include;..\..\pico-sdk\src\rp2_common\pico_multicore\include;..\..\pico-sdk\src\common\pico_sync\include;..\..\pico-sdk\src\common\pico_time\include;..\..\pico-sdk\src\common\pico_util\include;..\..\pico-sdk\src\common\pico_stdlib\include;..\..\pico-sdk\src\rp2_common\pico_stdio\include;..\..\pico-sdk\src;.\perf_counter\lib;..\..\pico-sdk\src\rp2_common\pico_runtime\include;..\..\pico-sdk\src\rp2_common\pico_printf\include;..\..\pico-sdk\src\rp2_common\pico_bootrom\include;..\..\pico-sdk\src\rp2_common\pico_stdio\include;..\..\pico-sdk\src\rp2_common\pico_stdio_uart\include;..\..\pico-sdk\src\rp2_common\pico_stdio_usb\include;..\..\pico-sdk\src\common\pico_binary_info\include;..\..\pico-sdk\src\rp2_common\pico_stdio_semihosting\include;..\..\..\..\Library\Include;..\..\..\..\Helper\Include;..\..\platform;..\..\..\[pico][watch_panel][bare-metal][pfb];..\..\extension_board\LCD;..\..\extension_board\Config</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -653,6 +653,26 @@
               <FileType>1</FileType>
               <FilePath>..\..\pico-sdk\src\rp2_common\hardware_i2c\i2c.c</FilePath>
             </File>
+            <File>
+              <FileName>stdio.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\pico-sdk\src\rp2_common\pico_stdio\stdio.c</FilePath>
+            </File>
+            <File>
+              <FileName>stdio_uart.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\pico-sdk\src\rp2_common\pico_stdio_uart\stdio_uart.c</FilePath>
+            </File>
+            <File>
+              <FileName>adc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\pico-sdk\src\rp2_common\hardware_adc\adc.c</FilePath>
+            </File>
+            <File>
+              <FileName>bootrom.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\pico-sdk\src\rp2_common\pico_bootrom\bootrom.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -807,6 +827,11 @@
               <FileName>arm_2d_helper_pfb.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\Helper\Source\arm_2d_helper_pfb.c</FilePath>
+            </File>
+            <File>
+              <FileName>arm_2d_helper_pfb.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\..\..\Helper\Include\arm_2d_helper_pfb.h</FilePath>
             </File>
           </Files>
         </Group>
