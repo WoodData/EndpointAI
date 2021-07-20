@@ -590,6 +590,7 @@ ARM_PT_BEGIN(this.Adapter.chPT)
         
         arm_2d_helper_perf_counter_start(); 
     } while(__arm_2d_helper_pfb_drawing_iteration_end(ptThis));
+    this.Statistics.nRenderingCycle += arm_2d_helper_perf_counter_stop();
     
 ARM_PT_END(this.Adapter.chPT)
     
