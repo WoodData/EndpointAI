@@ -7,11 +7,11 @@
 #define FLASH_SIZE          0x00200000  
 #define SRAM_SIZE           (1024*264)
 
-#define STACK_0_SIZE        (1024*4)
-#define STACK_1_SIZE        (1024*1)
+#define STACK_0_SIZE        (1024*2)
+#define STACK_1_SIZE        (256)
 
-#define HEAP_0_SIZE         (1024*32)
-#define HEAP_1_SIZE         (1024*1)
+#define HEAP_0_SIZE         (256)
+#define HEAP_1_SIZE         (256)
 
 #define RAMSIZE_VALID       (SRAM_SIZE -                                        \
                             STACK_1_SIZE - HEAP_1_SIZE -                        \
@@ -62,6 +62,11 @@ LR_IROM1 0x10000100 FLASH_SIZE - ImageLength(LR_STAGE2_BOOT)  {    ; load region
         * (+RW +ZI)
         * (+RO-CODE)
         * (+XO)
+        gear_01.o (+RO)
+        gear_02.o (+RO)
+        pointer_sec.o (+RO)
+        ;watch_panel.o (+RO)
+        *.o (:gdef:Font_6x8_h)
     }
 
 }
