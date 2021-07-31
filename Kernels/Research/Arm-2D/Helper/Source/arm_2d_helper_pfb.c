@@ -36,9 +36,10 @@
 #   pragma clang diagnostic ignored "-Wundef"
 #   pragma clang diagnostic ignored "-Wgnu-statement-expression"
 #   pragma clang diagnostic ignored "-Wcast-align"
-#elif __IS_COMPILER_GCC__
+#elif defined(__IS_COMPILER_GCC__)
 #   pragma GCC diagnostic push
 #   pragma GCC diagnostic ignored "-Wpedantic"
+#   pragma GCC diagnostic ignored "-Wstrict-aliasing"
 #endif
 
 /*============================ MACROS ========================================*/
@@ -592,6 +593,7 @@ ARM_PT_BEGIN(this.Adapter.chPT)
     } while(__arm_2d_helper_pfb_drawing_iteration_end(ptThis));
     this.Statistics.nRenderingCycle += arm_2d_helper_perf_counter_stop();
     
+    this.Statistics.nRenderingCycle += arm_2d_helper_perf_counter_stop();
 ARM_PT_END(this.Adapter.chPT)
     
     return arm_fsm_rt_cpl;
