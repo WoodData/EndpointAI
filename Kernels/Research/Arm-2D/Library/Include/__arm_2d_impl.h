@@ -43,7 +43,7 @@ extern "C" {
 #   pragma clang diagnostic push
 #   pragma clang diagnostic ignored "-Wgnu-zero-variadic-macro-arguments"
 #   pragma clang diagnostic ignored "-Wmissing-declarations"
-//#   pragma clang diagnostic ignored "-Wpadded"
+#   pragma clang diagnostic ignored "-Wpadded"
 #elif __IS_COMPILER_ARM_COMPILER_5__
 #   pragma diag_suppress 174,177,188,68,513,144,64
 #elif __IS_COMPILER_GCC__
@@ -319,7 +319,7 @@ arm_fsm_rt_t __arm_2d_op_frontend_op_decoder(arm_2d_op_core_t *ptThis);
  *----------------------------------------------------------------------------*/
 extern
 __arm_2d_point_adj_alpha_t 
-__arm_2d_point_get_adjacent_alpha(arm_2d_point_float_t *ptPoint);
+__arm_2d_point_get_adjacent_alpha_fp(arm_2d_point_float_t *ptPoint);
 
 extern
 __arm_2d_point_adj_alpha_t 
