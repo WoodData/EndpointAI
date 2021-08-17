@@ -12,15 +12,15 @@
 | Branch Name                               | Description                                                  | Note                                                         |
 | ----------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | ***master/main***                         | The main branch of the repository. It contains the Arm-2D library and simple examples. |                                                              |
-| ***main-arm-2d-developing***              | The development branch for the ***main*** branch.            | It will be merged into the ***main*** branch.                |
-| ***main-arm-2d-more-examples***           | It has the same content as the ***main*** branch but with additional examples.<br/>The purpose of this branch is to add **more examples** for people who want to try while still **keeping the main branch simple and small**.<br/>**NOTE**: This branch will not modify anything in the Arm-2D library but only focus on examples. |                                                              |
-| ***main-arm-2d-more-example-developing*** | It is the development branch for the ***main-arm-2d-more-examples*** branch. | The ***main*** branch will be merged into this one which will be merged into the ***main-arm-2d-more-examples*** branch later. |
+| ***main-arm-2d-developing***              | The development branch for the ***main*** branch.            | It will be merged into ***main*** branch.                    |
+| ***main-arm-2d-more-examples***           | It has the same content as ***main*** branch but with additional examples. <br />The purpose of this branch is **adding more examples** for people who want to try while still **keeping the main branch simple and small**. <br />**NOTE**: This branch will not modify anything in the Arm-2D library but only focuse on examples. |                                                              |
+| ***main-arm-2d-more-example-developing*** | It is the development branch for the ***main-arm-2d-more-examples-developing*** branch. | The ***main*** branch will be merged into this one which will be merged into the ***main-arm-2d-more-examples*** branch later. |
 
 
 
 ## Features of the Arm-2D Library
 
-#### In this release ( ver0.9.8 )
+#### In this release ( ver0.9.9 dev )
 
 The Arm-2D library provides **Low-Level 2D Image Processing Services** that are mainly used in **Display system**. The supported features include but not limited to:
 
@@ -59,7 +59,7 @@ Following features are planned and to be introduced in the near future:
 
 - **Alpha (bitmap) Masking schemes** 
   - New APIs will be added to Copy, Paving and Rotation.
-- **Image Filters, e.g. Anti-aliasing algorithms**
+- **Image Filters, e.g. Generic Anti-aliasing algorithms**
 - **Zooming/Stretching Algorithms**
 
 
