@@ -395,7 +395,7 @@ arm_fsm_rt_t arm_2d_rgb16_tile_copy( const arm_2d_tile_t *ptSource,
     this.Source.ptTile = ptSource;
     this.wMode = wMode;
 
-    return __arm_2d_op_invoke(NULL);
+    return __arm_2d_op_invoke((arm_2d_op_core_t *)ptThis);
 }
 
 
@@ -424,7 +424,7 @@ arm_fsm_rt_t arm_2d_rgb32_tile_copy( const arm_2d_tile_t *ptSource,
     this.Source.ptTile = ptSource;
     this.wMode = wMode;
 
-    return __arm_2d_op_invoke(NULL);
+    return __arm_2d_op_invoke((arm_2d_op_core_t *)ptThis);
 }
 
 /*! \brief copy source tile to destination tile and use destination tile as 
@@ -463,7 +463,7 @@ arm_fsm_rt_t arm_2d_rgb16_tile_copy_with_colour_masking(
     this.wMode = wMode;
     this.hwColour = hwMaskColour;
     
-    return __arm_2d_op_invoke(NULL);
+    return __arm_2d_op_invoke((arm_2d_op_core_t *)ptThis);
 }
 
 /*! \brief copy source tile to destination tile and use destination tile as 
@@ -501,7 +501,7 @@ arm_fsm_rt_t arm_2d_rgb32_tile_copy_with_colour_masking(
     this.wMode = wMode;
     this.wColour = wMaskColour;
 
-    return __arm_2d_op_invoke(NULL);
+    return __arm_2d_op_invoke((arm_2d_op_core_t *)ptThis);
 }
 
 arm_fsm_rt_t __arm_2d_rgb16_sw_tile_fill( __arm_2d_sub_task_t *ptTask)
