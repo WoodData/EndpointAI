@@ -301,7 +301,7 @@ void example_gui_refresh(const arm_2d_tile_t *ptTile, bool bIsNewFrame)
         }
     }
     
-    arm_2d_rbg565_alpha_blending_with_colour_masking(
+    arm_2d_rgb565_alpha_blending_with_colour_masking(
                                 &c_tileWatchPanel,
                                 ptTile,
                                 &tPanelRegion,
